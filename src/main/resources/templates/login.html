@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sakura Dental</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/812c8ee19a.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'light-bg-color': '#FFFFFF99',
+            'letters-color': '#271E4A'
+          },
+          backgroundImage: theme => ({
+            'custom-gradient': 'linear-gradient(to bottom right, #DBD2FC, #DBD2FC 10%, #FDE2E0 28%, #E6E4EA 59%, #E6E1EB 100%, #E0E9F4)',
+          }),
+          boxShadow: {
+            'lile-shadow': '0px 4px 15px rgba(219, 210, 252, 0.64)',
+          },
+          fontFamily: {
+          'kanit': ['Kanit', 'sans-serif'],
+           },
+        },
+
+      }
+    }
+  </script>
+</head>
+<body class="bg-custom-gradient h-dvh ">
+    <hgroup class="container mx-auto max-w-xl mt-16">
+      <h2 class="text-center text-4xl text-white font-bold mb-4">Ingresa</h2>
+      <p class="text-center text-2xl place-content-center text-white mb-8">Bienvenido de nuevo</p>
+    </hgroup>
+  
+    <div class="container bg-light-bg-color mx-auto max-w-xl p-4 ">
+     
+  
+        <hgroup class="container mx-auto max-w-xl mt-16">
+            <h2 class="text-center text-4xl text-white font-bold mb-4">Iniciar Sesión</h2>
+           </hgroup>
+  
+      <form class="flex flex-col">
+        <input type="email" id="loginEmail"
+          class="input-info border text-gray-200 rounded-md p-2 pl-4 bg-transparent focus:outline-none"
+          placeholder="username@example.com" required>
+        <br>
+  
+        <input type="password" id="loginPassword" class="input-info border text-gray-200 rounded-md p-2 pl-4 bg-transparent"
+          placeholder="*********" required>
+  
+        <div class="flex items-center mt-4">
+          <input type="checkbox" id="loginRememberMe" class="mr-2">
+          <label for="loginRememberMe" class="text-white">Recuérdame</label>
+        </div>
+  
+        <a href="./dashboard/home.html">
+        <button type="submit" id="loginForm" class="w-full  text-white font-bold py-2 mt-4 rounded-lg hover:bg-gray-800 login-color-btn">
+         
+          Iniciar sesión
+        </button>
+      </a>
+      </form>
+  
+      <p class="text-center place-content-center mt-4 text-white">¿No tienes una cuenta? <a href="./register.html"><span
+            class="create-new-acc ml-2">Crear cuenta nueva</span></a></p>
+    </div>
+  
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+  
+  </html>
+</html>
