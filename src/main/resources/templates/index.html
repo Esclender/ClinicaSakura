@@ -27,31 +27,19 @@
             'lile-shadow': '0px 4px 15px rgba(219, 210, 252, 0.64)',
           },
           fontFamily: {
-          'kanit': ['Kanit', 'sans-serif'],
-           },
+            'kanit': ['Kanit', 'sans-serif'],
+          },
         },
 
       }
     }
   </script>
 </head>
-<body class="bg-custom-gradient h-dvh ">
-    <!-- AppBar -->
-    <header class="w-5/6 absolute top-0 right-0 bg-transparent ml-1/5">
-      <div class="flex p-4">
-        <!-- Logo -->
-        <div class="flex items-center gap-2">
-          <img src="../static/sakura_logo.png" alt="Logo" class="w-56 h-24">
-        </div>
-  
-        <!-- Menu -->
-        <nav>
-          <!-- Aquí puedes agregar elementos de menú adicionales si es necesario -->
-        </nav>
-      </div>
-    </header>
+
+<body class="bg-custom-gradient h-dvh flex">
+
   <!-- SIDEBAR -->
-  <section class="block ">
+  <section class="block">
     <div class="fixed sidebar w-1/6 bg-light-bg-color border-r border-line_light">
       <div class="logo w-5/6 pb-24 ">
 
@@ -69,7 +57,7 @@
           <img class="w-8 h-8 mr-4 " src="../static/dashboard-icon.svg" alt="">
           <span>Inicio</span>
         </a>
-        <a href="#" class=" my-3 w-full  inline-flex">
+        <a href="#" class="my-3 w-full  inline-flex">
           <img class="w-8 h-8 mr-4 " src="../static/box.svg" alt="">
           <span>Almacen</span>
         </a>
@@ -89,7 +77,7 @@
           <img class="w-8 h-8 mr-4 " src="../static/package-minus.svg" alt="">
           <span>Salidas</span>
         </a>
-        
+
       </div>
       <a href="#" class="my-3 w-full font-kanit font-regular logout">
         <img class="w-8 h-8 mr-4" src="../static/logout-01.svg" alt="">
@@ -97,6 +85,20 @@
       </a>
     </div>
   </section>
+
+  <div class="grid grid-cols-6 grid-rows-6 gap-8 w-full">
+    <div class="col-start-2 flex items-center justify-center">
+      <img src="../static/sakura_logo.png" alt="Logo" class="w-56 h-24">
+    </div>
+
+
+    <div class="col-start-2 col-end-7 row-start-2 row-end-7">
+      <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 h-full">
+        <!-- Contenido principal -->
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 </body>
