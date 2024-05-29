@@ -2,105 +2,124 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sakura Dental</title>
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/812c8ee19a.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'light-bg-color': '#FFFFFF99',
-            'letters-color': '#271E4A',
-            'button-color': '#CA79C6'
-          },
-          backgroundImage: theme => ({
-            'custom-gradient': 'linear-gradient(to bottom right, #DBD2FC, #DBD2FC 10%, #FDE2E0 28%, #E6E4EA 59%, #E6E1EB 100%, #E0E9F4)',
-          }),
-          boxShadow: {
-            'lile-shadow': '0px 4px 15px rgba(219, 210, 252, 0.64)',
-          },
-          fontFamily: {
-            'kanit': ['Kanit', 'sans-serif'],
-          },
-        },
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakura Dental</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/812c8ee19a.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'light-bg-color': '#FFFFFF99',
+                        'letters-color': '#271E4A',
+                        'button-color': '#CA79C6'
+                    },
+                    backgroundImage: theme => ({
+                        'custom-gradient': 'linear-gradient(to bottom right, #DBD2FC, #DBD2FC 10%, #FDE2E0 28%, #E6E4EA 59%, #E6E1EB 100%, #E0E9F4)',
+                    }),
+                    boxShadow: {
+                        'lile-shadow': '0px 4px 15px rgba(219, 210, 252, 0.64)',
+                    },
+                    fontFamily: {
+                        'kanit': ['Kanit', 'sans-serif'],
+                    },
+                },
 
-      }
-    }
-  </script>
+            }
+        }
+    </script>
 </head>
 
 <body class="bg-custom-gradient h-dvh flex">
 
-  <!-- SIDEBAR -->
-  <section class="block">
-    <div class="fixed sidebar w-1/6 bg-light-bg-color border-r border-line_light">
-      <div class="logo w-5/6 pb-24 ">
+    <!-- SIDEBAR -->
+    <section class="block">
+        <div class="fixed sidebar w-1/6 bg-light-bg-color border-r border-line_light">
+            <div class="logo w-5/6 pb-24 ">
 
-        <div class="flex justify-start gap-2 mt-6">
-          <img class="w-16 h-16 rounded-full" src="../../static/muelita.jpg" alt="">
-          <div class="font-medium dark:text-white">
-            <div>Jese Leos</div>
-            <div class="text-sm text-gray-500 dark:text-gray-400">Joined in August 2014</div>
-          </div>
+                <div class="flex justify-start gap-2 mt-6">
+                    <img class="w-16 h-16 rounded-full" src="../../static/muelita.jpg" alt="">
+                    <div class="font-medium dark:text-white">
+                        <div>Jese Leos</div>
+                        <div class="text-sm text-gray-500 dark:text-gray-400">Joined in August 2014</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="pt-32 px-4 text-letters-color font-kanit font-regular">
+                <a href="#" class="active my-3 w-full active:shadow-md shadow-lile-shadow inline-flex">
+                    <img class="w-8 h-8 mr-4 " src="../../static/dashboard-icon.svg" alt="">
+                    <span>Inicio</span>
+                </a>
+                <a href="#" class="my-3 w-full  inline-flex">
+                    <img class="w-8 h-8 mr-4 " src="../../static/box.svg" alt="">
+                    <span>Almacen</span>
+                </a>
+                <a href="#" class="my-3 w-full  inline-flex">
+                    <img class="w-8 h-8 mr-4 " src="../../static/users-profiles-01.svg" alt="">
+                    <span>Empleados</span>
+                </a>
+                <a href="#" class="my-3 w-full  inline-flex">
+                    <img class="w-8 h-8 mr-4 " src="../../static/delivery.svg" alt="">
+                    <span>Proveedores</span>
+                </a>
+                <a href="#" class="my-3 w-full  inline-flex">
+                    <img class="w-8 h-8 mr-4 " src="../../static/package-plus.svg" alt="">
+                    <span>Entradas</span>
+                </a>
+                <a href="#" class="my-3 w-full  inline-flex">
+                    <img class="w-8 h-8 mr-4 " src="../../static/package-minus.svg" alt="">
+                    <span>Salidas</span>
+                </a>
+
+            </div>
+            <a href="#" class="my-3 w-full font-kanit font-regular logout">
+                <img class="w-8 h-8 mr-4" src="../../static/logout-01.svg" alt="">
+                <span>Cerrar</span>
+            </a>
+        </div>
+    </section>
+
+    <div class="grid grid-cols-6 grid-rows-6 gap-8 w-full">
+        <div class="col-start-2 flex items-center justify-center">
+            <img src="../../static/sakura_logo.png" alt="Logo" class="w-56 h-24">
         </div>
 
-      </div>
-      <div class="pt-32 px-4 text-letters-color font-kanit font-regular">
-        <a href="#" class="active my-3 w-full active:shadow-md shadow-lile-shadow inline-flex">
-          <img class="w-8 h-8 mr-4 " src="../../static/dashboard-icon.svg" alt="">
-          <span>Inicio</span>
-        </a>
-        <a href="#" class="my-3 w-full  inline-flex">
-          <img class="w-8 h-8 mr-4 " src="../../static/box.svg" alt="">
-          <span>Almacen</span>
-        </a>
-        <a href="#" class="my-3 w-full  inline-flex">
-          <img class="w-8 h-8 mr-4 " src="../../static/users-profiles-01.svg" alt="">
-          <span>Empleados</span>
-        </a>
-        <a href="#" class="my-3 w-full  inline-flex">
-          <img class="w-8 h-8 mr-4 " src="../../static/delivery.svg" alt="">
-          <span>Proveedores</span>
-        </a>
-        <a href="#" class="my-3 w-full  inline-flex">
-          <img class="w-8 h-8 mr-4 " src="../../static/package-plus.svg" alt="">
-          <span>Entradas</span>
-        </a>
-        <a href="#" class="my-3 w-full  inline-flex">
-          <img class="w-8 h-8 mr-4 " src="../../static/package-minus.svg" alt="">
-          <span>Salidas</span>
-        </a>
 
-      </div>
-      <a href="#" class="my-3 w-full font-kanit font-regular logout">
-        <img class="w-8 h-8 mr-4" src="../../static/logout-01.svg" alt="">
-        <span>Cerrar</span>
-      </a>
-    </div>
-  </section>
+        <div class="col-start-2 col-end-7 row-start-2 row-end-7">
+            <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 h-full">
+                <!-- Contenido principal -->
+                <h1 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Registro De Producto</h1>
 
-  <div class="grid grid-cols-6 grid-rows-6 gap-8 w-full">
-    <div class="col-start-2 flex items-center justify-center">
-      <img src="../../static/sakura_logo.png" alt="Logo" class="w-56 h-24">
+
+                <div
+                    class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <a href="#">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Agregar Información del Producto</h5>
+                    </a>
+                    <div class="mb-6">
+                        <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre del Producto*</label>
+                        <input type="text" id="default-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <div class="mb-6">
+                        <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripción del Producto*</label>
+                        <input type="text" id="default-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+
+                    
+                </div>
+
+            </div>
+        </div>
     </div>
 
-
-    <div class="col-start-2 col-end-7 row-start-2 row-end-7">
-      <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 h-full">
-        <!-- Contenido principal -->
-        <h1>Registro De Producto</h1>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 </body>
 
