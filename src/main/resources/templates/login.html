@@ -62,23 +62,28 @@
                     class="w-full input-info text-gray-200 shadow-lile-shadow bg-white-900 rounded-lg p-3 pl-4 "
                     placeholder="Ingresar contraseña" required>
             </div>
-            <div class="flex items-center mt-3 px-4">
+            <!-- <div class="flex items-center mt-3 px-4">
                 <input type="checkbox" id="loginRememberMe" class="mr-2 border-white border">
                 <label for="loginRememberMe" class="text-letters-color font-kanit">Recuérdame</label>
-            </div>
+            </div> -->
 
-            <a href="" class="px-4">
-                <button type="submit" id="loginForm"
+            <div class="px-4">
+                <button id="loginButton"
                     class="w-full text-white text-[20px] font-kanit font-regular py-2 mt-4 rounded-lg bg-button-color">
-
                     Ingresar
                 </button>
-            </a>
+            </div>
         </form>
 
 
     </div>
 
+    <script>
+        document.getElementById('loginButton').addEventListener('click', function (event) {
+            event.preventDefault();
+            window.location.href = '/clinicasakura/productos';
+        });
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
 </body>
 
