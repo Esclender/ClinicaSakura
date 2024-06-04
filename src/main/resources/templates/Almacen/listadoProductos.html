@@ -1,11 +1,12 @@
 <!doctype html>
-<html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sakura Dental</title>
-  <link rel="stylesheet" href="../../static/css/styles.css">
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <link rel="shortcut icon" type="image/png" th:href="@{/favicon.png}" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -37,64 +38,15 @@
 </head>
 
 <body class="bg-custom-gradient h-dvh flex">
-
   <!-- SIDEBAR -->
-  <section class="block">
-    <div class="fixed sidebar w-1/6 bg-light-bg-color border-r border-line_light">
-      <div class="logo w-5/6 pb-24 ">
-
-        <div class="flex justify-start gap-2 mt-6">
-          <img class="w-16 h-16 rounded-full" src="../static/muelita.jpg" alt="">
-          <div class="font-medium ">
-            <div>Jese Leos</div>
-            <div class="text-sm text-gray-500">Joined in August 2014</div>
-          </div>
-        </div>
-
-      </div>
-      <div class="menu-content pt-[15%] px-4 text-letters-color font-kanit font-regular">
-        <a href="#" class="active my-1 w-full active:shadow-md shadow-lile-shadow inline-flex">
-          <img class="w-6 h-6 mr-4 " src="../static/dashboard-icon.svg" alt="">
-          <span>Inicio</span>
-        </a>
-        <a href="#" class=" my-1 w-full  inline-flex">
-          <img class="w-6 h-6 mr-4 " src="../static/box.svg" alt="">
-          <span>Almacen</span>
-        </a>
-        <a href="#" class="my-1 w-full  inline-flex">
-          <img class="w-6 h-6 mr-4 " src="../static/users-profiles-01.svg" alt="">
-          <span>Empleados</span>
-        </a>
-        <a href="#" class="my-1 w-full  inline-flex">
-          <img class="w-6 h-6 mr-4 " src="../static/delivery.svg" alt="">
-          <span>Proveedores</span>
-        </a>
-        <a href="#" class="my-1 w-full  inline-flex">
-          <img class="w-6 h-6 mr-4 " src="../static/package-plus.svg" alt="">
-          <span>Entradas</span>
-        </a>
-        <a href="#" class="my-1 w-full  inline-flex">
-          <img class="w-6 h-6 mr-4 " src="../static/package-minus.svg" alt="">
-          <span>Salidas</span>
-        </a>
-
-      </div>
-      <a href="#" class="my-1 w-full font-kanit font-regular logout">
-        <img class="w-6 h-6 mr-4" src="../static/logout-01.svg" alt="">
-        <span>Cerrar</span>
-      </a>
-    </div>
-  </section>
-
+  <section th:insert="~{components/sidebarTemplate.html :: sidebar(selectedPage=2)}"></section>
   <div class="grid grid-cols-6 grid-rows-8 gap-8 w-full">
     <div class="col-start-2 flex items-start justify-center">
-      <img src="../static/sakura_logo.png" alt="Logo" class="w-56 md:w-40 mt-4 md:mt-2">
+      <img th:src="@{/sakura_logo.png}" alt="Logo" class="w-56 md:w-40 mt-4 md:mt-2">
     </div>
 
     <!-- Contenido principal -->
-    <div class="col-start-2 col-end-7 row-start-2 row-end-8">
-      <div class="px-8  h-full">
-
+    <div class="col-start-2 col-end-7 row-start-2 row-end-8 mx-8">
         <div class="flex flex-row justify-between self-center">
           <h2 class="text-3xl font-medium font-kanit">Almacen</h2>
           <div>
@@ -104,16 +56,21 @@
             <button type="button"
               class="text-white text-md bg-button-color shadow-lile-shadow focus:outline-none focus:ring-4 focus:ring-blue-300 font-regular rounded-full text-sm px-3 py-1.5 text-center me-1 mb-2">Registrar
               Producto</button>
+            <a th:href="@{/productos/registro}"
+              class="text-white text-md bg-button-color shadow-lile-shadow focus:outline-none focus:ring-4 focus:ring-blue-300 font-regular rounded-full text-sm px-3 py-1.5 text-center me-1 mb-2">Registrar
+              Producto</a>
           </div>
         </div>
 
-        <div class="bg-white mt-4 h-full rounded-[20px]">
+        <div class="relative bg-white mt-2 rounded-[20px] h-full ">  
+            <!-- Table and filter -->
+            
           <div class="flex flex-row justify-between self-center">
             <!-- Contenido de almacen -->
             <div class="max-w-screen-xl px-4 mx-auto lg:px-4 w-full">
               <div class="relative  sm:rounded-lg">
                 <div
-                  class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+                  class="flex flex-col items-center justify-between py-3 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
                   <div class="w-full md:w-1/2">
 
                     <h2 class="text-2xl font-medium font-kanit">Productos</h2>
@@ -189,7 +146,6 @@
                               Cirugia (56)
                             </label>
                           </li>
-
                         </ul>
                       </div>
                     </div>
@@ -197,12 +153,11 @@
                 </div>
               </div>
             </div>
-
           </div>
-
           <!-- Tabla de productos -->
-          <div class="relative overflow-x-auto h-[90%] mb-24 mx-4 sm:rounded-lg ">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+          <div class="float- overflow-x-auto mx-4 sm:rounded-lg h-[80%]">
+            <div class="">
+            <table class="relative w-full  text-sm text-left rtl:text-right text-gray-500">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                 <tr>
                   <th scope="col" class="pl-6 py-3">
@@ -222,8 +177,8 @@
                   </th>
                 </tr>
               </thead>
+
               <tbody>
-                
                 <tr class="bg-white border-b ">
                   <th scope="row" class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                     12 de junio de 2022
@@ -239,7 +194,7 @@
                   </td>
                   <td class="px-2 py-4 ">
 
-                    <a href="#" class="ml-1 p-2 w-8 rounded-lg bg-white shadow-md">
+                    <a href="#" class="ml-1 p-2 px-2 w-8 rounded-lg bg-white shadow-md">
                       <button>
                         <i class="fa-regular fa-pen-to-square text-[18px]"></i>
                       </button>
@@ -253,117 +208,55 @@
 
                   </td>
                 </tr>
+
               
-                <tr
-                  class="bg-white border-b   hover:bg-gray-50 ">
-                  <th scope="row" class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                    12 de junio de 2022
-                  </th>
-                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                    Microsoft Surface Pro
-                  </th>
-                  <td class="py-4">
-                    Laptop PC
-                  </td>
-                  <td class="px-6 py-4">
-                    $1999
-                  </td>
-                  <td class="px-2 py-4 ">
-
-                    <a href="#" class="ml-1 p-2 w-8 rounded-lg bg-white shadow-md">
-                      <button>
-                        <i class="fa-regular fa-pen-to-square text-[18px]"></i>
-                      </button>
-                    </a>
-
-                    <a href="#" class="ml-1 p-2 px-3 w-8 rounded-lg bg-white shadow-md">
-                      <button>
-                        <i class="fa-regular fa-trash-can text-red-600 text-[18px]"></i>
-                      </button>
-                    </a>
-
-                  </td>
-                </tr>
-                <tr class="bg-white  hover:bg-gray-50 ">
-                  <th scope="row" class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                    12 de junio de 2022
-                  </th>
-                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                    Magic Mouse 2
-                  </th>
-                  <td class=" py-4">
-                    Accessories para tu hogar encuentraliofdgddd
-                  </td>
-                  <td class="px-6 py-4">
-                    $99
-                  </td>
-                  <td class="px-2 py-4 ">
-
-                    <a href="#" class="ml-1 p-2 w-8 rounded-lg bg-white shadow-md">
-                      <button>
-                        <i class="fa-regular fa-pen-to-square text-[18px]"></i>
-                      </button>
-                    </a>
-
-                    <a href="#" class="ml-1 p-2 px-3 w-8 rounded-lg bg-white shadow-md">
-                      <button>
-                        <i class="fa-regular fa-trash-can text-red-600 text-[18px]"></i>
-                      </button>
-                    </a>
-
-                  </td>
-                </tr>
 
               </tbody>
-              <tfoot>
-                <div class="table-footer-group">
-                <h1>hola</h1>
-              </div>
-              </tfoot>
+             
             </table>
-            
-            <nav class=" flex items-center content-end flex-wrap md:flex-row justify-between pt-4"
-              aria-label="Table navigation">
-              <span
-                class="text-sm font-normal text-gray-500 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing
-                <span class="font-semibold text-gray-900 ">1-10</span> of <span
-                  class="font-semibold text-gray-900 ">1000</span></span>
-              <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-                <li>
-                  <a href="#"
-                    class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700  ">Previous</a>
-                </li>
-                <li>
-                  <a href="#"
-                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700  ">1</a>
-                </li>
-                <li>
-                  <a href="#"
-                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700  ">2</a>
-                </li>
-                <li>
-                  <a href="#" aria-current="page"
-                    class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700   ">3</a>
-                </li>
-                <li>
-                  <a href="#"
-                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700  ">4</a>
-                </li>
-                <li>
-                  <a href="#"
-                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700  ">5</a>
-                </li>
-                <li>
-                  <a href="#"
-                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700  ">Next</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-
+            </div>
+          
         </div>
-
-      </div>
+      
+            <nav class="flex items-center flex-wrap md:flex-row justify-between  "
+            aria-label="Table navigation">
+            <span
+              class="text-sm font-normal p-4 absolute bottom-0 left-0 text-gray-500 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing
+              <span class=" font-semibold text-gray-900 ">1-10</span> of <span
+                class="font-semibold text-gray-900 ">1000</span></span>
+            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8 m-4 absolute bottom-0 right-0">
+              <li>
+                <a href="#"
+                  class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700  ">Previous</a>
+              </li>
+              <li>
+                <a href="#"
+                  class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700  ">1</a>
+              </li>
+              <li>
+                <a href="#"
+                  class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700  ">2</a>
+              </li>
+              <li>
+                <a href="#" aria-current="page"
+                  class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700   ">3</a>
+              </li>
+              <li>
+                <a href="#"
+                  class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700  ">4</a>
+              </li>
+              <li>
+                <a href="#"
+                  class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700  ">5</a>
+              </li>
+              <li>
+                <a href="#"
+                  class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700  ">Next</a>
+              </li>
+            </ul>
+          </nav>
+       
+        </div>
     </div>
   </div>
 

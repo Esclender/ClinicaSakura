@@ -66,6 +66,18 @@
 }
 
 
+.custom-select::after {
+    content: '\f078'; 
+    font-family: 'Font Awesome 5 Free'; 
+    font-weight: 900; 
+    position: absolute;
+    right: 0.75rem; 
+    top: 50%;
+    transform: translateY(-10%);
+    pointer-events: none; 
+}
+
+
 @media screen and (max-height: 720px) {
     .sidebar a {
         padding: 12px 15px;
@@ -86,18 +98,8 @@
 
 /* Table content  */
 
-.table-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%; 
-  }
-  
-  .table-content {
-    flex-grow: 1; 
-    overflow-y: auto; 
-  }
-  
-  .pagination {
-    margin-top: auto; 
-  }
-  
+table{
+    max-height: 600px!important;
+    height: 20%!important;
+    min-height: 400px!important;
+}

@@ -11,4 +11,10 @@ public class AlmacenController {
     public String ListarProductos() {
         return "Almacen/listadoProductos";
     }
+    
+    
+    @GetMapping("/productos/registro")
+    public String RegistroProductos() {
+        return "Almacen/registroProducto";
+    }
 }
