@@ -82,3 +82,22 @@
         width: 6rem!important;
     }
 }
+
+
+/* Table content  */
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+  }
+  
+  .table-content {
+    flex-grow: 1; 
+    overflow-y: auto; 
+  }
+  
+  .pagination {
+    margin-top: auto; 
+  }
+  
