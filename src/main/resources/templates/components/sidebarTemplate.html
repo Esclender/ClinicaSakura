@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
@@ -11,76 +11,53 @@
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/812c8ee19a.js" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'light-bg-color': '#FFFFFF99',
-            'letters-color': '#271E4A',
-            'button-color': '#CA79C6'
-          },
-          backgroundImage: theme => ({
-            'custom-gradient': 'linear-gradient(to bottom right, #DBD2FC, #DBD2FC 10%, #FDE2E0 28%, #E6E4EA 59%, #E6E1EB 100%, #E0E9F4)',
-          }),
-          boxShadow: {
-            'lile-shadow': '0px 4px 15px rgba(219, 210, 252, 0.64)',
-          },
-          fontFamily: {
-            'kanit': ['Kanit', 'sans-serif'],
-          },
-        },
-
-      }
-    }
-  </script>
 </head>
 
 <body class="bg-custom-gradient h-dvh flex">
 
   <!-- SIDEBAR -->
-  <section class="block" th:fragment="sidebar">
+  <section class="block" th:fragment="sidebar(selectedPage)">
     <div class="fixed sidebar w-1/6 bg-light-bg-color border-r border-line_light">
       <div class="logo w-5/6 pb-24 ">
 
         <div class="flex justify-start gap-2 mt-6">
-          <img class="w-16 h-16 rounded-full" src="muelita.jpg" alt="user">
-          <div class=" font-medium dark:text-white">
+          <img class="w-16 h-16 rounded-full" th:src="@{/muelita.jpg}" alt="">
+          <div class="font-medium ">
             <div>Jese Leos</div>
-            <div class="text-sm text-gray-500 dark:text-gray-400">Joined in August 2014</div>
+            <div class="text-sm text-gray-500">Joined in August 2014</div>
           </div>
         </div>
 
       </div>
-      <div class="pt-32 px-4 text-letters-color font-kanit font-regular">
-        <a href="#" class="active my-3 w-full active:shadow-md shadow-lile-shadow inline-flex">
-          <img class="w-8 h-8 mr-4 " src="../../static/dashboard-icon.svg" alt="">
+      <div class="menu-content pt-[15%] px-4 text-letters-color font-kanit font-regular">
+        <a th:href="@{/inicio}" th:class=" ${selectedPage==1 ? 'active w-full my-1 inline-flex' : 'w-full' }">
+          <img class="w-6 h-6 mr-4 " th:src="@{/dashboard-icon.svg}" alt="">
           <span>Inicio</span>
         </a>
-        <a href="#" class="my-3 w-full  inline-flex">
-          <img class="w-8 h-8 mr-4 " src="../../static/box.svg" alt="">
+        <a th:href="@{/productos}" th:class=" ${selectedPage==2 ? 'active w-full my-1 inline-flex' : 'w-full' }">
+          <img class="w-6 h-6 mr-4 " th:src="@{/box.svg}" alt="">
           <span>Almacen</span>
         </a>
-        <a href="#" class="my-3 w-full  inline-flex">
-          <img class="w-8 h-8 mr-4 " src="../../static/users-profiles-01.svg" alt="">
+        <a th:href="@{/empleados}" th:class=" ${selectedPage==3 ? 'active w-full my-1' : 'w-full' }">
+          <img class="w-6 h-6 mr-4 " th:src="@{/users-profiles-01.svg}" alt="">
           <span>Empleados</span>
         </a>
-        <a href="#" class="my-3 w-full  inline-flex">
-          <img class="w-8 h-8 mr-4 " src="../../static/delivery.svg" alt="">
+        <a th:href="@{/proveedores}" th:class=" ${selectedPage==4 ? 'active w-full my-1' : 'w-full' }">
+          <img class="w-6 h-6 mr-4 " th:src="@{/delivery.svg}" alt="">
           <span>Proveedores</span>
         </a>
-        <a href="#" class="my-3 w-full  inline-flex">
-          <img class="w-8 h-8 mr-4 " src="../../static/package-plus.svg" alt="">
+        <a th:href="@{/productos}" th:class=" ${selectedPage==5 ? 'active w-full my-1' : 'w-full' }">
+          <img class="w-6 h-6 mr-4 " th:src="@{/package-plus.svg}" alt="">
           <span>Entradas</span>
         </a>
-        <a href="#" class="my-3 w-full  inline-flex">
-          <img class="w-8 h-8 mr-4 " src="../../static/package-minus.svg" alt="">
+        <a th:href="@{/productos}" th:class=" ${selectedPage==6 ? 'active w-full my-1' : 'w-full' }">
+          <img class="w-6 h-6 mr-4 " th:src="@{/package-minus.svg}" alt="">
           <span>Salidas</span>
         </a>
 
       </div>
-      <a href="#" class="my-3 w-full font-kanit font-regular logout">
-        <img class="w-8 h-8 mr-4" src="../../static/logout-01.svg" alt="">
+      <a href="#" class="my-1 w-full font-kanit font-regular logout">
+        <img class="w-6 h-6 mr-4" th:src="@{/logout-01.svg}" alt="">
         <span>Cerrar</span>
       </a>
     </div>

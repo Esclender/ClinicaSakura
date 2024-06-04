@@ -1,11 +1,12 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sakura Dental</title>
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="shortcut icon" type="image/png" th:href="@{/favicon.png}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -46,7 +47,7 @@
             <h2 class="text-center text-4xl text-letters-color font-kanit font-medium mb-4">Iniciar Sesión</h2>
         </hgroup>
 
-        <form class="flex flex-col">
+        <form class="flex flex-col" th:action="@{/login/acceder}" method="post">
 
             <div class="px-4 pb-6">
                 <h2 class="pb-4 font-kanit font-regular text-[18px]">Usuario</h2>
@@ -78,12 +79,6 @@
 
     </div>
 
-    <script>
-        document.getElementById('loginButton').addEventListener('click', function (event) {
-            event.preventDefault();
-            window.location.href = '/clinicasakura/productos';
-        });
-    </script>
     <script src="https://cdn.tailwindcss.com"></script>
 </body>
 

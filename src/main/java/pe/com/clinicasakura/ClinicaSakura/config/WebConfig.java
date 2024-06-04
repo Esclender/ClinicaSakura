@@ -1,6 +1,4 @@
 package pe.com.clinicasakura.ClinicaSakura.config;
-
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;

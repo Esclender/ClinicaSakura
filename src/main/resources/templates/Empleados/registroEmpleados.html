@@ -5,9 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sakura Dental</title>
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="shortcut icon" type="image/png" th:href="@{/favicon.png}" />
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     integrity="sha512-Fo3rlrZj/k7ujTTX1t1Uj8uHvjP6NDQc6oSIO4T+ps7+p3RDA5N6P3ujUk4nMfLRO7nRHYHGqsI5dWbk4o8bMw=="
@@ -42,56 +43,11 @@
 <body class="bg-custom-gradient h-dvh flex">
 
   <!-- SIDEBAR -->
-  <section class="block">
-    <div class="fixed sidebar w-1/6 bg-light-bg-color border-r border-line_light">
-      <div class="logo w-5/6 pb-24 ">
-
-        <div class="flex justify-start gap-2 mt-6">
-          <img class="w-16 h-16 rounded-full" src="/src/main/resources/static/muelita.jpg" alt="">
-          <div class="font-medium ">
-            <div>Jese Leos</div>
-            <div class="text-sm text-gray-500">Joined in August 2014</div>
-          </div>
-        </div>
-
-      </div>
-      <div class="menu-content pt-[15%] px-4 text-letters-color font-kanit font-regular">
-        <a href="#" class="active my-1 w-full active:shadow-md shadow-lile-shadow inline-flex">
-          <img class="w-6 h-6 mr-4 " src="/src/main/resources/static//dashboard-icon.svg" alt="">
-          <span>Inicio</span>
-        </a>
-        <a href="#" class=" my-1 w-full  inline-flex">
-          <img class="w-6 h-6 mr-4 " src="/src/main/resources/static/box.svg" alt="">
-          <span>Almacen</span>
-        </a>
-        <a href="#" class="my-1 w-full  inline-flex">
-          <img class="w-6 h-6 mr-4 " src="/src/main/resources/static/users-profiles-01.svg" alt="">
-          <span>Empleados</span>
-        </a>
-        <a href="#" class="my-1 w-full  inline-flex">
-          <img class="w-6 h-6 mr-4 " src="/src/main/resources/static/delivery.svg" alt="">
-          <span>Proveedores</span>
-        </a>
-        <a href="#" class="my-1 w-full  inline-flex">
-          <img class="w-6 h-6 mr-4 " src="/src/main/resources/static/package-plus.svg" alt="">
-          <span>Entradas</span>
-        </a>
-        <a href="#" class="my-1 w-full  inline-flex">
-          <img class="w-6 h-6 mr-4 " src="/src/main/resources/static/package-minus.svg" alt="">
-          <span>Salidas</span>
-        </a>
-
-      </div>
-      <a href="#" class="my-1 w-full font-kanit font-regular logout">
-        <img class="w-6 h-6 mr-4" src="/src/main/resources/static/logout-01.svg" alt="">
-        <span>Cerrar</span>
-      </a>
-    </div>
-  </section>
+  <section th:insert="~{components/sidebarTemplate.html :: sidebar(selectedPage=3)}"></section>
 
   <div class="grid grid-cols-6 grid-rows-8 gap-8 w-full">
     <div class="col-start-2 flex items-start justify-center">
-      <img src="/src/main/resources/static/sakura_logo.png" alt="Logo" class="w-56 md:w-40 mt-4 md:mt-2">
+      <img th:src="@{/sakura_logo.png}" alt="Logo" class="w-56 md:w-40 mt-4 md:mt-2">
     </div>
 
     <!-- Contenido principal -->

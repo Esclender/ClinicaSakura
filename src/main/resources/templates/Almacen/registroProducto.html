@@ -1,11 +1,12 @@
 <!doctype html>
-<html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sakura Dental</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="shortcut icon" type="image/png" th:href="@{/favicon.png}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -39,95 +40,102 @@
 <body class="bg-custom-gradient h-dvh flex">
 
     <!-- SIDEBAR -->
-    <section class="block">
-        <div class="fixed sidebar w-1/6 bg-light-bg-color border-r border-line_light">
-            <div class="logo w-5/6 pb-24 ">
+    <section th:insert="~{components/sidebarTemplate.html :: sidebar(selectedPage=2)}"></section>
 
-                <div class="flex justify-start gap-2 mt-6">
-                    <img class="w-16 h-16 rounded-full" src="../../static/muelita.jpg" alt="">
-                    <div class="font-medium dark:text-white">
-                        <div>Jese Leos</div>
-                        <div class="text-sm text-gray-500 dark:text-gray-400">Joined in August 2014</div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="pt-32 px-4 text-letters-color font-kanit font-regular">
-                <a href="#" class="active my-3 w-full active:shadow-md shadow-lile-shadow inline-flex">
-                    <img class="w-8 h-8 mr-4 " src="../../static/dashboard-icon.svg" alt="">
-                    <span>Inicio</span>
-                </a>
-                <a href="#" class="my-3 w-full  inline-flex">
-                    <img class="w-8 h-8 mr-4 " src="../../static/box.svg" alt="">
-                    <span>Almacen</span>
-                </a>
-                <a href="#" class="my-3 w-full  inline-flex">
-                    <img class="w-8 h-8 mr-4 " src="../../static/users-profiles-01.svg" alt="">
-                    <span>Empleados</span>
-                </a>
-                <a href="#" class="my-3 w-full  inline-flex">
-                    <img class="w-8 h-8 mr-4 " src="../../static/delivery.svg" alt="">
-                    <span>Proveedores</span>
-                </a>
-                <a href="#" class="my-3 w-full  inline-flex">
-                    <img class="w-8 h-8 mr-4 " src="../../static/package-plus.svg" alt="">
-                    <span>Entradas</span>
-                </a>
-                <a href="#" class="my-3 w-full  inline-flex">
-                    <img class="w-8 h-8 mr-4 " src="../../static/package-minus.svg" alt="">
-                    <span>Salidas</span>
-                </a>
-
-            </div>
-            <a href="#" class="my-3 w-full font-kanit font-regular logout">
-                <img class="w-8 h-8 mr-4" src="../../static/logout-01.svg" alt="">
-                <span>Cerrar</span>
-            </a>
-        </div>
-    </section>
-
-    <div class="grid grid-cols-6 grid-rows-6 gap-8 w-full">
-        <div class="col-start-2 flex items-center justify-center">
-            <img src="../../static/sakura_logo.png" alt="Logo" class="w-56 h-24">
+    <div class="grid grid-cols-6 grid-rows-8 gap-8 w-full">
+        <div class="col-start-2 flex items-start justify-center">
+            <img th:src="@{/sakura_logo.png}" alt="Logo" class="w-56 md:w-40 mt-4 md:mt-2">
         </div>
 
+        <!-- Contenido principal -->
+        <div class="col-start-2 col-end-7 row-start-2 row-end-8">
+            <div class="px-8  h-full">
 
-        <div class="col-start-2 col-end-7 row-start-2 row-end-7">
-            <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 h-full">
-                <!-- Contenido principal -->
-                <h1 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Registro De Producto
-                </h1>
-
-
-                <div
-                    class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                    <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Agregar
-                            Información del Producto</h5>
-                    </a>
-                    <div class="mb-6">
-                        <label for="default-input"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre del
-                            Producto*</label>
-                        <input type="text" id="default-input"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    </div>
-                    <div class="mb-6">
-                        <label for="default-input"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripción del
-                            Producto*</label>
-                        <input type="text" id="default-input"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    </div>
-
+                <div class="flex flex-row justify-between self-center">
+                    <h2 class="text-3xl font-medium font-kanit">Registro productos</h2>
 
                 </div>
 
+                <div class="bg-white mt-4 h-full rounded-[20px]">
+                    <div class="h-[450px] flex flex-row justify-between self-center">
+                        <!-- Contenido -->
+                        <div class="max-w-screen-xl  mx-auto lg:px-4 w-full">
+                            <div class="relative  sm:rounded-lg">
+                                <div
+                                    class="flex flex-col items-center justify-between py-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+                                    <div class="w-full md:w-1/2">
+                                        <h2 class="text-2xl font-medium font-kanit">Agregar informacion del producto
+                                        </h2>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <form class="h-full max-w-full grid grid-cols-6 grid-rows-4  pb-[80px] relative">
+                                <!-- First Row -->
+                                <div class="relative z-0 h-10 w-full col-span-2  p-2 group">
+                                    <input type="text" name="floating_nombre" id="floating_nombre"
+                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                        placeholder=" " required />
+                                    <label for="floating_nombre"
+                                        class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre
+                                        del producto</label>
+                                </div>
+
+                                <div class="relative z-0 h-10 w-full col-span-2 p-2 group">
+                                    <input type="date" name="floating_fecha_nacimiento" id="floating_fecha_nacimiento"
+                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                        placeholder=" " required />
+                                    <label for="floating_fecha_nacimiento"
+                                        class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Fecha
+                                        de Nacimiento</label>
+                                </div>
+
+
+
+                                <div class="relative z-0 h-10 w-full col-span-3 p-2 group">
+                                    <input type="text" name="floating_tipo_documento" id="floating_tipo_documento"
+                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                        placeholder=" " />
+                                    <label for="floating_tipo_documento"
+                                        class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Descripcion
+                                        del producto</label>
+                                </div>
+
+                                <div class="relative z-0 h-10 w-full col-span-1 p-2 group  custom-select">
+
+                                    <label for="underline_select" class="sr-only">Underline select </label>
+                                    <select id="underline_select"
+                                        class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                                        <option selected>Categoria del producto</option>
+                                        <option value="DNI">DNI</option>
+                                        <option value="CE">CE</option>
+                                        <option value="PAS">PAS</option>
+                                    </select>
+                                </div>
+
+                                <div class="relative z-0 h-10 w-full col-span-1 p-2 group">
+                                    <input type="number" name="floating_cantidad" id="floating_cantidad"
+                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                        placeholder=" " required />
+                                    <label for="floating_cantidad"
+                                        class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Cantidad
+                                        a ingresar</label>
+                                </div>
+
+                                <div class="absolute bottom-0 right-0 p-4">
+                                    <button type="submit"
+                                        class="text-white bg-button-color hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
         </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 </body>
 
