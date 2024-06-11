@@ -1,72 +1,46 @@
-<!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<section class="block" th:fragment="sidebar(selectedPage)">
+  <div class="fixed sidebar w-1/6 bg-light-bg-color border-r border-line_light">
+    <div class="logo w-5/6 pb-24 ">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sakura Dental</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/812c8ee19a.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body class="bg-custom-gradient h-dvh flex">
-
-  <!-- SIDEBAR -->
-  <section class="block" th:fragment="sidebar(selectedPage)">
-    <div class="fixed sidebar w-1/6 bg-light-bg-color border-r border-line_light">
-      <div class="logo w-5/6 pb-24 ">
-
-        <div class="flex justify-start gap-2 mt-6">
-          <img class="w-16 h-16 rounded-full" th:src="@{/muelita.jpg}" alt="">
-          <div class="font-medium ">
-            <div>Jese Leos</div>
-            <div class="text-sm text-gray-500">Joined in August 2014</div>
-          </div>
+      <div class="flex justify-start gap-2 mt-6">
+        <img class="w-16 h-16 rounded-full" th:src="@{/muelita.jpg}" alt="">
+        <div class="font-medium ">
+          <div>Jese Leos</div>
+          <div class="text-sm text-gray-500">Joined in August 2014</div>
         </div>
-
       </div>
-      <div class="menu-content pt-[15%] px-4 text-letters-color font-kanit font-regular">
-        <a th:href="@{/inicio}" th:class=" ${selectedPage==1 ? 'active w-full my-1 inline-flex' : 'w-full' }">
-          <img class="w-6 h-6 mr-4 " th:src="@{/dashboard-icon.svg}" alt="">
-          <span>Inicio</span>
-        </a>
-        <a th:href="@{/productos}" th:class=" ${selectedPage==2 ? 'active w-full my-1 inline-flex' : 'w-full' }">
-          <img class="w-6 h-6 mr-4 " th:src="@{/box.svg}" alt="">
-          <span>Almacen</span>
-        </a>
-        <a th:href="@{/empleados}" th:class=" ${selectedPage==3 ? 'active w-full my-1' : 'w-full' }">
-          <img class="w-6 h-6 mr-4 " th:src="@{/users-profiles-01.svg}" alt="">
-          <span>Empleados</span>
-        </a>
-        <a th:href="@{/proveedores}" th:class=" ${selectedPage==4 ? 'active w-full my-1' : 'w-full' }">
-          <img class="w-6 h-6 mr-4 " th:src="@{/delivery.svg}" alt="">
-          <span>Proveedores</span>
-        </a>
-        <a th:href="@{/productos}" th:class=" ${selectedPage==5 ? 'active w-full my-1' : 'w-full' }">
-          <img class="w-6 h-6 mr-4 " th:src="@{/package-plus.svg}" alt="">
-          <span>Entradas</span>
-        </a>
-        <a th:href="@{/productos}" th:class=" ${selectedPage==6 ? 'active w-full my-1' : 'w-full' }">
-          <img class="w-6 h-6 mr-4 " th:src="@{/package-minus.svg}" alt="">
-          <span>Salidas</span>
-        </a>
 
-      </div>
-      <a href="#" class="my-1 w-full font-kanit font-regular logout">
-        <img class="w-6 h-6 mr-4" th:src="@{/logout-01.svg}" alt="">
-        <span>Cerrar</span>
-      </a>
     </div>
-  </section>
+    <div class="menu-content pt-[15%] px-4 text-letters-color font-kanit font-regular">
+      <a th:href="@{/inicio}" th:class=" ${selectedPage==1 ? 'active w-full my-1 inline-flex' : 'w-full' }">
+        <img class="w-6 h-6 mr-4 " th:src="@{/dashboard-icon.svg}" alt="">
+        <span>Inicio</span>
+      </a>
+      <a th:href="@{/productos}" th:class=" ${selectedPage==2 ? 'active w-full my-1 inline-flex' : 'w-full' }">
+        <img class="w-6 h-6 mr-4 " th:src="@{/box.svg}" alt="">
+        <span>Almacen</span>
+      </a>
+      <a th:href="@{/empleados}" th:class=" ${selectedPage==3 ? 'active w-full my-1' : 'w-full' }">
+        <img class="w-6 h-6 mr-4 " th:src="@{/users-profiles-01.svg}" alt="">
+        <span>Empleados</span>
+      </a>
+      <a th:href="@{/proveedores}" th:class=" ${selectedPage==4 ? 'active w-full my-1' : 'w-full' }">
+        <img class="w-6 h-6 mr-4 " th:src="@{/delivery.svg}" alt="">
+        <span>Proveedores</span>
+      </a>
+      <a th:href="@{/entradas}" th:class=" ${selectedPage==5 ? 'active w-full my-1' : 'w-full' }">
+        <img class="w-6 h-6 mr-4 " th:src="@{/package-plus.svg}" alt="">
+        <span>Entradas</span>
+      </a>
+      <a th:href="@{/salidas}" th:class=" ${selectedPage==6 ? 'active w-full my-1' : 'w-full' }">
+        <img class="w-6 h-6 mr-4 " th:src="@{/package-minus.svg}" alt="">
+        <span>Salidas</span>
+      </a>
 
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-
-</body>
-
-</html>
+    </div>
+    <a href="#" class="my-1 w-full font-kanit font-regular logout">
+      <img class="w-6 h-6 mr-4" th:src="@{/logout-01.svg}" alt="">
+      <span>Cerrar</span>
+    </a>
+  </div>
+</section>

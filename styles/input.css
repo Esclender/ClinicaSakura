@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 220px;
+  overflow-x: hidden;
+  z-index: 1000;
+  
+}
+.sidebar a {
+  padding: 15px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  display: inline-flex;
+  place-items: center;
+}
+.sidebar a:hover {
+  background-color: #46a19c75;
+  border-radius: 1rem;
+
+}
+
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: white;
+  border-radius: 1rem;
+}
+.logo{
+  margin: 0 auto;
+}
+
+.content {
+  margin-left: 210px;
+  padding: 20px;
+  background-color: #1a182265;
+  margin-right: 2em;
+  border-radius: 0.8em;
+}
+.navbar .profile {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.navbar .profile img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.navbar .profile span {
+  color: #ffffff;
+  margin-right: 5px;
+}
+
+.navbar .profile i {
+  color: #46a19c;
+}
+.logout{
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+}
+
+
+.custom-select::after {
+  content: '\f078'; 
+  font-family: 'Font Awesome 5 Free'; 
+  font-weight: 900; 
+  position: absolute;
+  right: 0.75rem; 
+  top: 50%;
+  transform: translateY(-10%);
+  pointer-events: none; 
+}
+
+
+@media screen and (max-height: 720px) {
+  .sidebar a {
+      padding: 12px 15px;
+      text-decoration: none;
+      font-size: 16px;
+      display: inline-flex;
+      place-items: center;
+  }
+  .menu-content{
+      padding-top: 2%!important;
+  }
+
+  header img{
+      width: 6rem!important;
+  }
+}
+
+
+/* Table content  */
+
+table{
+  max-height: 600px!important;
+  height: 20%!important;
+  min-height: 400px!important;
+}
