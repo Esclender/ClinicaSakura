@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sakura Dental</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <link rel="shortcut icon" type="image/png" th:href="@{/favicon.png}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/812c8ee19a.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-custom-gradient h-dvh flex font-kanit">
+
+  <!-- SIDEBAR -->
+  <section th:insert="~{components/sidebarTemplate.html :: sidebar(selectedPage=1)}"></section>
+
+  <div class="grid grid-cols-6 grid-rows-8 gap-8 w-full">
+    <div class="col-start-2 flex items-start justify-center">
+      <img th:src="@{/sakura_logo.png}" alt="Logo" class="w-56 md:w-40 mt-4 md:mt-2">
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="col-start-2 col-end-7 row-start-2 row-end-8">
+      <div class="px-8  h-full">
+
+        <div class="flex flex-row justify-between self-center">
+          <h2 class="text-3xl font-medium font-kanit">Bienvenido!</h2>
+
+        </div>
+
+        <div class="py-4 grid grid-cols-2 gap-8">
+          <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow ">
+            <div class="relative overflow-x-auto">
+              <h2 class="text-xl font-medium mb-2 ">Productos</h2>
+
+              <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                <thead class="text-light text-gray-700 uppercase bg-tb-head ">
+                  <tr>
+                    <th scope="col" class="px-6 py-3">
+                      Producto
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Stock
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-white border-b ">
+                    <th scope="row" class="px-6 py-4 text-tb-letter-row font-medium  whitespace-nowrap ">
+                      Anestesia Topica
+                    </th>
+                    <td class="px-6 py-4 inline-flex">
+                      <div class="bg-red-container px-3 py-1 text-white w-auto shadow-red-shadow-container">
+                        10
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow ">
+            <div class="relative overflow-x-auto">
+              <h2 class="text-xl font-medium mb-2 ">Empleados</h2>
+
+              <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                <thead class="text-light text-gray-700 uppercase bg-tb-head ">
+                  <tr>
+                    <th scope="col" class="px-6 py-3">
+                      Empleado
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Cargo
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-white border-b ">
+                    <th scope="row" class="px-6 py-4 text-tb-letter-row font-medium  whitespace-nowrap ">
+                      Esclender Lugo
+                    </th>
+                    <td class="px-6 py-4 inline-flex">
+                      <div class="bg-green-container px-3 py-1 text-white w-auto shadow-green-shadow-container">
+                        Odontologo
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow ">
+            <div class="relative overflow-x-auto">
+              <h2 class="text-xl font-medium mb-2 ">Entradas Recientes</h2>
+
+              <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                <thead class="text-light text-gray-700 uppercase bg-tb-head ">
+                  <tr>
+                    <th scope="col" class="px-6 py-3">
+                      Producto
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Fecha Entrada
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Cantidad
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-white border-b ">
+                    <th scope="row" class="px-6 py-4 text-tb-letter-row font-medium  whitespace-nowrap ">
+                      Anestesia Topica
+                    </th>
+                    <td class="px-6 py-4 text-tb-letter-row font-light whitespace-nowrap ">
+                      2024-06-20
+                    </td>
+                    <td class="px-6 py-4 inline-flex text-green-container">
+                      +10
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow ">
+            <div class="relative overflow-x-auto">
+              <h2 class="text-xl font-medium mb-2 ">Salidas Recientes</h2>
+
+              <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                <thead class="text-light text-gray-700 uppercase bg-tb-head ">
+                  <tr>
+                    <th scope="col" class="px-6 py-3">
+                      Producto
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Fecha Salida
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Cantidad
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-white border-b ">
+                    <th scope="row" class="px-6 py-4 text-tb-letter-row font-medium  whitespace-nowrap ">
+                      Anestesia Topica
+                    </th>
+                    <td class="px-6 py-4 text-tb-letter-row font-light whitespace-nowrap ">
+                      2024-07-20
+                    </td>
+                    <td class="px-6 py-4 inline-flex text-red-container">
+                      -10
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+</body>
+
+</html>

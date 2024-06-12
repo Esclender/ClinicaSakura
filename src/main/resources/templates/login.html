@@ -1,39 +1,17 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sakura Dental</title>
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="shortcut icon" type="image/png" th:href="@{/favicon.png}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/812c8ee19a.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'light-bg-color': '#FFFFFF99',
-                        'letters-color': '#271E4A',
-                        'button-color': '#CA79C6'
-                    },
-                    backgroundImage: theme => ({
-                        'custom-gradient': 'linear-gradient(to bottom right, #DBD2FC, #DBD2FC 10%, #FDE2E0 28%, #E6E4EA 59%, #E6E1EB 100%, #E0E9F4)',
-                    }),
-                    boxShadow: {
-                        'lile-shadow': '0px 4px 15px rgba(219, 210, 252, 0.64)',
-                    },
-                    fontFamily: {
-                        'kanit': ['Kanit', 'sans-serif'],
-                    },
-                },
-
-            }
-        }
-    </script>
 </head>
 
 <body class="bg-custom-gradient h-dvh">
@@ -46,7 +24,7 @@
             <h2 class="text-center text-4xl text-letters-color font-kanit font-medium mb-4">Iniciar Sesión</h2>
         </hgroup>
 
-        <form class="flex flex-col">
+        <form class="flex flex-col" th:action="@{/login/acceder}" method="post">
 
             <div class="px-4 pb-6">
                 <h2 class="pb-4 font-kanit font-regular text-[18px]">Usuario</h2>
@@ -62,18 +40,17 @@
                     class="w-full input-info text-gray-200 shadow-lile-shadow bg-white-900 rounded-lg p-3 pl-4 "
                     placeholder="Ingresar contraseña" required>
             </div>
-            <div class="flex items-center mt-3 px-4">
+            <!-- <div class="flex items-center mt-3 px-4">
                 <input type="checkbox" id="loginRememberMe" class="mr-2 border-white border">
                 <label for="loginRememberMe" class="text-letters-color font-kanit">Recuérdame</label>
-            </div>
+            </div> -->
 
-            <a href="" class="px-4">
-                <button type="submit" id="loginForm"
+            <div class="px-4">
+                <button id="loginButton"
                     class="w-full text-white text-[20px] font-kanit font-regular py-2 mt-4 rounded-lg bg-button-color">
-
                     Ingresar
                 </button>
-            </a>
+            </div>
         </form>
 
 

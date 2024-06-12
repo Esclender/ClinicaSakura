@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sakura Dental</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <link rel="shortcut icon" type="image/png" th:href="@{/favicon.png}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/812c8ee19a.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-custom-gradient h-dvh flex">
+
+  <!-- SIDEBAR -->
+  <section th:insert="~{components/sidebarTemplate.html :: sidebar(selectedPage=4)}"></section>
+
+  <div class="grid grid-cols-6 grid-rows-8 gap-8 w-full">
+    <div class="col-start-2 flex items-start justify-center">
+      <img th:src="@{/sakura_logo.png}" alt="Logo" class="w-56 md:w-40 mt-4 md:mt-2">
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="col-start-2 col-end-7 row-start-2 row-end-8">
+      <div class="px-8  h-full">
+
+        <div class="flex flex-row justify-between self-center">
+          <h2 class="text-3xl font-medium font-kanit">Registro proveedores</h2>
+
+        </div>
+
+        <div class="bg-white mt-4 h-full rounded-[20px]">
+          <div class="h-[450px] flex flex-row justify-between self-center">
+            <!-- Contenido -->
+            <div class="max-w-screen-xl  mx-auto lg:px-4 w-full">
+              <div class="relative  sm:rounded-lg">
+                <div
+                  class="flex flex-col items-center justify-between py-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+                  <div class="w-full md:w-1/2">
+                    <h2 class="text-2xl font-medium font-kanit">Agregar informacion del proveedor
+                    </h2>
+                  </div>
+
+                </div>
+              </div>
+
+              <form class="h-full max-w-full grid grid-cols-8 grid-rows-4  pb-[80px] relative">
+                <!-- First Row -->
+                <div class="relative z-0 h-10 w-full col-span-2  p-2 group">
+                  <input type="text" name="floating_nombre" id="floating_nombre"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                  <label for="floating_nombre"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre
+                    del proveedor</label>
+                </div>
+
+                <div class="relative z-0 h-10 w-full col-span-2  p-2 group">
+                  <input type="text" name="floating_nombre" id="floating_nombre"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                  <label for="floating_nombre"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre
+                    del Representante</label>
+                </div>
+
+                <div class="relative z-0 h-10 w-full row-start-2 col-span-2  p-2 group">
+                  <input type="text" name="floating_nombre" id="floating_nombre"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                  <label for="floating_nombre"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Telefono</label>
+                </div>
+
+                <div class="relative z-0 h-10 w-full row-start-2 col-span-2  p-2 group">
+                  <input type="text" name="floating_nombre" id="floating_nombre"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                  <label for="floating_nombre"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Celular</label>
+                </div>
+
+                <div class="relative z-0 h-10 w-full row-start-2 col-span-2  p-2 group">
+                  <input type="text" name="floating_nombre" id="floating_nombre"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                  <label for="floating_nombre"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Correo
+                    electronico</label>
+                </div>
+
+
+                <div class="relative z-0 h-10 w-full row-start-3 col-span-4 p-2 group">
+                  <input type="text" name="floating_tipo_documento" id="floating_tipo_documento"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " />
+                  <label for="floating_tipo_documento"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Direccion
+                  </label>
+                </div>
+
+                <div class="relative z-0 h-10 w-full row-start-3 col-span-2 p-2 group  custom-select">
+
+                  <label for="underline_select" class="sr-only">Underline select </label>
+                  <select id="underline_select"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                    <option selected>Distrito</option>
+                    <option value="DNI">DNI</option>
+                    <option value="CE">CE</option>
+                    <option value="PAS">PAS</option>
+                  </select>
+                </div>
+
+
+                <div class="absolute bottom-0 right-0 p-4">
+                  <button type="submit"
+                    class="text-white bg-button-color hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">Guardar</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+</body>
+
+</html>
