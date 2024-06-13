@@ -50,7 +50,22 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="bg-white border-b ">
+
+                  <tr th:each="producto : ${productos}" class="bg-white border-b ">
+                    <th scope="row" class="px-6 py-4 text-tb-letter-row font-medium  whitespace-nowrap "
+                      th:text="${producto.nombre}">
+
+                    </th>
+                    <td class="px-6 py-4 inline-flex">
+                      <div class="bg-red-container px-3 py-1 text-white  shadow-red-shadow-container w-9"
+                        th:text="${producto.cantidadStock}">
+
+                      </div>
+                    </td>
+                  </tr>
+
+
+                  <!-- <tr class="bg-white border-b ">
                     <th scope="row" class="px-6 py-4 text-tb-letter-row font-medium  whitespace-nowrap ">
                       Anestesia Topica
                     </th>
@@ -59,7 +74,7 @@
                         10
                       </div>
                     </td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
             </div>

@@ -1,11 +1,12 @@
 
 package pe.com.clinicasakura.ClinicaSakura.service.impl;
 
-
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pe.com.clinicasakura.ClinicaSakura.model.CategoriaProductoEntity;
 import pe.com.clinicasakura.ClinicaSakura.repository.CategoriaProductoRepository;
@@ -20,11 +21,6 @@ public class CategoriaProductoServiceImpl implements CategoriaProductoService {
     @Override
     public List<CategoriaProductoEntity> findAll() {
         return repositorio.findAll();
-    }
-
-    @Override
-    public List<CategoriaProductoEntity> findAllCustom() {
-        return repositorio.findAllCustom();
     }
 
     @Override
@@ -56,6 +52,17 @@ public class CategoriaProductoServiceImpl implements CategoriaProductoService {
         CategoriaProductoEntity obj = repositorio.getById(t.getCodigo());
         obj.setEstado(true);
         return repositorio.save(obj);
+    }
+
+    @Override
+    public Page<CategoriaProductoEntity> obtenerPaginas(Pageable pageable) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'obtenerPaginas'");
+    }
+
+    @Override
+    public Page<CategoriaProductoEntity> findAllCustom(Pageable pageable) {
+        return repositorio.findAllCustom(pageable);
     }
 
 }
