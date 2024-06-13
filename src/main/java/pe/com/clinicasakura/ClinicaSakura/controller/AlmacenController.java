@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.CategoriaProductoService;
+import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 import pe.com.clinicasakura.ClinicaSakura.service.ProductoService;
 
 @Controller
@@ -28,7 +29,7 @@ public class AlmacenController {
     @GetMapping("/productos")
     public String ListarProductos(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "10") int size,
             Model model) {
         PageRequest pageable = PageRequest.of(page, size);
         Page<ProductoEntity> productos = servicio.findAllCustom(pageable);
@@ -36,6 +37,12 @@ public class AlmacenController {
                 productos.getContent());
         model.addAttribute("productosPage",
                 productos);
+
+        model.addAttribute("productos", productos.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", productos.getTotalPages());
+        model.addAttribute("totalItems", productos.getTotalElements());
+        model.addAttribute("pageSize", size);
         return "Almacen/listadoProductos";
     }
 

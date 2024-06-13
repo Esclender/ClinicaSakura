@@ -69,7 +69,7 @@ public class ProveedorEntity extends BaseEntity
     
     @ManyToOne
     @JoinColumn(name = "codigo_distrito", nullable = false)
-    private DistritoEntity codigoDistrito;
+    private DistritoEntity distrito;
     
     
 }

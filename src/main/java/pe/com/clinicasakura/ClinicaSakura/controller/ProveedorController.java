@@ -25,7 +25,7 @@ public class ProveedorController {
     public String mostrarProveedores(Model model) {
         List<ProveedorEntity> proveedores = proveedorService.findAll();
         model.addAttribute("proveedores", proveedores);
-        return "proveedor/mostrar_proveedores";
+        return "Proveedores/registroProveedores";
     }
 
     @GetMapping()
@@ -38,8 +38,9 @@ public class ProveedorController {
 
     @PostMapping("/registrar")
     public String registrarProveedor(@ModelAttribute("proveedor") ProveedorEntity proveedor) {
+        System.out.println(proveedor);
         proveedorService.add(proveedor);
-        return "redirect:/proveedores";
+        return "redirect:/proveedor";
     }
 
     @GetMapping("/actualizar/{id}")
@@ -49,13 +50,13 @@ public class ProveedorController {
         List<DistritoEntity> distritos = distritoService.findAll();
         model.addAttribute("distritos", distritos);
         model.addAttribute("proveedor", proveedor);
-        return "proveedor/actualizar_proveedor";
+        return "Proveedores/registroProveedores";
     }
 
     @PostMapping("/actualizar/{id}")
     public String actualizarProveedor(@PathVariable Long id, @ModelAttribute("proveedor") ProveedorEntity proveedor) {
         proveedorService.update(proveedor);
-        return "redirect:/proveedor/mostrar";
+        return "redirect:/proveedores";
     }
 
     @GetMapping("/eliminar/{id}")
@@ -63,7 +64,7 @@ public class ProveedorController {
         ProveedorEntity proveedor = proveedorService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("ID de proveedor no válido: " + id));
         proveedorService.delete(proveedor);
-        return "redirect:/proveedor/mostrar";
+        return "redirect:/proveedores";
     }
 
 }

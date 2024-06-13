@@ -57,24 +57,14 @@
 
                     </th>
                     <td class="px-6 py-4 inline-flex">
-                      <div class="bg-red-container px-3 py-1 text-white  shadow-red-shadow-container w-9"
+                      <div th:classappend="${producto.cantidadStock > 10 ? 'bg-green-500' : 'bg-red-container'}"
+                        class="px-3 py-1 text-white shadow-red-shadow-container w-9"
                         th:text="${producto.cantidadStock}">
-
                       </div>
                     </td>
                   </tr>
 
 
-                  <!-- <tr class="bg-white border-b ">
-                    <th scope="row" class="px-6 py-4 text-tb-letter-row font-medium  whitespace-nowrap ">
-                      Anestesia Topica
-                    </th>
-                    <td class="px-6 py-4 inline-flex">
-                      <div class="bg-red-container px-3 py-1 text-white w-auto shadow-red-shadow-container">
-                        10
-                      </div>
-                    </td>
-                  </tr> -->
                 </tbody>
               </table>
             </div>
@@ -95,13 +85,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="bg-white border-b ">
-                    <th scope="row" class="px-6 py-4 text-tb-letter-row font-medium  whitespace-nowrap ">
-                      Esclender Lugo
+                  <tr th:each="empleado : ${empleados}" class="bg-white border-b ">
+                    <th scope="row" class="px-6 py-4 text-tb-letter-row font-medium  whitespace-nowrap "
+                      th:text="${empleado.nombre}">
+
                     </th>
                     <td class="px-6 py-4 inline-flex">
-                      <div class="bg-green-container px-3 py-1 text-white w-auto shadow-green-shadow-container">
-                        Odontologo
+                      <div class="bg-green-container px-3 py-1 text-white w-auto shadow-green-shadow-container"
+                        th:text="${empleado.cargo.nombre}">
+
                       </div>
                     </td>
                   </tr>

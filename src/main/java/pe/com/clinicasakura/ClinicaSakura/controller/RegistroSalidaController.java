@@ -1,77 +1,76 @@
 package pe.com.clinicasakura.ClinicaSakura.controller;
 
+import java.text.SimpleDateFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pe.com.clinicasakura.ClinicaSakura.model.RegistroSalidaEntity;
-import pe.com.clinicasakura.ClinicaSakura.service.RegistroSalidaService;
-// import pe.com.clinicasakura.ClinicaSakura.service.DestinoService;
-// import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
+import pe.com.clinicasakura.ClinicaSakura.model.DetalleEntradaEntity;
+import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
+import pe.com.clinicasakura.ClinicaSakura.model.RegistroEntradaEntity;
+import pe.com.clinicasakura.ClinicaSakura.service.DetalleEntradaService;
+import pe.com.clinicasakura.ClinicaSakura.service.ProductoService;
+import pe.com.clinicasakura.ClinicaSakura.service.ProveedorService;
+import pe.com.clinicasakura.ClinicaSakura.service.RegistroEntradaService;
+import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 
 import java.util.Date;
+import pe.com.clinicasakura.ClinicaSakura.dtos.RegistroEntradaDto;
+import pe.com.clinicasakura.ClinicaSakura.dtos.RegistroSalidaDto;
+import pe.com.clinicasakura.ClinicaSakura.model.ProveedorEntity;
+import pe.com.clinicasakura.ClinicaSakura.service.DestinoService;
+import pe.com.clinicasakura.ClinicaSakura.service.DetalleSalidaService;
+import pe.com.clinicasakura.ClinicaSakura.service.RegistroSalidaService;
 
 @Controller
-@RequestMapping("/registrosalida")
+@RequestMapping("/salidas")
 public class RegistroSalidaController {
-
+    
     @Autowired
     private RegistroSalidaService registroSalidaService;
 
-    // @Autowired
-    // private DestinoService destinoService;
+    @Autowired
+    private DetalleSalidaService detalleSalidaService;
 
-    // @Autowired
-    // private EmpleadoService empleadoService;
+    @Autowired
+    private DestinoService destinoService;
 
-    @GetMapping("/mostrar")
-    public String mostrarRegistros(Model model) {
-        model.addAttribute("registros", registroSalidaService.findAll());
-        return "registrosalida/mostrar_registros"; // Nombre del archivo HTML o Thymeleaf
-    }
+    @Autowired
+    private ProductoService productoService;
+
+    @Autowired
+    private EmpleadoService empleadoService;
+
+    
 
     @GetMapping("/registrar")
     public String mostrarFormularioRegistro(Model model) {
-        model.addAttribute("registro", new RegistroSalidaEntity());
-        //model.addAttribute("destinos", destinoService.findAll());
-        //model.addAttribute("empleados", empleadoService.findAll());
-        return "registrosalida/registrar_registro"; // Nombre del archivo HTML o Thymeleaf
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        
+        // Formatear la fecha
+        String formattedDate = dateFormat.format(new Date());
+        model.addAttribute("registro", new RegistroSalidaDto());
+        model.addAttribute("cantidadProductos", productoService.findAll());
+        model.addAttribute("fecha", formattedDate);
+        model.addAttribute("destinos", destinoService.findAll());
+        model.addAttribute("empleados", empleadoService.findAll());
+        model.addAttribute("productos", productoService.findAll());
+        
+        model.addAttribute("empleados", empleadoService.findAll()); // Agrega los productos al modelo
+        return "Salida/registroSalidas"; // Nombre del archivo HTML o Thymeleaf
     }
 
     @PostMapping("/registrar")
-    public String registrarRegistro(@ModelAttribute("registro") RegistroSalidaEntity registro) {
-        registro.setFecha(new Date()); // Establece la fecha actual
-        registroSalidaService.add(registro);
-        return "redirect:/registrosalida/mostrar";
-    }
+    public String registrarRegistro(@ModelAttribute("registro") RegistroSalidaDto registro){
+  
+        System.out.println(registro);
+    
 
-    @GetMapping("/actualizar/{id}")
-    public String mostrarFormularioActualizar(@PathVariable Long id, Model model) {
-        RegistroSalidaEntity registro = registroSalidaService.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Id de registro de salida inválido: " + id));
-        model.addAttribute("registro", registro);
-        // model.addAttribute("destinos", destinoService.findAll());
-        // model.addAttribute("empleados", empleadoService.findAll());
-        return "registrosalida/actualizar_registro"; // Nombre del archivo HTML o Thymeleaf
-    }
-
-    @PostMapping("/actualizar/{id}")
-    public String actualizarRegistro(@PathVariable Long id, @ModelAttribute("registro") RegistroSalidaEntity registro) {
-        registro.setCodigo(id); // Asegura que el ID coincida con el de la entidad
-        registroSalidaService.update(registro);
-        return "redirect:/registrosalida/mostrar";
-    }
-
-    @GetMapping("/eliminar/{id}")
-    public String eliminarRegistro(@PathVariable Long id) {
-        RegistroSalidaEntity registro = registroSalidaService.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Id de registro de salida inválido: " + id));
-        registroSalidaService.delete(registro);
-        return "redirect:/registrosalida/mostrar";
+    return "redirect:/salida/registrar";
     }
 
     @ModelAttribute("registro")
-    public RegistroSalidaEntity registroModel() {
-        return new RegistroSalidaEntity();
+    public RegistroSalidaDto registroModel() {
+        return new RegistroSalidaDto();
     }
 }
