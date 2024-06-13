@@ -1,7 +1,8 @@
 package pe.com.clinicasakura.ClinicaSakura.service.impl;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pe.com.clinicasakura.ClinicaSakura.model.TipoDocumentoEntity;
 import pe.com.clinicasakura.ClinicaSakura.repository.TipoDocumentoRepository;
@@ -13,8 +14,12 @@ import java.util.Optional;
 @Service
 public class TipoDocumentoServiceImpl implements TipoDocumentoService {
 
+    private final TipoDocumentoRepository tipoDocumentoRepository;
+
     @Autowired
-    private TipoDocumentoRepository tipoDocumentoRepository;
+    public TipoDocumentoServiceImpl(TipoDocumentoRepository tipoDocumentoRepository) {
+        this.tipoDocumentoRepository = tipoDocumentoRepository;
+    }
 
     @Override
     public List<TipoDocumentoEntity> findAll() {
@@ -22,9 +27,14 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
     }
 
     @Override
-    public List<TipoDocumentoEntity> findAllCustom() {
-        // Aquí iría la lógica personalizada si fuera necesaria
-        return tipoDocumentoRepository.findAll(); // Ejemplo, podría cambiarse
+    public Page<TipoDocumentoEntity> obtenerPaginas(Pageable pageable) {
+        return tipoDocumentoRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<TipoDocumentoEntity> findAllCustom(Pageable pageable) {
+        // Implementación personalizada si es necesaria
+        return tipoDocumentoRepository.findAll(pageable);
     }
 
     @Override
@@ -39,22 +49,18 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
 
     @Override
     public TipoDocumentoEntity update(TipoDocumentoEntity tipoDocumento) {
-        TipoDocumentoEntity obj = tipoDocumentoRepository.getById(tipoDocumento.getCodigo());
-        BeanUtils.copyProperties(tipoDocumento, obj);
-        return tipoDocumentoRepository.save(obj);
+        return tipoDocumentoRepository.save(tipoDocumento);
     }
 
     @Override
     public TipoDocumentoEntity delete(TipoDocumentoEntity tipoDocumento) {
-        TipoDocumentoEntity obj = tipoDocumentoRepository.getById(tipoDocumento.getCodigo());
-        obj.setEstado(false); // Cambiar estado si es necesario
-        return tipoDocumentoRepository.save(obj);
+        tipoDocumentoRepository.delete(tipoDocumento);
+        return tipoDocumento;
     }
 
     @Override
     public TipoDocumentoEntity enable(TipoDocumentoEntity tipoDocumento) {
-        TipoDocumentoEntity obj = tipoDocumentoRepository.getById(tipoDocumento.getCodigo());
-        obj.setEstado(true); // Cambiar estado si es necesario
-        return tipoDocumentoRepository.save(obj);
+        // Implementación según la lógica de tu aplicación (activar/desactivar tipo de documento)
+        return tipoDocumentoRepository.save(tipoDocumento);
     }
 }
