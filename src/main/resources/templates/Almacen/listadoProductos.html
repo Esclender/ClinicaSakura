@@ -243,7 +243,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
   <script>
-    function confirmarEliminacion(event, element) {
+    function confirmarEliminacion(event, id) {
         event.preventDefault(); // Evita que el enlace se siga automáticamente
         Swal.fire({
             title: '¿Seguro que quieres eliminar?',
@@ -256,7 +256,20 @@
             cancelButtonText: 'No, cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = element.href; // Sigue el enlace si el usuario confirma
+               
+                var form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '/productos/eliminar/' + id;
+                
+                // Añadir un token CSRF si es necesario
+                // var csrfInput = document.createElement('input');
+                // csrfInput.type = 'hidden';
+                // csrfInput.name = '_csrf';
+                // csrfInput.value = 'CSRF_TOKEN'; // Reemplaza con el token CSRF
+                // form.appendChild(csrfInput);
+
+                document.body.appendChild(form);
+                form.submit();
             }
         });
     }

@@ -76,18 +76,16 @@ public class AlmacenController {
     }
 
     @GetMapping("/producto/eliminar/{id}")
-    public String MostrarEliminarArtefacto(@PathVariable Long id) {
+    public String MostrarEliminarArtefacto(@PathVariable Long id, Model modelo) {
+        ProductoEntity productoEntity = servicio.findById(id).get();
+        modelo.addAttribute("producto", productoEntity);
+        return "redirect:/productos";
+    }
+   
+    @PostMapping("/productos/eliminar/{id}")
+    public String EliminarProducto(@PathVariable Long id) {
         ProductoEntity productoEntity = servicio.findById(id).get();
         servicio.delete(productoEntity);
         return "redirect:/productos";
     }
-    /*
-     * @PostMapping("/productos/eliminar/{id}")
-     * public String EliminarProducto(@PathVariable Long id,
-     * 
-     * @ModelAttribute("producto") ProductoEntity productoEntity) {
-     * servicio.delete(productoEntity);
-     * return "redirect:/productos";
-     * }
-     */
 }
