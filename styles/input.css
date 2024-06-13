@@ -99,6 +99,34 @@
   }
 }
 
+.error-body {
+  font-family: 'Kanit', sans-serif;
+  background-color: #f8f9fa;
+  color: #343a40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.error-container {
+  text-align: center;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.error-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.error-description {
+  margin-bottom: 1.5rem;
+}
+
 
 /* Table content  */
 

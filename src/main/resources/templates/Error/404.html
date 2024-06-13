@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <link rel="shortcut icon" type="image/png" th:href="@{/favicon.png}" />
+</head>
+
+<body class="error-body">
+  <div class="error-container">
+    <h1 class="error-title">Uups!</h1>
+    <p class="error-description">La página solicitada no existe o se cambió de nombre.</p>
+    <a th:href="@{/login}"
+      class="w-full text-white text-[20px] font-kanit font-regular py-2 px-2 mt-4 rounded-md bg-button-color">Ir a
+      inicio</a>
+  </div>
+</body>
+
+</html>
