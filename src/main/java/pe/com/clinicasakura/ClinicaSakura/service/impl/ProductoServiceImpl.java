@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
 import pe.com.clinicasakura.ClinicaSakura.repository.ProductoRepository;
@@ -22,8 +24,8 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
-    public List<ProductoEntity> findAllCustom() {
-        return repositorio.findAllCustom();
+    public Page<ProductoEntity> findAllCustom(Pageable pageable) {
+        return repositorio.findAllCustom(pageable);
     }
 
     @Override
@@ -55,6 +57,11 @@ public class ProductoServiceImpl implements ProductoService {
         ProductoEntity obj = repositorio.getReferenceById(t.getCodigo());
         obj.setEstado(true);
         return repositorio.save(obj);
+    }
+
+    @Override
+    public Page<ProductoEntity> obtenerPaginas(Pageable pageable) {
+        return repositorio.findAll(pageable);
     }
 
 }
