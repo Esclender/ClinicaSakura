@@ -18,6 +18,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -63,7 +64,7 @@ public class EmpleadoEntity extends BaseEntity
     @Size(min = 8, max = 15, message = "El número de documento tiene que estar entre {min} y {max} caracteres")
     private String numerodocumento;
 
-    @Column(name = "fecha_registro")
+    @Column(name = "fecha_nacimiento")
     @Temporal(TemporalType.DATE)
     private Date fechanacimiento;
 

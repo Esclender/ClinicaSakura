@@ -16,6 +16,71 @@
 
 <body class="bg-custom-gradient h-dvh flex">
 
+    <section class="block">
+        <div class="fixed sidebar w-1/6 bg-light-bg-color border-r border-line_light">
+            <div class="logo w-5/6 pb-24 ">
+
+                <div class="flex justify-start gap-2 mt-6">
+                    <img class="w-16 h-16 rounded-full" src="/src/main/resources/static/muelita.jpg" alt="">
+                    <div class="font-medium ">
+                        <div>Jese Leos</div>
+                        <div class="text-sm text-gray-500">Joined in August 2014</div>
+                    </div>
+    <!-- SIDEBAR -->
+    <section th:insert="~{components/sidebarTemplate.html :: sidebar(selectedPage=2)}"></section>
+
+    <div class="grid grid-cols-6 grid-rows-8 gap-8 w-full">
+        <div class="col-start-2 flex items-start justify-center">
+            <img th:src="@{/sakura_logo.png}" alt="Logo" class="w-56 md:w-40 mt-4 md:mt-2">
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="col-start-2 col-end-7 row-start-2 row-end-8">
+            <div class="px-8  h-full">
+
+                <div class="flex flex-row justify-between self-center">
+                    <h2 class="text-3xl font-medium font-kanit">Registro productos</h2>
+
+                </div>
+
+            </div>
+            <div class="menu-content pt-[15%] px-4 text-letters-color font-kanit font-regular">
+                <a href="#" class="active my-1 w-full active:shadow-md shadow-lile-shadow inline-flex">
+                    <img class="w-6 h-6 mr-4 " src="/src/main/resources/static//dashboard-icon.svg" alt="">
+                    <span>Inicio</span>
+                </a>
+                <a href="#" class=" my-1 w-full  inline-flex">
+                    <img class="w-6 h-6 mr-4 " src="/src/main/resources/static/box.svg" alt="">
+                    <span>Almacen</span>
+                </a>
+                <a href="#" class="my-1 w-full  inline-flex">
+                    <img class="w-6 h-6 mr-4 " src="/src/main/resources/static/users-profiles-01.svg" alt="">
+                    <span>Empleados</span>
+                </a>
+                <a href="#" class="my-1 w-full  inline-flex">
+                    <img class="w-6 h-6 mr-4 " src="/src/main/resources/static/delivery.svg" alt="">
+                    <span>Proveedores</span>
+                </a>
+                <a href="#" class="my-1 w-full  inline-flex">
+                    <img class="w-6 h-6 mr-4 " src="/src/main/resources/static/package-plus.svg" alt="">
+                    <span>Entradas</span>
+                </a>
+                <a href="#" class="my-1 w-full  inline-flex">
+                    <img class="w-6 h-6 mr-4 " src="/src/main/resources/static/package-minus.svg" alt="">
+                    <span>Salidas</span>
+                </a>
+
+            </div>
+            <a href="#" class="my-1 w-full font-kanit font-regular logout">
+                <img class="w-6 h-6 mr-4" src="/src/main/resources/static/logout-01.svg" alt="">
+                <span>Cerrar</span>
+            </a>
+        </div>
+    </section>
+
+    <div class="grid grid-cols-6 grid-rows-6 gap-8 w-full">
+        <div class="col-start-2 flex items-center justify-center">
+            <img src="../../static/sakura_logo.png" alt="Logo" class="w-56 h-24">
     <!-- SIDEBAR -->
     <section th:insert="~{components/sidebarTemplate.html :: sidebar(selectedPage=2)}"></section>
 

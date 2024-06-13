@@ -48,10 +48,10 @@
                 </div>
               </div>
 
-              <form class="h-full max-w-full grid grid-cols-8 grid-rows-4  pb-[80px] relative">
+              <form th:action="@{/proveedores}" method="post" th:object="${proveedor}" class="h-full max-w-full grid grid-cols-8 grid-rows-4  pb-[80px] relative">
                 <!-- First Row -->
                 <div class="relative z-0 h-10 w-full col-span-2  p-2 group">
-                  <input type="text" name="floating_nombre" id="floating_nombre"
+                  <input  type="text" name="floating_nombre" id="floating_nombre"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" " required />
                   <label for="floating_nombre"
