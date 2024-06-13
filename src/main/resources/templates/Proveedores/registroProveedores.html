@@ -51,7 +51,7 @@
               <form th:action="@{/proveedores}" method="post" th:object="${proveedor}" class="h-full max-w-full grid grid-cols-8 grid-rows-4  pb-[80px] relative">
                 <!-- First Row -->
                 <div class="relative z-0 h-10 w-full col-span-2  p-2 group">
-                  <input  type="text" name="floating_nombre" id="floating_nombre"
+                  <input th:field="*{nombre}" type="text" name="floating_nombre" id="floating_nombre"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" " required />
                   <label for="floating_nombre"
@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="relative z-0 h-10 w-full col-span-2  p-2 group">
-                  <input type="text" name="floating_nombre" id="floating_nombre"
+                  <input type="text" th:field="*{representante}" name="floating_nombre" id="floating_nombre"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" " required />
                   <label for="floating_nombre"
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="relative z-0 h-10 w-full row-start-2 col-span-2  p-2 group">
-                  <input type="text" name="floating_nombre" id="floating_nombre"
+                  <input type="text" th:field="*{telefono}" name="floating_nombre" id="floating_nombre"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" " required />
                   <label for="floating_nombre"
@@ -77,7 +77,7 @@
                 </div>
 
                 <div class="relative z-0 h-10 w-full row-start-2 col-span-2  p-2 group">
-                  <input type="text" name="floating_nombre" id="floating_nombre"
+                  <input type="text" th:field="*{celular}" name="floating_nombre" id="floating_nombre"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" " required />
                   <label for="floating_nombre"
@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="relative z-0 h-10 w-full row-start-2 col-span-2  p-2 group">
-                  <input type="text" name="floating_nombre" id="floating_nombre"
+                  <input type="text" th:field="*{correo}" name="floating_nombre" id="floating_nombre"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" " required />
                   <label for="floating_nombre"
@@ -95,7 +95,7 @@
 
 
                 <div class="relative z-0 h-10 w-full row-start-3 col-span-4 p-2 group">
-                  <input type="text" name="floating_tipo_documento" id="floating_tipo_documento"
+                  <input type="text" th:field="*{direccion}" name="floating_tipo_documento" id="floating_tipo_documento"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" " />
                   <label for="floating_tipo_documento"
@@ -105,13 +105,11 @@
 
                 <div class="relative z-0 h-10 w-full row-start-3 col-span-2 p-2 group  custom-select">
 
-                  <label for="underline_select" class="sr-only">Underline select </label>
+                  <label th:field="*{distrito}" for="underline_select" class="sr-only">Underline select </label>
                   <select id="underline_select"
                     class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                     <option selected>Distrito</option>
-                    <option value="DNI">DNI</option>
-                    <option value="CE">CE</option>
-                    <option value="PAS">PAS</option>
+                    <option th:each="distrito:${distritos}" th:value="${distrito.codigo}" th:text="${distrito.nombre}"></option>
                   </select>
                 </div>
 
