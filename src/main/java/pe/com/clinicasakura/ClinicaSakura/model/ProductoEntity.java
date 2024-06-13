@@ -1,6 +1,8 @@
 
 package pe.com.clinicasakura.ClinicaSakura.model;
 
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,15 +11,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.springframework.format.annotation.DateTimeFormat;
 import pe.com.clinicasakura.ClinicaSakura.model.base.BaseEntity;
 
 
@@ -28,8 +30,7 @@ import pe.com.clinicasakura.ClinicaSakura.model.base.BaseEntity;
 @EqualsAndHashCode(callSuper=false)
 @Entity(name = "ProductoEntity")
 @Table(name = "producto")
-public class ProductoEntity extends BaseEntity 
-    implements Serializable{
+public class ProductoEntity extends BaseEntity implements Serializable{
     private static final long serialVersion = 1L;
     
     @Id
@@ -49,10 +50,13 @@ public class ProductoEntity extends BaseEntity
     
     @NotEmpty
     @Column(name = "cantidad_stock")
-    private int cantidad_stock ;
+    private int cantidadStock ;
     
     @NotEmpty
     @Column(name = "fecha_caducidad")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date fechaCaducidad;
     
     @ManyToOne
