@@ -21,19 +21,19 @@ public class ProveedorController {
     @Autowired
     private DistritoService distritoService;
 
-    @GetMapping("/proveedores")
+    @GetMapping("/mostrar")
     public String mostrarProveedores(Model model) {
         List<ProveedorEntity> proveedores = proveedorService.findAll();
         model.addAttribute("proveedores", proveedores);
         return "proveedor/mostrar_proveedores";
     }
 
-    @GetMapping("/registrar")
+    @GetMapping()
     public String mostrarFormularioRegistrar(Model model) {
         List<DistritoEntity> distritos = distritoService.findAll();
         model.addAttribute("distritos", distritos);
         model.addAttribute("proveedor", new ProveedorEntity());
-        return "proveedor/registrar_proveedor";
+        return "Proveedores/registroProveedores";
     }
 
     @PostMapping("/registrar")
