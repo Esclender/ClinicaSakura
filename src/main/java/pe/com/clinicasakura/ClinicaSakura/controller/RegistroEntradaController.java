@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pe.com.clinicasakura.ClinicaSakura.model.RegistroEntradaEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.RegistroEntradaService;
 import pe.com.clinicasakura.ClinicaSakura.service.ProveedorService;
-import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
+// import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 
 import java.util.Date;
 
@@ -21,8 +21,8 @@ public class RegistroEntradaController {
     @Autowired
     private ProveedorService proveedorService;
 
-    @Autowired
-    private EmpleadoService empleadoService;
+    // @Autowired
+    // private EmpleadoService empleadoService;
 
     @GetMapping("/mostrar")
     public String mostrarRegistros(Model model) {
@@ -34,7 +34,7 @@ public class RegistroEntradaController {
     public String mostrarFormularioRegistro(Model model) {
         model.addAttribute("registro", new RegistroEntradaEntity());
         model.addAttribute("proveedores", proveedorService.findAll());
-        model.addAttribute("empleados", empleadoService.findAll());
+        // model.addAttribute("empleados", empleadoService.findAll());
         return "registroentrada/registrar_registro"; // Nombre del archivo HTML o Thymeleaf
     }
 
@@ -51,7 +51,7 @@ public class RegistroEntradaController {
                 .orElseThrow(() -> new IllegalArgumentException("Id de registro de entrada inválido: " + id));
         model.addAttribute("registro", registro);
         model.addAttribute("proveedores", proveedorService.findAll());
-        model.addAttribute("empleados", empleadoService.findAll());
+        // model.addAttribute("empleados", empleadoService.findAll());
         return "registroentrada/actualizar_registro"; // Nombre del archivo HTML o Thymeleaf
     }
 
@@ -75,4 +75,3 @@ public class RegistroEntradaController {
         return new RegistroEntradaEntity();
     }
 }
-s

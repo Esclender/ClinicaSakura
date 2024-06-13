@@ -1,3 +1,4 @@
+
 package pe.com.clinicasakura.ClinicaSakura.repository.base;
 
 import org.springframework.data.jpa.repository.JpaRepository;

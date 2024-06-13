@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pe.com.clinicasakura.ClinicaSakura.model.RegistroSalidaEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.RegistroSalidaService;
-import pe.com.clinicasakura.ClinicaSakura.service.DestinoService;
-import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
+// import pe.com.clinicasakura.ClinicaSakura.service.DestinoService;
+// import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 
 import java.util.Date;
 
@@ -18,11 +18,11 @@ public class RegistroSalidaController {
     @Autowired
     private RegistroSalidaService registroSalidaService;
 
-    @Autowired
-    private DestinoService destinoService;
+    // @Autowired
+    // private DestinoService destinoService;
 
-    @Autowired
-    private EmpleadoService empleadoService;
+    // @Autowired
+    // private EmpleadoService empleadoService;
 
     @GetMapping("/mostrar")
     public String mostrarRegistros(Model model) {
@@ -33,8 +33,8 @@ public class RegistroSalidaController {
     @GetMapping("/registrar")
     public String mostrarFormularioRegistro(Model model) {
         model.addAttribute("registro", new RegistroSalidaEntity());
-        model.addAttribute("destinos", destinoService.findAll());
-        model.addAttribute("empleados", empleadoService.findAll());
+        //model.addAttribute("destinos", destinoService.findAll());
+        //model.addAttribute("empleados", empleadoService.findAll());
         return "registrosalida/registrar_registro"; // Nombre del archivo HTML o Thymeleaf
     }
 
@@ -50,8 +50,8 @@ public class RegistroSalidaController {
         RegistroSalidaEntity registro = registroSalidaService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Id de registro de salida inválido: " + id));
         model.addAttribute("registro", registro);
-        model.addAttribute("destinos", destinoService.findAll());
-        model.addAttribute("empleados", empleadoService.findAll());
+        // model.addAttribute("destinos", destinoService.findAll());
+        // model.addAttribute("empleados", empleadoService.findAll());
         return "registrosalida/actualizar_registro"; // Nombre del archivo HTML o Thymeleaf
     }
 

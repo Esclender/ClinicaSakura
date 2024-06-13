@@ -1,5 +1,5 @@
-package pe.com.clinicasakura.ClinicaSakura.service.base;
 
+package pe.com.clinicasakura.ClinicaSakura.service.base;
 
 import java.util.List;
 import java.util.Optional;

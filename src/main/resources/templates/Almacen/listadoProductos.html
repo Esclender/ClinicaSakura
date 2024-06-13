@@ -27,9 +27,10 @@
       <div class="flex flex-row justify-between self-center">
         <h2 class="text-3xl font-medium font-kanit">Almacen</h2>
         <div>
+          <a th:href="@{/productos/registro}" >
           <button type="button"
             class="text-white text-md bg-button-color shadow-lile-shadow focus:outline-none focus:ring-4 focus:ring-blue-300 font-regular rounded-full text-sm px-3 py-1.5 text-center me-1 mb-2">Registrar
-            Producto</button>
+            Producto</button></a>
           <button type="button"
             class="text-white text-md bg-button-color shadow-lile-shadow focus:outline-none focus:ring-4 focus:ring-blue-300 font-regular rounded-full text-sm px-3 py-1.5 text-center me-1 mb-2">Registrar
             Producto</button>
@@ -80,6 +81,7 @@
                           placeholder="Buscar por nombre" required="">
                       </div>
                     </form>
+
                     <button id="filterDropdownButton" data-dropdown-toggle="filterDropdown"
                       class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg md:w-auto focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 0"
                       type="button">
@@ -138,6 +140,9 @@
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                 <tr>
                   <th scope="col" class="pl-6 py-3">
+                    Codigo
+                  </th>
+                  <th scope="col" class="pl-6 py-3">
                     Fecha Caducidad
                   </th>
                   <th scope="col" class="px-6 py-3">
@@ -156,28 +161,27 @@
               </thead>
 
               <tbody>
-                <tr class="bg-white border-b ">
-                  <th scope="row" class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                    12 de junio de 2022
+                <tr th:each="producto : ${productos}" class="bg-white border-b ">
+                  <th scope="row" th:text="${producto.codigo}" class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap "></th>
+                  
+                  <th th:text="${producto.fechaCaducidad}" class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap "></th>
+                  
+                  <th th:text="${producto.nombre}"  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                   </th>
-                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                    Apple MacBook Pro 17"
-                  </th>
-                  <td class=" py-4">
-                    Laptop
+
+                  <td th:text="${producto.descripcion}"  class=" py-4">
                   </td>
-                  <td class="px-6 py-4">
-                    $2999
+                  <td th:text="${producto.cantidadStock}" class="px-6 py-4">
                   </td>
                   <td class="px-2 py-4 ">
 
-                    <a href="#" class="ml-1 p-2 px-2 w-8 rounded-lg bg-white shadow-md">
+                    <a th:href="@{/productos/actualizar/{id}(id=${producto.codigo})}" class="ml-1 p-2 px-2 w-8 rounded-lg bg-white shadow-md">
                       <button>
                         <i class="fa-regular fa-pen-to-square text-[18px]"></i>
                       </button>
                     </a>
 
-                    <a href="#" class="ml-1 p-2 px-3 w-8 rounded-lg bg-white shadow-md">
+                    <a th:href="@{/productos/eliminar/{id}(id=${producto.codigo})}" class="ml-1 p-2 px-3 w-8 rounded-lg bg-white shadow-md" onclick="confirmarEliminacion(event, this)">
                       <button>
                         <i class="fa-regular fa-trash-can text-red-600 text-[18px]"></i>
                       </button>
@@ -237,7 +241,26 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+  <script>
+    function confirmarEliminacion(event, element) {
+        event.preventDefault(); // Evita que el enlace se siga automáticamente
+        Swal.fire({
+            title: '¿Seguro que quieres eliminar?',
+            text: "Esta acción no se puede deshacer",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'No, cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = element.href; // Sigue el enlace si el usuario confirma
+            }
+        });
+    }
+</script>
 </body>
 
 </html>
