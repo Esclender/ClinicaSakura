@@ -25,10 +25,10 @@ public class RegistroEntradaController {
     @Autowired
     private EmpleadoService empleadoService;
 
-    @GetMapping("/mostrar")
+    @GetMapping()
     public String mostrarRegistros(Model model) {
         model.addAttribute("registros", registroEntradaService.findAll());
-        return "registroentrada/mostrar_registros"; // Nombre del archivo HTML o Thymeleaf
+        return "Entradas/registroEntradas"; // Nombre del archivo HTML o Thymeleaf
     }
 
     @GetMapping("/registrar")

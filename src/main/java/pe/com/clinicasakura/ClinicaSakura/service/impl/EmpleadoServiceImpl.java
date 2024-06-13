@@ -2,6 +2,8 @@ package pe.com.clinicasakura.ClinicaSakura.service.impl;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pe.com.clinicasakura.ClinicaSakura.model.EmpleadoEntity;
 import pe.com.clinicasakura.ClinicaSakura.repository.EmpleadoRepository;
@@ -19,12 +21,6 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     @Override
     public List<EmpleadoEntity> findAll() {
         return empleadoRepository.findAll();
-    }
-
-    @Override
-    public List<EmpleadoEntity> findAllCustom() {
-        // Aquí iría la lógica personalizada si fuera necesaria
-        return empleadoRepository.findAll(); // Ejemplo, podría cambiarse
     }
 
     @Override
@@ -47,16 +43,28 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     @Override
     public EmpleadoEntity delete(EmpleadoEntity empleado) {
         EmpleadoEntity obj = empleadoRepository.getById(empleado.getCodigo());
-        // Aquí se asume que hay un campo estado en EmpleadoEntity que se maneja similar a ArtefactoEntity
-        obj.setEstado(false); 
+        // Aquí se asume que hay un campo estado en EmpleadoEntity que se maneja similar
+        // a ArtefactoEntity
+        obj.setEstado(false);
         return empleadoRepository.save(obj);
     }
 
     @Override
     public EmpleadoEntity enable(EmpleadoEntity empleado) {
         EmpleadoEntity obj = empleadoRepository.getById(empleado.getCodigo());
-        // Aquí se asume que hay un campo estado en EmpleadoEntity que se maneja similar a ArtefactoEntity
-        obj.setEstado(true); 
+        // Aquí se asume que hay un campo estado en EmpleadoEntity que se maneja similar
+        // a ArtefactoEntity
+        obj.setEstado(true);
         return empleadoRepository.save(obj);
+    }
+
+    @Override
+    public Page<EmpleadoEntity> obtenerPaginas(Pageable pageable) {
+        return empleadoRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<EmpleadoEntity> findAllCustom(Pageable pageable) {
+        return empleadoRepository.findAllCustom(pageable);
     }
 }

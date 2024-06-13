@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import pe.com.clinicasakura.ClinicaSakura.model.EmpleadoEntity;
 import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
+import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 import pe.com.clinicasakura.ClinicaSakura.service.ProductoService;
 
 @Controller
@@ -17,6 +19,9 @@ public class StartController {
 
     @Autowired
     private ProductoService productoServicio;
+
+    @Autowired
+    private EmpleadoService empleadoServicio;
 
     @GetMapping("/login")
     public String MostrarLogin() {
@@ -30,10 +35,12 @@ public class StartController {
             Model model) {
         PageRequest pageable = PageRequest.of(page, size);
         Page<ProductoEntity> productos = productoServicio.findAllCustom(pageable);
+        Page<EmpleadoEntity> empleados = empleadoServicio.findAllCustom(pageable);
+
         model.addAttribute("productos",
                 productos.getContent());
-        model.addAttribute("productosPage",
-                productos);
+        model.addAttribute("empleados",
+                empleados.getContent());
         return "dashboard";
     }
 

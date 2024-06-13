@@ -2,6 +2,8 @@ package pe.com.clinicasakura.ClinicaSakura.service.impl;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pe.com.clinicasakura.ClinicaSakura.model.TipoDocumentoEntity;
 import pe.com.clinicasakura.ClinicaSakura.repository.TipoDocumentoRepository;
@@ -19,12 +21,6 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
     @Override
     public List<TipoDocumentoEntity> findAll() {
         return tipoDocumentoRepository.findAll();
-    }
-
-    @Override
-    public List<TipoDocumentoEntity> findAllCustom() {
-        // Aquí iría la lógica personalizada si fuera necesaria
-        return tipoDocumentoRepository.findAll(); // Ejemplo, podría cambiarse
     }
 
     @Override
@@ -56,5 +52,17 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
         TipoDocumentoEntity obj = tipoDocumentoRepository.getById(tipoDocumento.getCodigo());
         obj.setEstado(true); // Cambiar estado si es necesario
         return tipoDocumentoRepository.save(obj);
+    }
+
+    @Override
+    public Page<TipoDocumentoEntity> obtenerPaginas(Pageable pageable) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'obtenerPaginas'");
+    }
+
+    @Override
+    public Page<TipoDocumentoEntity> findAllCustom(Pageable pageable) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findAllCustom'");
     }
 }

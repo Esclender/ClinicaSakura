@@ -16,7 +16,7 @@
 
 <body class="bg-custom-gradient h-dvh flex">
   <!-- SIDEBAR -->
-  <section th:insert="~{components/sidebarTemplate.html :: sidebar(selectedPage=2)}"></section>
+  <section th:insert="~{components/sidebarTemplate.html :: sidebar(selectedPage=3)}"></section>
   <div class="grid grid-cols-6 grid-rows-8 gap-8 w-full">
     <div class="col-start-2 flex items-start justify-center">
       <img th:src="@{/sakura_logo.png}" alt="Logo" class="w-56 md:w-40 mt-4 md:mt-2">
@@ -25,7 +25,7 @@
     <!-- Contenido principal -->
     <div class="col-start-2 col-end-7 row-start-2 row-end-8 mx-8">
       <div class="flex flex-row justify-between self-center">
-        <h2 class="text-3xl font-medium font-kanit">Almacen</h2>
+        <h2 class="text-3xl font-medium font-kanit">Empleados</h2>
         <div>
           <a th:href="@{/productos/registro}">
             <button type="button"
@@ -51,7 +51,6 @@
                 class="flex flex-col items-center justify-between py-3 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
                 <div class="w-full md:w-1/2">
 
-                  <h2 class="text-2xl font-medium font-kanit">Productos</h2>
                 </div>
                 <div
                   class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
@@ -139,52 +138,43 @@
             <table class="relative w-full  text-sm text-left rtl:text-right text-gray-500">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                 <tr>
-                  <th scope="col" class="pl-6 py-3">
-                    Codigo
-                  </th>
-                  <th scope="col" class="pl-6 py-3">
-                    Fecha Caducidad
-                  </th>
-                  <th scope="col" class="px-6 py-3">
-                    Producto
-                  </th>
-                  <th scope="col" class="py-3">
-                    Descripción
-                  </th>
-                  <th scope="col" class="px-6 py-3">
-                    Stock
-                  </th>
-                  <th scope="col" class="px-4 py-3">
-                    Acciones
-                  </th>
+                <tr>
+                  <th scope="col" class="px-6 py-3">Codigo</th>
+                  <th scope="col" class="px-6 py-3">Nombre</th>
+                  <th scope="col" class="px-6 py-3">Telefono</th>
+                  <th scope="col" class="px-6 py-3">Celular</th>
+                  <th scope="col" class="px-6 py-3">Correo</th>
+                  <th scope="col" class="px-6 py-3">Especialidad</th>
+
+                  <!-- <th scope="col" class="px-6 py-3">Estado</th> -->
+                  <th scope="col" class="px-6 py-3">Acciones</th>
+                </tr>
                 </tr>
               </thead>
 
               <tbody>
-                <tr th:each="producto : ${productos}" class="bg-white border-b ">
-                  <th scope="row" th:text="${producto.codigo}"
+                <tr th:each="empleado : ${empleados}" class="bg-white border-b ">
+                  <th scope="row" th:text="${empleado.codigo}"
                     class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap "></th>
-
-                  <th th:text="${producto.fechaCaducidad}"
-                    class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap "></th>
-
-                  <th th:text="${producto.nombre}" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                  <th th:text="${empleado.nombre}" class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap "></th>
+                  <th th:text="${empleado.telefono}" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                   </th>
-
-                  <td th:text="${producto.descripcion}" class=" py-4">
+                  <td th:text="${empleado.celular}" class=" py-4">
                   </td>
-                  <td th:text="${producto.cantidadStock}" class="px-6 py-4">
+                  <td th:text="${empleado.correo}" class=" py-4">
+                  </td>
+                  <td th:text="${empleado.cargo.nombre}" class="px-6 py-4">
                   </td>
                   <td class="px-2 py-4 ">
 
-                    <a th:href="@{/productos/actualizar/{id}(id=${producto.codigo})}"
+                    <a th:href="@{/empleados/actualizar/{id}(id=${empleado.codigo})}"
                       class="ml-1 p-2 px-2 w-8 rounded-lg bg-white shadow-md">
                       <button>
                         <i class="fa-regular fa-pen-to-square text-[18px]"></i>
                       </button>
                     </a>
 
-                    <a th:href="@{/productos/eliminar/{id}(id=${producto.codigo})}"
+                    <a th:href="@{/empleados/eliminar/{id}(id=${empleado.codigo})}"
                       class="ml-1 p-2 px-3 w-8 rounded-lg bg-white shadow-md"
                       onclick="confirmarEliminacion(event, this)">
                       <button>
