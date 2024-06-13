@@ -50,7 +50,5 @@ public class DetalleEntradaEntity
     @ManyToOne
     @JoinColumn(name = "codigo_producto", nullable = false)
     private ProductoEntity codigoProducto;
-    
-    
-    
+ 
 }

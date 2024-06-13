@@ -29,7 +29,7 @@
       <div class="px-8  h-full">
 
         <div class="flex flex-row justify-between self-center">
-          <h2 class="text-3xl font-medium font-kanit">Registro de entradas</h2>
+          <h2 class="text-3xl font-medium font-kanit">Registro de salidas</h2>
 
           <a th:href="@{/productos/registro}"
             class="text-white text-md bg-button-color shadow-lile-shadow focus:outline-none focus:ring-4 focus:ring-blue-300 font-regular rounded-full text-sm px-3 py-1.5 text-center me-1 mb-2">Registrar
@@ -46,7 +46,7 @@
                   class="flex flex-col items-center justify-between py-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
 
                   <div class="w-full flex flex-row justify-between self-center">
-                    <h2 class="text-2xl font-medium font-kanit">Agregar informacion de la entrada
+                    <h2 class="text-2xl font-medium font-kanit">Agregar informacion de la salida
                     </h2>
                     <span th:text="'Fecha Registro ' + ${fecha}" class="p-2 bg-red-400 text-white font-bold rounded-md text-sm"></span>
 
@@ -55,7 +55,7 @@
                 </div>
               </div>
 
-              <form th:action="@{/entrada/registrar}" method="post" th:object="${registro}" class="h-full max-w-full grid grid-cols-8 grid-rows-4  pb-[80px] relative">
+              <form th:action="@{/salida/registrar}" method="post" th:object="${registro}" class="h-full max-w-full grid grid-cols-8 grid-rows-4  pb-[80px] relative">
                 <!-- First Row -->
 
                 <div class="relative z-0 h-10 w-full row-start-1 col-span-4 p-2 group  custom-select">
@@ -88,10 +88,10 @@
 
                 <div class="relative z-0 h-10 w-full col-span-3 p-2 group  custom-select">
                   <label for="underline_select" class="sr-only">Underline select </label>
-                  <select th:field="*{proveedor}" id="underline_select"
+                  <select th:field="*{destino}" id="underline_select"
                     class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                    <option value="0">Proveedor</option>
-                    <option th:each="proveedor:${proveedores}" th:value="${proveedor.codigo}" th:text="${proveedor.nombre}"></option>
+                    <option value="0">Destino</option>
+                    <option th:each="destino:${destinos}" th:value="${destino.codigo}" th:text="${destino.nombre}"></option>
                   </select>
                 </div>
 
@@ -101,7 +101,7 @@
                     placeholder=" " required />
                   <label for="floating_cantidad"
                     class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Cantidad
-                    a ingresar</label>
+                    del Producto</label>
                 </div>
 
 
