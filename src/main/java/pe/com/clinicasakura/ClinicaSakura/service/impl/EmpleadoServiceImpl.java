@@ -1,6 +1,5 @@
 package pe.com.clinicasakura.ClinicaSakura.service.impl;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,8 +14,12 @@ import java.util.Optional;
 @Service
 public class EmpleadoServiceImpl implements EmpleadoService {
 
+    private final EmpleadoRepository empleadoRepository;
+
     @Autowired
-    private EmpleadoRepository empleadoRepository;
+    public EmpleadoServiceImpl(EmpleadoRepository empleadoRepository) {
+        this.empleadoRepository = empleadoRepository;
+    }
 
     @Override
     public List<EmpleadoEntity> findAll() {
@@ -35,27 +38,19 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
     @Override
     public EmpleadoEntity update(EmpleadoEntity empleado) {
-        EmpleadoEntity obj = empleadoRepository.getById(empleado.getCodigo());
-        BeanUtils.copyProperties(empleado, obj);
-        return empleadoRepository.save(obj);
+        return empleadoRepository.save(empleado);
     }
 
     @Override
     public EmpleadoEntity delete(EmpleadoEntity empleado) {
-        EmpleadoEntity obj = empleadoRepository.getById(empleado.getCodigo());
-        // Aquí se asume que hay un campo estado en EmpleadoEntity que se maneja similar
-        // a ArtefactoEntity
-        obj.setEstado(false);
-        return empleadoRepository.save(obj);
+        empleadoRepository.delete(empleado);
+        return empleado;
     }
 
     @Override
     public EmpleadoEntity enable(EmpleadoEntity empleado) {
-        EmpleadoEntity obj = empleadoRepository.getById(empleado.getCodigo());
-        // Aquí se asume que hay un campo estado en EmpleadoEntity que se maneja similar
-        // a ArtefactoEntity
-        obj.setEstado(true);
-        return empleadoRepository.save(obj);
+        // Implementación según la lógica de tu aplicación (activar/desactivar empleado)
+        return empleadoRepository.save(empleado);
     }
 
     @Override
