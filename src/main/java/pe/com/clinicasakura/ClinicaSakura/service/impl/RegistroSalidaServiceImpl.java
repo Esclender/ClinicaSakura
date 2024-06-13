@@ -2,6 +2,8 @@ package pe.com.clinicasakura.ClinicaSakura.service.impl;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pe.com.clinicasakura.ClinicaSakura.model.RegistroSalidaEntity;
 import pe.com.clinicasakura.ClinicaSakura.repository.RegistroSalidaRepository;
@@ -26,9 +28,8 @@ public class RegistroSalidaServiceImpl implements RegistroSalidaService {
     }
 
     @Override
-    public List<RegistroSalidaEntity> findAllCustom() {
-        // Aquí iría la lógica personalizada si fuera necesaria
-        return registroSalidaRepository.findAll(); // Ejemplo, podría cambiarse
+    public Page<RegistroSalidaEntity> findAllCustom(Pageable pageable) {
+        return registroSalidaRepository.findAllCustom(pageable);
     }
 
     @Override
@@ -51,16 +52,23 @@ public class RegistroSalidaServiceImpl implements RegistroSalidaService {
     @Override
     public RegistroSalidaEntity delete(RegistroSalidaEntity registroSalida) {
         RegistroSalidaEntity obj = registroSalidaRepository.getById(registroSalida.getCodigo());
-        // Aquí se asume que hay un campo estado en RegistroSalidaEntity que se maneja similar a ArtefactoEntity
-        obj.setEstado(false); 
+        // Aquí se asume que hay un campo estado en RegistroSalidaEntity que se maneja
+        // similar a ArtefactoEntity
+        obj.setEstado(false);
         return registroSalidaRepository.save(obj);
     }
 
     @Override
     public RegistroSalidaEntity enable(RegistroSalidaEntity registroSalida) {
         RegistroSalidaEntity obj = registroSalidaRepository.getById(registroSalida.getCodigo());
-        // Aquí se asume que hay un campo estado en RegistroSalidaEntity que se maneja similar a ArtefactoEntity
-        obj.setEstado(true); 
+        // Aquí se asume que hay un campo estado en RegistroSalidaEntity que se maneja
+        // similar a ArtefactoEntity
+        obj.setEstado(true);
         return registroSalidaRepository.save(obj);
+    }
+
+    @Override
+    public Page<RegistroSalidaEntity> obtenerPaginas(Pageable pageable) {
+        return registroSalidaRepository.findAll(pageable);
     }
 }
