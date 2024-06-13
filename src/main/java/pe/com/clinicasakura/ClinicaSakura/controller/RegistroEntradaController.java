@@ -10,9 +10,10 @@ import pe.com.clinicasakura.ClinicaSakura.service.ProveedorService;
 // import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 
 import java.util.Date;
+import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 
 @Controller
-@RequestMapping("/registroentrada")
+@RequestMapping("/entrada")
 public class RegistroEntradaController {
 
     @Autowired
@@ -21,8 +22,8 @@ public class RegistroEntradaController {
     @Autowired
     private ProveedorService proveedorService;
 
-    // @Autowired
-    // private EmpleadoService empleadoService;
+    @Autowired
+    private EmpleadoService empleadoService;
 
     @GetMapping("/mostrar")
     public String mostrarRegistros(Model model) {
@@ -34,8 +35,8 @@ public class RegistroEntradaController {
     public String mostrarFormularioRegistro(Model model) {
         model.addAttribute("registro", new RegistroEntradaEntity());
         model.addAttribute("proveedores", proveedorService.findAll());
-        // model.addAttribute("empleados", empleadoService.findAll());
-        return "registroentrada/registrar_registro"; // Nombre del archivo HTML o Thymeleaf
+        model.addAttribute("empleados", empleadoService.findAll());
+        return "Entradas/registroEntradas"; // Nombre del archivo HTML o Thymeleaf
     }
 
     @PostMapping("/registrar")

@@ -12,6 +12,7 @@ import pe.com.clinicasakura.ClinicaSakura.service.ProveedorService;
 import java.util.List;
 
 @Controller
+@RequestMapping("/proveedor")
 public class ProveedorController {
 
     @Autowired
@@ -37,8 +38,9 @@ public class ProveedorController {
 
     @PostMapping("/registrar")
     public String registrarProveedor(@ModelAttribute("proveedor") ProveedorEntity proveedor) {
+        System.out.println(proveedor);
         proveedorService.add(proveedor);
-        return "redirect:/proveedores";
+        return "redirect:/proveedor";
     }
 
     @GetMapping("/actualizar/{id}")
