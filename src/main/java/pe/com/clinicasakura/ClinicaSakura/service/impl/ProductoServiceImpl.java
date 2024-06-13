@@ -1,5 +1,8 @@
+
 package pe.com.clinicasakura.ClinicaSakura.service.impl;
 
+import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,60 +10,51 @@ import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
 import pe.com.clinicasakura.ClinicaSakura.repository.ProductoRepository;
 import pe.com.clinicasakura.ClinicaSakura.service.ProductoService;
 
-import java.util.List;
-import java.util.Optional;
-
 @Service
 public class ProductoServiceImpl implements ProductoService {
 
-    private final ProductoRepository productoRepository;
-
     @Autowired
-    public ProductoServiceImpl(ProductoRepository productoRepository) {
-        this.productoRepository = productoRepository;
-    }
+    private ProductoRepository repositorio;
 
     @Override
     public List<ProductoEntity> findAll() {
-        return productoRepository.findAll();
+        return repositorio.findAll();
     }
 
     @Override
     public List<ProductoEntity> findAllCustom() {
-        // Aquí iría la lógica personalizada si fuera necesaria
-        return productoRepository.findAll(); // Ejemplo, podría cambiarse
+        return repositorio.findAllCustom();
     }
 
     @Override
     public Optional<ProductoEntity> findById(Long id) {
-        return productoRepository.findById(id);
+        return repositorio.findById(id);
     }
 
     @Override
-    public ProductoEntity add(ProductoEntity producto) {
-        return productoRepository.save(producto);
+    public ProductoEntity add(ProductoEntity t) {
+        return repositorio.save(t);
     }
 
     @Override
-    public ProductoEntity update(ProductoEntity producto) {
-        ProductoEntity obj = productoRepository.getById(producto.getCodigo());
-        BeanUtils.copyProperties(producto, obj);
-        return productoRepository.save(obj);
+    public ProductoEntity update(ProductoEntity t) {
+        ProductoEntity obj = repositorio.getReferenceById(t.getCodigo());
+        BeanUtils.copyProperties(t, obj);
+        return repositorio.save(obj);
     }
 
     @Override
-    public ProductoEntity delete(ProductoEntity producto) {
-        ProductoEntity obj = productoRepository.getById(producto.getCodigo());
-        // Aquí se asume que hay un campo estado en ProductoEntity que se maneja similar a ArtefactoEntity
-        obj.setEstado(false); 
-        return productoRepository.save(obj);
+    public ProductoEntity delete(ProductoEntity t) {
+        ProductoEntity obj = repositorio.getReferenceById(t.getCodigo());
+        obj.setEstado(false);
+        return repositorio.save(obj);
     }
 
     @Override
-    public ProductoEntity enable(ProductoEntity producto) {
-        ProductoEntity obj = productoRepository.getById(producto.getCodigo());
-        // Aquí se asume que hay un campo estado en ProductoEntity que se maneja similar a ArtefactoEntity
-        obj.setEstado(true); 
-        return productoRepository.save(obj);
+    public ProductoEntity enable(ProductoEntity t) {
+        ProductoEntity obj = repositorio.getReferenceById(t.getCodigo());
+        obj.setEstado(true);
+        return repositorio.save(obj);
     }
+
 }

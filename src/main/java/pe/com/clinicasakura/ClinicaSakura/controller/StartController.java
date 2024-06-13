@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class StartController {
     
-    @GetMapping()
+    @GetMapping("/login")
     public String MostrarLogin() {
         return "login";
     }
