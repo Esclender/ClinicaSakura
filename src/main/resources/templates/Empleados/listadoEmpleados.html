@@ -27,16 +27,12 @@
       <div class="flex flex-row justify-between self-center">
         <h2 class="text-3xl font-medium font-kanit">Empleados</h2>
         <div>
-          <a th:href="@{/productos/registro}">
+          <a th:href="@{/empleados/registro}">
             <button type="button"
               class="text-white text-md bg-button-color shadow-lile-shadow focus:outline-none focus:ring-4 focus:ring-blue-300 font-regular rounded-full text-sm px-3 py-1.5 text-center me-1 mb-2">Registrar
-              Producto</button></a>
-          <button type="button"
-            class="text-white text-md bg-button-color shadow-lile-shadow focus:outline-none focus:ring-4 focus:ring-blue-300 font-regular rounded-full text-sm px-3 py-1.5 text-center me-1 mb-2">Registrar
-            Producto</button>
-          <a th:href="@{/productos/registro}"
-            class="text-white text-md bg-button-color shadow-lile-shadow focus:outline-none focus:ring-4 focus:ring-blue-300 font-regular rounded-full text-sm px-3 py-1.5 text-center me-1 mb-2">Registrar
-            Producto</a>
+              Empleado</button>
+          </a>
+
         </div>
       </div>
 
@@ -63,7 +59,7 @@
                     </svg>
                     Add product
                   </button>
-                  <div class="flex items-center w-full space-x-3 md:w-auto">
+                  <!-- <div class="flex items-center w-full space-x-3 md:w-auto">
                     <form class="flex items-center">
                       <label for="simple-search" class="sr-only">Search</label>
                       <div class="relative w-full">
@@ -97,7 +93,6 @@
                           d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
                       </svg>
                     </button>
-                    <!-- Dropdown menu -->
                     <div id="filterDropdown" class="z-10 hidden w-48 p-3 bg-white rounded-lg shadow ">
                       <h6 class="mb-3 text-sm font-medium text-gray-900 ">
                         Category
@@ -126,7 +121,7 @@
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -196,11 +191,11 @@
 
         <nav class="flex items-center flex-wrap md:flex-row justify-between" aria-label="Table navigation">
           <span class="text-sm font-normal p-4 text-gray-500 mb-4 md:mb-0 block w-full md:inline md:w-auto">
-            Showing
+            Mostrando
             <span class="font-semibold text-gray-900">
               [[${currentPage * pageSize + 1}]] - [[${(currentPage + 1) * pageSize < totalItems ? (currentPage + 1) *
                 pageSize : totalItems}]] </span>
-                of
+                de
                 <span class="font-semibold text-gray-900">
                   [[${totalItems}]]
                 </span>

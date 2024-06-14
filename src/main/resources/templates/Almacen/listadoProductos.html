@@ -30,108 +30,22 @@
           <a th:href="@{/productos/registro}">
             <button type="button"
               class="text-white text-md bg-button-color shadow-lile-shadow focus:outline-none focus:ring-4 focus:ring-blue-300 font-regular rounded-full text-sm px-3 py-1.5 text-center me-1 mb-2">Registrar
-              Producto</button></a>
-          <button type="button"
-            class="text-white text-md bg-button-color shadow-lile-shadow focus:outline-none focus:ring-4 focus:ring-blue-300 font-regular rounded-full text-sm px-3 py-1.5 text-center me-1 mb-2">Registrar
-            Producto</button>
-          <a th:href="@{/productos/registro}"
-            class="text-white text-md bg-button-color shadow-lile-shadow focus:outline-none focus:ring-4 focus:ring-blue-300 font-regular rounded-full text-sm px-3 py-1.5 text-center me-1 mb-2">Registrar
-            Producto</a>
+              Producto</button>
+          </a>
+
         </div>
       </div>
 
       <div class="relative bg-white mt-2 rounded-[20px] h-full ">
         <!-- Table and filter -->
 
-        <div class="flex flex-row justify-between self-center">
-          <!-- Contenido de almacen -->
-          <div class="max-w-screen-xl px-4 mx-auto lg:px-4 w-full">
-            <div class="relative  sm:rounded-lg">
-              <div
-                class="flex flex-col items-center justify-between py-3 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
-                <div class="w-full md:w-1/2">
+        <div class="flex flex-row justify-end self-center ">
 
-                  <h2 class="text-2xl font-medium font-kanit">Productos</h2>
-                </div>
-                <div
-                  class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
-                  <button type="button"
-                    class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300  focus:outline-none ">
-                    <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <path clip-rule="evenodd" fill-rule="evenodd"
-                        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
-                    </svg>
-                    Add product
-                  </button>
-                  <div class="flex items-center w-full space-x-3 md:w-auto">
-                    <form class="flex items-center">
-                      <label for="simple-search" class="sr-only">Search</label>
-                      <div class="relative w-full">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                          <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewbox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                              clip-rule="evenodd" />
-                          </svg>
-                        </div>
-                        <input type="text" id="simple-search"
-                          class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500  "
-                          placeholder="Buscar por nombre" required="">
-                      </div>
-                    </form>
-
-                    <button id="filterDropdownButton" data-dropdown-toggle="filterDropdown"
-                      class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg md:w-auto focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 0"
-                      type="button">
-                      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-4 h-4 mr-2 text-gray-400"
-                        viewbox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                          d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
-                          clip-rule="evenodd" />
-                      </svg>
-                      Filtro
-                      <svg class="-mr-1 ml-1.5 w-5 h-5" fill="currentColor" viewbox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path clip-rule="evenodd" fill-rule="evenodd"
-                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                      </svg>
-                    </button>
-                    <!-- Dropdown menu -->
-                    <div id="filterDropdown" class="z-10 hidden w-48 p-3 bg-white rounded-lg shadow ">
-                      <h6 class="mb-3 text-sm font-medium text-gray-900 ">
-                        Category
-                      </h6>
-                      <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
-                        <li class="flex items-center">
-                          <input id="apple" type="checkbox" value=""
-                            class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 " />
-                          <label for="apple" class="ml-2 text-sm font-medium text-gray-900 ">
-                            Generales (56)
-                          </label>
-                        </li>
-                        <li class="flex items-center">
-                          <input id="fitbit" type="checkbox" value=""
-                            class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 " />
-                          <label for="fitbit" class="ml-2 text-sm font-medium text-gray-900 ">
-                            Operatoria (56)
-                          </label>
-                        </li>
-                        <li class="flex items-center">
-                          <input id="dell" type="checkbox" value=""
-                            class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 " />
-                          <label for="dell" class="ml-2 text-sm font-medium text-gray-900 ">
-                            Cirugia (56)
-                          </label>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <button type="button"
+            class="text-white text-md bg-green-container shadow-lile-shadow focus:outline-none focus:ring-4 focus:ring-blue-300 font-regular rounded-md text-sm  text-center m-5 p-2">
+            Habilitar
+            productos
+          </button>
         </div>
         <!-- Tabla de productos -->
         <div class="float- overflow-x-auto mx-4 sm:rounded-lg h-[80%]">
@@ -166,7 +80,8 @@
                     class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap "></th>
 
                   <th th:text="${producto.fechaCaducidad}"
-                    class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap "></th>
+                    class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                  </th>
 
                   <th th:text="${producto.nombre}" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                   </th>
@@ -184,7 +99,7 @@
                       </button>
                     </a>
 
-                    <a th:href="@{/productos/eliminar/{id}(id=${producto.codigo})}"
+                    <a th:href="@{/producto/eliminar/{id}(id=${producto.codigo})}"
                       class="ml-1 p-2 px-3 w-8 rounded-lg bg-white shadow-md"
                       onclick="confirmarEliminacion(event, this)">
                       <button>
@@ -206,30 +121,30 @@
 
         <nav class="flex items-center flex-wrap md:flex-row justify-between" aria-label="Table navigation">
           <span class="text-sm font-normal p-4 text-gray-500 mb-4 md:mb-0 block w-full md:inline md:w-auto">
-            Showing
+            Mostrando
             <span class="font-semibold text-gray-900">
               [[${currentPage * pageSize + 1}]] - [[${(currentPage + 1) * pageSize < totalItems ? (currentPage + 1) *
                 pageSize : totalItems}]] </span>
-                of
+                de
                 <span class="font-semibold text-gray-900">
                   [[${totalItems}]]
                 </span>
             </span>
             <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8 m-4">
               <li th:if="${currentPage > 0}">
-                <a th:href="@{/empleados(page=${currentPage - 1}, size=${pageSize})}"
+                <a th:href="@{/productos(page=${currentPage - 1}, size=${pageSize})}"
                   class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">
                   Previous
                 </a>
               </li>
               <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
-                <a th:href="@{/empleados(page=${i}, size=${pageSize})}" th:text="${i + 1}"
+                <a th:href="@{/productos(page=${i}, size=${pageSize})}" th:text="${i + 1}"
                   th:classappend="${currentPage == i} ? 'text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700' : 'leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700'"
                   class="flex items-center justify-center px-3 h-8">
                 </a>
               </li>
               <li th:if="${currentPage + 1 < totalPages}">
-                <a th:href="@{/empleados(page=${currentPage + 1}, size=${pageSize})}"
+                <a th:href="@{/productos(page=${currentPage + 1}, size=${pageSize})}"
                   class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
                   Next
                 </a>

@@ -20,6 +20,9 @@ import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -31,12 +34,12 @@ import pe.com.clinicasakura.ClinicaSakura.model.base.BaseEntity;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 @Entity(name = "EmpleadoEntity")
 @Table(name = "empleado")
 public class EmpleadoEntity extends BaseEntity
-    implements Serializable{
-   
+        implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -49,7 +52,7 @@ public class EmpleadoEntity extends BaseEntity
     @Size(min = 2, max = 50, message = "El nombre tiene que estar entre {min} y {max} caracteres")
     private String nombre;
 
-     @Column(name = "apellido_paterno")
+    @Column(name = "apellido_paterno")
     @NotEmpty
     @Size(min = 2, max = 50, message = "El apellido paterno tiene que estar entre {min} y {max} caracteres")
     private String apellidopaterno;
@@ -66,6 +69,7 @@ public class EmpleadoEntity extends BaseEntity
 
     @Column(name = "fecha_nacimiento")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechanacimiento;
 
     @Column(name = "direccion")
@@ -74,11 +78,11 @@ public class EmpleadoEntity extends BaseEntity
     private String direccion;
 
     @Column(name = "telefono")
-    @Size(min=7, max = 7, message = "El teléfono debe tener {max} caracteres")
+    @Size(min = 7, max = 7, message = "El teléfono debe tener {max} caracteres")
     private String telefono;
 
     @Column(name = "celular")
-    @Size(min=9,max = 9, message = "El celular debe tener {max} caracteres")
+    @Size(min = 9, max = 9, message = "El celular debe tener {max} caracteres")
     private String celular;
 
     @Column(name = "correo")
@@ -90,7 +94,7 @@ public class EmpleadoEntity extends BaseEntity
     @NotEmpty
     @Size(min = 1, max = 1, message = "El sexo debe ser 'M' o 'F'")
     private String sexo;
-    
+
     @ManyToOne
     @JoinColumn(name = "codigo_tipo_documento", nullable = false)
     private TipoDocumentoEntity tipodocumento;

@@ -85,6 +85,7 @@ public class AlmacenController {
     @GetMapping("/producto/eliminar/{id}")
     public String MostrarEliminarArtefacto(@PathVariable Long id) {
         ProductoEntity productoEntity = servicio.findById(id).get();
+        System.out.println(productoEntity);
         servicio.delete(productoEntity);
         return "redirect:/productos";
     }
