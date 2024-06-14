@@ -103,7 +103,6 @@ public class EmpleadoController {
     @PostMapping("/actualizar/{id}")
     public String ActualizarEmpleado(@PathVariable Long id,
             @ModelAttribute("empleado") EmpleadoEntity empleadoEntity) {
-        System.out.println(empleadoEntity);
         repositorio.update(empleadoEntity);
         return "redirect:/empleados";
     }
