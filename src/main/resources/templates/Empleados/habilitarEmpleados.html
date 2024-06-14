@@ -25,28 +25,15 @@
     <!-- Contenido principal -->
     <div class="col-start-2 col-end-7 row-start-2 row-end-8 mx-8">
       <div class="flex flex-row justify-between self-center">
-        <h2 class="text-3xl font-medium font-kanit">Empleados</h2>
-        <div>
-          <a th:href="@{/empleados/registro}">
-            <button type="button"
-              class="text-white text-md bg-button-color shadow-lile-shadow focus:outline-none focus:ring-4 focus:ring-blue-300 font-regular rounded-full text-sm px-3 py-1.5 text-center me-1 mb-2">Registrar
-              Empleado</button>
-          </a>
+        <h2 class="text-3xl font-medium font-kanit">Habilitar Empleados</h2>
 
-        </div>
       </div>
 
       <div class="relative bg-white mt-2 rounded-[20px] h-full ">
         <!-- Table and filter -->
 
-        <div class="flex flex-row justify-end self-center">
-          <a th:href="@{/empleados/habilitar}">
-            <button type="button"
-              class="text-white text-md bg-green-container shadow-lile-shadow focus:outline-none focus:ring-4 focus:ring-blue-300 font-regular rounded-md text-sm  text-center m-5 p-2">
-              Habilitar
-              empleados
-            </button>
-          </a>
+        <div class="flex flex-row justify-end self-center mb-5">
+
         </div>
         <!-- Tabla de productos -->
         <div class="float- overflow-x-auto mx-4 sm:rounded-lg h-[80%]">
@@ -61,6 +48,7 @@
                   <th scope="col" class="px-6 py-3">Celular</th>
                   <th scope="col" class="px-6 py-3">Correo</th>
                   <th scope="col" class="px-6 py-3">Especialidad</th>
+                  <th scope="col" class="px-6 py-3">Estado</th>
 
                   <!-- <th scope="col" class="px-6 py-3">Estado</th> -->
                   <th scope="col" class="px-6 py-3">Acciones</th>
@@ -81,12 +69,14 @@
                   </td>
                   <td th:text="${empleado.cargo.nombre}" class="px-6 py-4">
                   </td>
+                  <td th:text="${empleado.estado ? 'Habilitado':'Deshabilitado'}"></td>
+
                   <td class="px-2 py-4 ">
 
-                    <a th:href="@{/empleados/actualizar/{id}(id=${empleado.codigo})}"
+                    <a th:href="@{/empleados/habilitar/{id}(id=${empleado.codigo})}"
                       class="ml-1 p-2 px-2 w-8 rounded-lg bg-white shadow-md">
                       <button>
-                        <i class="fa-regular fa-pen-to-square text-[18px]"></i>
+                        <i class="fa-solid fa-check text-[18px] text-green-container"></i>
                       </button>
                     </a>
 
@@ -94,7 +84,7 @@
                       class="ml-1 p-2 px-3 w-8 rounded-lg bg-white shadow-md"
                       onclick="confirmarEliminacion(event, this)">
                       <button>
-                        <i class="fa-regular fa-trash-can text-red-600 text-[18px]"></i>
+                        <i class="fa-solid fa-xmark text-red-600 text-[18px]"></i>
                       </button>
                     </a>
 

@@ -1,10 +1,12 @@
 package pe.com.clinicasakura.ClinicaSakura.service.impl;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pe.com.clinicasakura.ClinicaSakura.model.EmpleadoEntity;
+import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
 import pe.com.clinicasakura.ClinicaSakura.repository.EmpleadoRepository;
 import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 
@@ -38,19 +40,23 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
     @Override
     public EmpleadoEntity update(EmpleadoEntity empleado) {
-        return empleadoRepository.save(empleado);
+        EmpleadoEntity obj = empleadoRepository.getReferenceById(empleado.getCodigo());
+        BeanUtils.copyProperties(empleado, obj);
+        return empleadoRepository.save(obj);
     }
 
     @Override
     public EmpleadoEntity delete(EmpleadoEntity empleado) {
-        empleadoRepository.delete(empleado);
-        return empleado;
+        EmpleadoEntity obj = empleadoRepository.getReferenceById(empleado.getCodigo());
+        obj.setEstado(false);
+        return empleadoRepository.save(obj);
     }
 
     @Override
     public EmpleadoEntity enable(EmpleadoEntity empleado) {
-        // Implementación según la lógica de tu aplicación (activar/desactivar empleado)
-        return empleadoRepository.save(empleado);
+        EmpleadoEntity obj = empleadoRepository.getReferenceById(empleado.getCodigo());
+        obj.setEstado(true);
+        return empleadoRepository.save(obj);
     }
 
     @Override

@@ -39,7 +39,7 @@ public class EmpleadoController {
     public String MostrarEmpleados(
             Model model,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(defaultValue = "7") int size) {
 
         PageRequest pageable = PageRequest.of(page, size);
         Page<EmpleadoEntity> empleados = repositorio.findAllCustom(pageable);
@@ -51,6 +51,22 @@ public class EmpleadoController {
         model.addAttribute("pageSize", size);
 
         return "Empleados/listadoEmpleados";
+    }
+
+    @GetMapping("/habilitar")
+    public String habilitarEmpleado(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "7") int size,
+            Model model) {
+        PageRequest pageable = PageRequest.of(page, size);
+        Page<EmpleadoEntity> productos = repositorio.obtenerPaginas(pageable);
+
+        model.addAttribute("empleados", productos.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", productos.getTotalPages());
+        model.addAttribute("totalItems", productos.getTotalElements());
+        model.addAttribute("pageSize", size);
+        return "Empleados/habilitarEmpleados";
     }
 
     @GetMapping("/registro")
@@ -78,23 +94,33 @@ public class EmpleadoController {
     @GetMapping("/actualizar/{id}")
     public String MostrarActualizarProducto(@PathVariable Long id, Model modelo) {
         modelo.addAttribute("empleado", repositorio.findById(id).get());
-        // modelo.addAttribute("categoriaProducto", repositorio.findAll());
-        return "Almacen/actualizarProducto";
+        modelo.addAttribute("distritos", distritoService.findAll());
+        modelo.addAttribute("cargos", cargoService.findAll());
+        modelo.addAttribute("tiposDocumentos", tipoDocumentoService.findAll());
+        return "Empleados/actualizarEmpleado";
     }
 
     @PostMapping("/actualizar/{id}")
-    public String ActualizarProducto(@PathVariable Long id,
-            @ModelAttribute("producto") EmpleadoEntity empleadoEntity) {
-
+    public String ActualizarEmpleado(@PathVariable Long id,
+            @ModelAttribute("empleado") EmpleadoEntity empleadoEntity) {
+        System.out.println(empleadoEntity);
         repositorio.update(empleadoEntity);
-        return "redirect:/productos";
+        return "redirect:/empleados";
     }
 
     @GetMapping("/eliminar/{id}")
-    public String MostrarEliminarArtefacto(@PathVariable Long id) {
+    public String EliminarEmpleado(@PathVariable Long id) {
         EmpleadoEntity empleadoEntity = repositorio.findById(id).get();
-        System.out.println(empleadoEntity);
+
         repositorio.delete(empleadoEntity);
-        return "redirect:/productos";
+        return "redirect:/empleados";
     }
+
+    @GetMapping("/habilitar/{id}")
+    public String HabilitarEmpleado(@PathVariable Long id) {
+        EmpleadoEntity objcargo = repositorio.findById(id).get();
+        repositorio.enable(objcargo);
+        return "redirect:/empleados";
+    }
+
 }

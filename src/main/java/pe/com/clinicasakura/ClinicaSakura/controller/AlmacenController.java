@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import pe.com.clinicasakura.ClinicaSakura.model.CargoEntity;
 import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.CategoriaProductoService;
-import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 import pe.com.clinicasakura.ClinicaSakura.service.ProductoService;
 
 @Controller
@@ -29,14 +29,10 @@ public class AlmacenController {
     @GetMapping("/productos")
     public String ListarProductos(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "7") int size,
             Model model) {
         PageRequest pageable = PageRequest.of(page, size);
         Page<ProductoEntity> productos = servicio.findAllCustom(pageable);
-        model.addAttribute("productos",
-                productos.getContent());
-        model.addAttribute("productosPage",
-                productos);
 
         model.addAttribute("productos", productos.getContent());
         model.addAttribute("currentPage", page);
@@ -44,6 +40,22 @@ public class AlmacenController {
         model.addAttribute("totalItems", productos.getTotalElements());
         model.addAttribute("pageSize", size);
         return "Almacen/listadoProductos";
+    }
+
+    @GetMapping("/productos/habilitar")
+    public String habilitarProductos(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "7") int size,
+            Model model) {
+        PageRequest pageable = PageRequest.of(page, size);
+        Page<ProductoEntity> productos = servicio.obtenerPaginas(pageable);
+
+        model.addAttribute("productos", productos.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", productos.getTotalPages());
+        model.addAttribute("totalItems", productos.getTotalElements());
+        model.addAttribute("pageSize", size);
+        return "Almacen/habilitarProductos";
     }
 
     @GetMapping("/productos/registro")
@@ -77,25 +89,23 @@ public class AlmacenController {
     @PostMapping("/productos/actualizar/{id}")
     public String ActualizarProducto(@PathVariable Long id,
             @ModelAttribute("producto") ProductoEntity productoEntity) {
-
+        System.out.println(productoEntity);
         servicio.update(productoEntity);
         return "redirect:/productos";
     }
 
-    @GetMapping("/producto/eliminar/{id}")
-    public String MostrarEliminarArtefacto(@PathVariable Long id) {
+    @GetMapping("/productos/eliminar/{id}")
+    public String EliminarProducto(@PathVariable Long id) {
         ProductoEntity productoEntity = servicio.findById(id).get();
-        System.out.println(productoEntity);
+
         servicio.delete(productoEntity);
         return "redirect:/productos";
     }
-    /*
-     * @PostMapping("/productos/eliminar/{id}")
-     * public String EliminarProducto(@PathVariable Long id,
-     * 
-     * @ModelAttribute("producto") ProductoEntity productoEntity) {
-     * servicio.delete(productoEntity);
-     * return "redirect:/productos";
-     * }
-     */
+
+    @GetMapping("/productos/habilitar/{id}")
+    public String HabilitarProducto(@PathVariable Long id) {
+        ProductoEntity objcargo = servicio.findById(id).get();
+        servicio.enable(objcargo);
+        return "redirect:/productos";
+    }
 }
