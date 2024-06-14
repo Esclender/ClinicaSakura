@@ -10,6 +10,8 @@ import pe.com.clinicasakura.ClinicaSakura.service.DistritoService;
 import pe.com.clinicasakura.ClinicaSakura.service.ProveedorService;
 
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 @Controller
 @RequestMapping("/proveedor")
@@ -22,13 +24,23 @@ public class ProveedorController {
     private DistritoService distritoService;
 
     @GetMapping("/mostrar")
-    public String mostrarProveedores(Model model) {
-        List<ProveedorEntity> proveedores = proveedorService.findAll();
-        model.addAttribute("proveedores", proveedores);
-        return "Proveedores/registroProveedores";
+    public String mostrarProveedores(Model model, 
+         @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        
+        PageRequest pageable = PageRequest.of(page, size);
+        Page<ProveedorEntity> proveedores = proveedorService.findAllCustom(pageable);
+        //List<ProveedorEntity> proveedores = proveedorService.findAll();
+        model.addAttribute("proveedores", proveedores.getContent());
+         model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", proveedores.getTotalPages());
+        model.addAttribute("totalItems", proveedores.getTotalElements());
+        model.addAttribute("pageSize", size);
+        
+        return "Proveedores/listadoProveedores";
     }
 
-    @GetMapping()
+    @GetMapping("/registrar")
     public String mostrarFormularioRegistrar(Model model) {
         List<DistritoEntity> distritos = distritoService.findAll();
         model.addAttribute("distritos", distritos);
@@ -40,7 +52,7 @@ public class ProveedorController {
     public String registrarProveedor(@ModelAttribute("proveedor") ProveedorEntity proveedor) {
         System.out.println(proveedor);
         proveedorService.add(proveedor);
-        return "redirect:/proveedor";
+        return "redirect:/proveedor/mostrar";
     }
 
     @GetMapping("/actualizar/{id}")

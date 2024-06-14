@@ -19,7 +19,7 @@ import pe.com.clinicasakura.ClinicaSakura.dtos.RegistroEntradaDto;
 import pe.com.clinicasakura.ClinicaSakura.model.ProveedorEntity;
 
 @Controller
-@RequestMapping("/entrada")
+//@RequestMapping("/entrada")
 public class RegistroEntradaController {
 
     @Autowired
@@ -57,7 +57,7 @@ public class RegistroEntradaController {
 
         System.out.println(registro);
 
-        return "redirect:/entrada/registrar";
+        return "redirect:/entrada/mostrar";
     }
 
     @ModelAttribute("registro")

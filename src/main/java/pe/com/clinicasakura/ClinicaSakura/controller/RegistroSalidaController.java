@@ -23,7 +23,7 @@ import pe.com.clinicasakura.ClinicaSakura.service.DetalleSalidaService;
 import pe.com.clinicasakura.ClinicaSakura.service.RegistroSalidaService;
 
 @Controller
-@RequestMapping("/salidas")
+//@RequestMapping("/salida")
 public class RegistroSalidaController {
     
     @Autowired
@@ -43,7 +43,7 @@ public class RegistroSalidaController {
 
     
 
-    @GetMapping("/registrar")
+    @GetMapping("/salida/registrar")
     public String mostrarFormularioRegistro(Model model) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         
@@ -60,7 +60,7 @@ public class RegistroSalidaController {
         return "Salida/registroSalidas"; // Nombre del archivo HTML o Thymeleaf
     }
 
-    @PostMapping("/registrar")
+    @PostMapping("/salida/registrar")
     public String registrarRegistro(@ModelAttribute("registro") RegistroSalidaDto registro){
   
         System.out.println(registro);
