@@ -1,11 +1,9 @@
 package pe.com.clinicasakura.ClinicaSakura.service;
 
 import pe.com.clinicasakura.ClinicaSakura.model.DetalleEntradaEntity;
-import java.util.List;
+import pe.com.clinicasakura.ClinicaSakura.service.base.BaseService;
 
-public interface DetalleEntradaService {
+public interface DetalleEntradaService extends BaseService<DetalleEntradaEntity>{
     
-    List<DetalleEntradaEntity> findAll();
-
-    DetalleEntradaEntity add(DetalleEntradaEntity detalleEntrada);
+ 
 }
