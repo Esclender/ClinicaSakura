@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pe.com.clinicasakura.ClinicaSakura.model.DetalleEntradaEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.DetalleEntradaService;
 
-
 @Controller
 @RequestMapping("/entrada")
 public class DetalleEntradaController {
@@ -21,12 +20,11 @@ public class DetalleEntradaController {
     @Autowired
     private DetalleEntradaService detalleEntradaService;
 
-
-    @GetMapping("/mostrar")
+    @GetMapping()
     public String ListadoEntradas(
-            Model model,  
+            Model model,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(defaultValue = "7") int size) {
 
         PageRequest pageable = PageRequest.of(page, size);
         Page<DetalleEntradaEntity> detalleEntrada = detalleEntradaService.findAllCustom(pageable);
@@ -41,6 +39,28 @@ public class DetalleEntradaController {
         model.addAttribute("pageSize", size);
         model.addAttribute("fecha", formattedDate);
 
-        return "Entradas/listadoEntradas"; 
+        return "Entradas/listadoEntradas";
+    }
+
+    @GetMapping("/habilitar")
+    public String HabilitarEntradas(
+            Model model,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "7") int size) {
+
+        PageRequest pageable = PageRequest.of(page, size);
+        Page<DetalleEntradaEntity> detalleEntrada = detalleEntradaService.obtenerPaginas(pageable);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String formattedDate = dateFormat.format(new Date());
+
+        // Agregar datos al modelo
+        model.addAttribute("detalles", detalleEntrada.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", detalleEntrada.getTotalPages());
+        model.addAttribute("totalItems", detalleEntrada.getTotalElements());
+        model.addAttribute("pageSize", size);
+        model.addAttribute("fecha", formattedDate);
+
+        return "Entradas/habilitarEntradas";
     }
 }

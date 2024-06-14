@@ -15,34 +15,32 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import pe.com.clinicasakura.ClinicaSakura.model.base.BaseEntity;
 
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 @Entity(name = "DetalleSalidaEntity")
 @Table(name = "detallesalida")
-public class DetalleSalidaEntity extends BaseEntity
-    implements Serializable{
-    
+public class DetalleSalidaEntity
+        implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "codigo_detalle_salida")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long codigo;
-    
+
     @NotEmpty
     @Column(name = "cantidad_producto")
     private int cantidadProducto;
-    
+
     @ManyToOne
     @JoinColumn(name = "codigo_registro_salida", nullable = false)
     private RegistroSalidaEntity codigoRegistroSalida;
-    
-    
+
     @ManyToOne
     @JoinColumn(name = "codigo_producto", nullable = false)
     private ProductoEntity codigoProducto;

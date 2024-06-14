@@ -5,9 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pe.com.clinicasakura.ClinicaSakura.model.DetalleEntradaEntity;
-import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
-import pe.com.clinicasakura.ClinicaSakura.model.RegistroEntradaEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.DetalleEntradaService;
 import pe.com.clinicasakura.ClinicaSakura.service.ProductoService;
 import pe.com.clinicasakura.ClinicaSakura.service.ProveedorService;
@@ -16,10 +13,12 @@ import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 
 import java.util.Date;
 import pe.com.clinicasakura.ClinicaSakura.dtos.RegistroEntradaDto;
-import pe.com.clinicasakura.ClinicaSakura.model.ProveedorEntity;
+import pe.com.clinicasakura.ClinicaSakura.model.DetalleEntradaEntity;
+import pe.com.clinicasakura.ClinicaSakura.model.EmpleadoEntity;
+import pe.com.clinicasakura.ClinicaSakura.model.RegistroEntradaEntity;
 
 @Controller
-//@RequestMapping("/entrada")
+// @RequestMapping("/entrada")
 public class RegistroEntradaController {
 
     @Autowired
@@ -52,12 +51,42 @@ public class RegistroEntradaController {
         return "Entradas/registroEntradas"; // Nombre del archivo HTML o Thymeleaf
     }
 
-    @PostMapping("/registrar")
+    @PostMapping("/entrada/registrar")
     public String registrarRegistro(@ModelAttribute("registro") RegistroEntradaDto registro) {
+        RegistroEntradaEntity registroEntrada = new RegistroEntradaEntity();
+        registroEntrada.setCodigoEmpleado(registro.getEmpleado());
+        registroEntrada.setCodigoProveedor(registro.getProveedor());
+        registroEntrada.setFecha(new Date());
+        RegistroEntradaEntity objSaved = registroEntradaService.add(registroEntrada);
 
-        System.out.println(registro);
+        System.out.println(objSaved);
 
-        return "redirect:/entrada/mostrar";
+        DetalleEntradaEntity detalles = new DetalleEntradaEntity();
+        detalles.setCantidadProducto(registro.getCantidadProducto());
+        detalles.setCodigoProducto(registro.getProducto());
+        detalles.setPrecioProducto(registro.getPrecioProducto());
+        detalles.setCodigoRegistroEntrada(objSaved);
+        detalleEntradaService.add(detalles);
+
+        return "redirect:/entrada";
+    }
+
+    @GetMapping("/entrada/eliminar/{id}")
+    public String EliminarEntrada(@PathVariable Long id) {
+        RegistroEntradaEntity rt = registroEntradaService.findById(id).get();
+        // EmpleadoEntity empleadoEntity = repositorio.findById(id).get();
+
+        registroEntradaService.delete(rt);
+        return "redirect:/entrada";
+    }
+
+    @GetMapping("/entrada/habilitar/{id}")
+    public String HabilitarEntrada(@PathVariable Long id) {
+        RegistroEntradaEntity rt = registroEntradaService.findById(id).get();
+        // EmpleadoEntity empleadoEntity = repositorio.findById(id).get();
+
+        registroEntradaService.enable(rt);
+        return "redirect:/entrada";
     }
 
     @ModelAttribute("registro")

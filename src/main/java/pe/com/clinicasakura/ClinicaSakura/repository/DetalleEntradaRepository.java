@@ -9,6 +9,7 @@ import pe.com.clinicasakura.ClinicaSakura.repository.base.BaseRepository;
 
 @Repository
 public interface DetalleEntradaRepository extends BaseRepository<DetalleEntradaEntity, Long> {
-    @Query("select d from DetalleEntradaEntity d where d.estado=true")
-     Page<DetalleEntradaEntity> findAllCustom(Pageable pageable);
+
+  @Query("SELECT de FROM DetalleEntradaEntity de JOIN de.codigoRegistroEntrada re WHERE re.estado = true")
+  Page<DetalleEntradaEntity> findAllCustom(Pageable pageable);
 }

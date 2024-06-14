@@ -11,14 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pe.com.clinicasakura.ClinicaSakura.model.DetalleSalidaEntity;
-import pe.com.clinicasakura.ClinicaSakura.model.EmpleadoEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.DetalleSalidaService;
-
-import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
-import pe.com.clinicasakura.ClinicaSakura.service.ProductoService;
-import pe.com.clinicasakura.ClinicaSakura.service.ProveedorService;
-import pe.com.clinicasakura.ClinicaSakura.service.RegistroSalidaService;
-
 
 @Controller
 @RequestMapping("/salida")
@@ -27,10 +20,10 @@ public class DetalleSalidaController {
     @Autowired
     private DetalleSalidaService detalleSalidaService;
 
-    @GetMapping("/mostrar")
+    @GetMapping()
     public String ListadoSalidas(
-            Model model,  @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            Model model, @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "7") int size) {
 
         PageRequest pageable = PageRequest.of(page, size);
         Page<DetalleSalidaEntity> detalleSalida = detalleSalidaService.findAllCustom(pageable);
@@ -44,9 +37,30 @@ public class DetalleSalidaController {
         model.addAttribute("totalItems", detalleSalida.getTotalElements());
         model.addAttribute("pageSize", size);
 
-    
         model.addAttribute("fecha", formattedDate);
 
-        return "Salida/listadoSalida"; 
+        return "Salida/listadoSalida";
+    }
+
+    @GetMapping("/habilitar")
+    public String HabilitarSalidas(
+            Model model, @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "7") int size) {
+
+        PageRequest pageable = PageRequest.of(page, size);
+        Page<DetalleSalidaEntity> detalleSalida = detalleSalidaService.obtenerPaginas(pageable);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String formattedDate = dateFormat.format(new Date());
+
+        // Agregar datos al modelo
+        model.addAttribute("detalles", detalleSalida.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", detalleSalida.getTotalPages());
+        model.addAttribute("totalItems", detalleSalida.getTotalElements());
+        model.addAttribute("pageSize", size);
+
+        model.addAttribute("fecha", formattedDate);
+
+        return "Salida/habilitarSalida";
     }
 }

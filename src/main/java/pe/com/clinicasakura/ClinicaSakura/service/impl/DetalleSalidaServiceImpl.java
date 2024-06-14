@@ -15,9 +15,9 @@ import java.util.Optional;
 
 @Service
 public class DetalleSalidaServiceImpl implements DetalleSalidaService {
-    
+
     @Autowired
-    private  DetalleSalidaRepository detalleSalidaRepository;
+    private DetalleSalidaRepository detalleSalidaRepository;
 
     @Override
     public List<DetalleSalidaEntity> findAll() {
@@ -32,28 +32,31 @@ public class DetalleSalidaServiceImpl implements DetalleSalidaService {
     @Override
     public Page<DetalleSalidaEntity> findAllCustom(Pageable pageable) {
         return detalleSalidaRepository.findAllCustom(pageable);
-   }
+    }
 
     @Override
     public Optional<DetalleSalidaEntity> findById(Long id) {
-     return detalleSalidaRepository.findById(id);
+        return detalleSalidaRepository.findById(id);
     }
 
     @Override
     public DetalleSalidaEntity update(DetalleSalidaEntity t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from
+                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public DetalleSalidaEntity delete(DetalleSalidaEntity t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from
+                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public DetalleSalidaEntity enable(DetalleSalidaEntity t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from
+                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
     @Override
     public Page<DetalleSalidaEntity> obtenerPaginas(Pageable pageable) {
         return detalleSalidaRepository.findAll(pageable);

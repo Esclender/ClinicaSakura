@@ -25,7 +25,7 @@
     <!-- Contenido principal -->
     <div class="col-start-2 col-end-7 row-start-2 row-end-8 mx-8">
       <div class="flex flex-row justify-between self-center">
-        <h2 class="text-3xl font-medium font-kanit">Registro de Entradas</h2>
+        <h2 class="text-3xl font-medium font-kanit">Habilitar Entradas</h2>
         <div>
           <a th:href="@{/registrar}">
             <button type="button"
@@ -38,14 +38,8 @@
       <div class="relative bg-white mt-2 rounded-[20px] h-full ">
         <!-- Table and filter -->
 
-        <div class="flex flex-row justify-end self-center">
-          <a th:href="@{/entrada/habilitar}">
-            <button type="button"
-              class="text-white text-md bg-green-container shadow-lile-shadow focus:outline-none focus:ring-4 focus:ring-blue-300 font-regular rounded-md text-sm  text-center m-5 p-2">
-              Habilitar
-              Entradas
-            </button>
-          </a>
+        <div class="flex flex-row justify-end self-center mb-5">
+
         </div>
         <!-- Tabla de detalles -->
         <div class="float- overflow-x-auto mx-4 sm:rounded-lg h-[80%]">
@@ -69,7 +63,10 @@
                     Empleado
                   </th>
                   <th scope="col" class="px-6 py-3">
-                    proveedor
+                    Proveedor
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    Estado
                   </th>
                   <th scope="col" class="px-4 py-3">
                     Acciones
@@ -98,20 +95,25 @@
                   <th scope="row" th:text="${detalle.codigoRegistroEntrada.codigoProveedor.nombre}"
                     class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap "></th>
 
+                  <td th:text="${detalle.codigoRegistroEntrada.estado ? 'Habilitado':'Deshabilitado'}">
+                  </td>
+
+
+
                   <td class="px-2 py-4 ">
 
-                    <!-- <a th:href="@{/detalles/actualizar/{id}(id=${detalle.codigo})}"
+                    <a th:href="@{/entrada/habilitar/{id}(id=${detalle.codigo})}"
                       class="ml-1 p-2 px-2 w-8 rounded-lg bg-white shadow-md">
                       <button>
-                        <i class="fa-regular fa-pen-to-square text-[18px]"></i>
+                        <i class="fa-solid fa-check text-[18px] text-green-container"></i>
                       </button>
-                    </a> -->
+                    </a>
 
                     <a th:href="@{/entrada/eliminar/{id}(id=${detalle.codigo})}"
                       class="ml-1 p-2 px-3 w-8 rounded-lg bg-white shadow-md"
                       onclick="confirmarEliminacion(event, this)">
                       <button>
-                        <i class="fa-regular fa-trash-can text-red-600 text-[18px]"></i>
+                        <i class="fa-solid fa-xmark text-red-600 text-[18px]"></i>
                       </button>
                     </a>
 

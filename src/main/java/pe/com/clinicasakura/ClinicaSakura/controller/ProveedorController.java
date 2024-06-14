@@ -23,20 +23,20 @@ public class ProveedorController {
     @Autowired
     private DistritoService distritoService;
 
-    @GetMapping("/mostrar")
-    public String mostrarProveedores(Model model, 
-         @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
-        
+    @GetMapping()
+    public String mostrarProveedores(Model model,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "7") int size) {
+
         PageRequest pageable = PageRequest.of(page, size);
         Page<ProveedorEntity> proveedores = proveedorService.findAllCustom(pageable);
-        //List<ProveedorEntity> proveedores = proveedorService.findAll();
+        // List<ProveedorEntity> proveedores = proveedorService.findAll();
         model.addAttribute("proveedores", proveedores.getContent());
-         model.addAttribute("currentPage", page);
+        model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", proveedores.getTotalPages());
         model.addAttribute("totalItems", proveedores.getTotalElements());
         model.addAttribute("pageSize", size);
-        
+
         return "Proveedores/listadoProveedores";
     }
 

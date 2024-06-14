@@ -45,8 +45,7 @@ public class RegistroEntradaServiceImpl implements RegistroEntradaService {
     @Override
     public RegistroEntradaEntity delete(RegistroEntradaEntity registroEntrada) {
         RegistroEntradaEntity obj = registroEntradaRepository.getById(registroEntrada.getCodigo());
-        // Aquí se asume que hay un campo estado en RegistroEntradaEntity que se maneja
-        // similar a ArtefactoEntity
+
         obj.setEstado(false);
         return registroEntradaRepository.save(obj);
     }

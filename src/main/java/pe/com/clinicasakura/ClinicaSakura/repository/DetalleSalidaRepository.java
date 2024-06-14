@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import pe.com.clinicasakura.ClinicaSakura.model.DetalleSalidaEntity;
 
 public interface DetalleSalidaRepository extends JpaRepository<DetalleSalidaEntity, Long> {
-     @Query("select d from DetalleSalidaEntity d where d.estado=true")
-     Page<DetalleSalidaEntity> findAllCustom(Pageable pageable);
 
+  @Query("SELECT de FROM DetalleSalidaEntity de JOIN de.codigoRegistroSalida re WHERE re.estado = true")
+  Page<DetalleSalidaEntity> findAllCustom(Pageable pageable);
 }
