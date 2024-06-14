@@ -40,7 +40,7 @@ public class ProveedorController {
         return "Proveedores/listadoProveedores";
     }
 
-    @GetMapping()
+    @GetMapping("/registrar")
     public String mostrarFormularioRegistrar(Model model) {
         List<DistritoEntity> distritos = distritoService.findAll();
         model.addAttribute("distritos", distritos);
@@ -52,7 +52,7 @@ public class ProveedorController {
     public String registrarProveedor(@ModelAttribute("proveedor") ProveedorEntity proveedor) {
         System.out.println(proveedor);
         proveedorService.add(proveedor);
-        return "redirect:/proveedor";
+        return "redirect:/proveedor/mostrar";
     }
 
     @GetMapping("/actualizar/{id}")
