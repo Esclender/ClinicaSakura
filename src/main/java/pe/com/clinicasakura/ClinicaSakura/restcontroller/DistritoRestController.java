@@ -8,22 +8,20 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import pe.com.clinicasakura.ClinicaSakura.model.DistritoEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.DistritoService;
 
-/**
- *
- * @author Rachel
- */
+@RestController
+@RequestMapping("rest/distrito")
 public class DistritoRestController {
     
     @Autowired
@@ -34,10 +32,6 @@ public class DistritoRestController {
         return service.findAll();
     }
 
-    @GetMapping("/custom")
-    public Page<DistritoEntity> findAllCustom(Pageable pageable) {
-        return service.findAllCustom(pageable);
-    }
 
     @GetMapping("/{id}")
     public Optional<DistritoEntity> findById(Long id) {
@@ -45,7 +39,7 @@ public class DistritoRestController {
     }
 
    @PostMapping
-    public DistritoEntity add(DistritoEntity t) {
+    public DistritoEntity add(@RequestBody DistritoEntity t) {
         return service.add(t);
     }
 
@@ -58,10 +52,5 @@ public class DistritoRestController {
     public DistritoEntity delete(@PathVariable long id, @RequestBody DistritoEntity t) {
         return service.delete(t);
     }
-
-   @PutMapping("/enable/{id}")
-    public DistritoEntity enable(@PathVariable long id, @RequestBody DistritoEntity t) {
-        return service.enable(t);
-    }
-    
+  
 }

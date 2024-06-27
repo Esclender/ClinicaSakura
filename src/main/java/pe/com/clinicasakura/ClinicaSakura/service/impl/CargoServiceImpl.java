@@ -33,7 +33,7 @@ public class CargoServiceImpl implements CargoService {
         return cargoRepository.save(cargo);
     }
 
-    @Override
+    
     public void deleteById(Long id) {
         cargoRepository.deleteById(id);
     }

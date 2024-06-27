@@ -31,12 +31,12 @@ public class AlmacenRestController {
     }
 
     @GetMapping("/{id}")
-    public Optional<ProductoEntity> findById(Long id) {
+    public Optional<ProductoEntity> findById(@PathVariable Long id) {
         return service.findById(id);
     }
 
    @PostMapping
-    public ProductoEntity add(ProductoEntity t) {
+    public ProductoEntity add(@RequestBody ProductoEntity t) {
         return service.add(t);
     }
 

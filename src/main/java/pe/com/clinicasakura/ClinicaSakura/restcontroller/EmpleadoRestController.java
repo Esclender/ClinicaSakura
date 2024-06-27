@@ -11,7 +11,7 @@ import pe.com.clinicasakura.ClinicaSakura.model.EmpleadoEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 
 @RestController
-@RequestMapping("/empleado")
+@RequestMapping("rest/empleado")
 public class EmpleadoRestController {
     @Autowired
     private EmpleadoService service;
@@ -27,12 +27,12 @@ public class EmpleadoRestController {
     }
 
     @GetMapping("/{id}")
-    public Optional<EmpleadoEntity> findById(Long id) {
+    public Optional<EmpleadoEntity> findById(@PathVariable Long id) {
         return service.findById(id);
     }
 
    @PostMapping
-    public EmpleadoEntity add(EmpleadoEntity t) {
+    public EmpleadoEntity add(@RequestBody EmpleadoEntity t) {
         return service.add(t);
     }
 
