@@ -16,21 +16,28 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig  {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/login", "/register", "/css/**", "/js/**").permitAll()
-                        .anyRequest().authenticated()
-                )
-                .formLogin((form) -> form
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/inicio")
-                        .permitAll()
-                )
-                .logout((logout) -> logout
-                        .permitAll()
-                );
+        // http
+        //         .authorizeHttpRequests((authorize) -> authorize
+        //                 .requestMatchers("/login", "/register", "/css/**", "/js/**").permitAll()
+        //                 .anyRequest().authenticated()
+        //         )
+        //         .formLogin((form) -> form
+        //                 .loginPage("/login")
+        //                 .defaultSuccessUrl("/inicio")
+        //                 .permitAll()
+        //         )
+        //         .logout((logout) -> logout
+        //                 .permitAll()
+        //         );
 
-        return http.build();
+        // return http.build();
+        http
+        .authorizeHttpRequests((authorize) -> authorize
+                .anyRequest().permitAll()  // Permitir todas las solicitudes sin autenticación
+        )
+        .csrf().disable();  // Deshabilitar CSRF para permitir solicitudes POST desde Postman
+
+return http.build();
     }
     
     @Bean

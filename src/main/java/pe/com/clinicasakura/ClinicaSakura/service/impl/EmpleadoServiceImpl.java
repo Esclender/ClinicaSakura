@@ -27,6 +27,10 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     public List<EmpleadoEntity> findAll() {
         return empleadoRepository.findAll();
     }
+    @Override
+    public Page<EmpleadoEntity> findAllCustom(Pageable pageable) {
+        return empleadoRepository.findAllCustom(pageable);
+    }
 
     @Override
     public Optional<EmpleadoEntity> findById(Long id) {
@@ -64,8 +68,5 @@ public class EmpleadoServiceImpl implements EmpleadoService {
         return empleadoRepository.findAll(pageable);
     }
 
-    @Override
-    public Page<EmpleadoEntity> findAllCustom(Pageable pageable) {
-        return empleadoRepository.findAllCustom(pageable);
-    }
+    
 }
