@@ -7,5 +7,4 @@ public interface CargoService {
     List<CargoEntity> findAll();
     CargoEntity findById(Long id);
     CargoEntity save(CargoEntity cargo);
-    void deleteById(Long id);
 }
