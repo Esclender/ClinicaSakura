@@ -6,7 +6,6 @@ package pe.com.clinicasakura.ClinicaSakura.restcontroller;
 
 import java.util.List;
 import java.util.Optional;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +14,7 @@ import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.ProductoService;
 
 @RestController
-@RequestMapping("rest/productos")
+@RequestMapping("/api/v1/productos")
 public class AlmacenRestController {
     @Autowired
     private ProductoService service;

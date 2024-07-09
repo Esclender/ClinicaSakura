@@ -11,7 +11,7 @@ import pe.com.clinicasakura.ClinicaSakura.model.ProveedorEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.ProveedorService;
 
 @RestController
-@RequestMapping("rest/proveedor")
+@RequestMapping("/api/v1/proveedor")
 public class ProveedorRestController {
     @Autowired
     private ProveedorService service;

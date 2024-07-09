@@ -11,7 +11,7 @@ import pe.com.clinicasakura.ClinicaSakura.model.TipoDocumentoEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.TipoDocumentoService;
 
 @RestController
-@RequestMapping("/rest/tipodocumento")
+@RequestMapping("/api/v1/tipodocumento")
 public class TipoDocumentoRestController {
     
     @Autowired

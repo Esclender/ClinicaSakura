@@ -11,7 +11,7 @@ import pe.com.clinicasakura.ClinicaSakura.model.EmpleadoEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 
 @RestController
-@RequestMapping("rest/empleado")
+@RequestMapping("/api/v1/empleado")
 public class EmpleadoRestController {
     @Autowired
     private EmpleadoService service;

@@ -21,7 +21,7 @@ import pe.com.clinicasakura.ClinicaSakura.model.DistritoEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.DistritoService;
 
 @RestController
-@RequestMapping("rest/distrito")
+@RequestMapping("/api/v1/distrito")
 public class DistritoRestController {
     
     @Autowired
