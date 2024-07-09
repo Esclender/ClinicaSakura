@@ -28,19 +28,21 @@
         <img class="w-6 h-6 mr-4 " th:src="@{/delivery.svg}" alt="">
         <span>Proveedores</span>
       </a>
-      <a th:href="@{/entrada}" th:class=" ${selectedPage==5 ? 'active w-full my-1' : 'w-full' }">
+      <!-- <a th:href="@{/entrada}" th:class=" ${selectedPage==5 ? 'active w-full my-1' : 'w-full' }">
         <img class="w-6 h-6 mr-4 " th:src="@{/package-plus.svg}" alt="">
         <span>Entradas</span>
       </a>
       <a th:href="@{/salida}" th:class=" ${selectedPage==6 ? 'active w-full my-1' : 'w-full' }">
         <img class="w-6 h-6 mr-4 " th:src="@{/package-minus.svg}" alt="">
         <span>Salidas</span>
-      </a>
+      </a> -->
 
     </div>
-    <a href="#" class=" px-4 w-full font-kanit font-regular logout hover:mr-12">
-      <img class="w-6 h-6 mr-4" th:src="@{/logout-01.svg}" alt="">
-      <span>Cerrar</span>
-    </a>
+    <form th:action="@{/logout}" method="post" class="px-4 w-full font-kanit font-regular logout hover:mr-12">
+      <button type="submit" class="w-full text-left flex items-center">
+        <img class="w-6 h-6 mr-4" th:src="@{/logout-01.svg}" alt="">
+        <span>Cerrar</span>
+      </button>
+    </form>
   </div>
 </section>
