@@ -13,7 +13,6 @@ public class CargoServiceImpl implements CargoService {
 
     private final CargoRepository cargoRepository;
 
-    @Autowired
     public CargoServiceImpl(CargoRepository cargoRepository) {
         this.cargoRepository = cargoRepository;
     }
@@ -33,7 +32,6 @@ public class CargoServiceImpl implements CargoService {
         return cargoRepository.save(cargo);
     }
 
-    
     public void deleteById(Long id) {
         cargoRepository.deleteById(id);
     }

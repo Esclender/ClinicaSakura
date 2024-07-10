@@ -15,7 +15,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import pe.com.clinicasakura.ClinicaSakura.model.base.BaseEntity;
 
 @SuperBuilder
 @AllArgsConstructor
