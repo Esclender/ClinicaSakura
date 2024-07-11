@@ -1,4 +1,4 @@
-package pe.com.clinicasakura.ClinicaSakura.model.security;
+package pe.com.clinicasakura.ClinicaSakura.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,5 +11,5 @@ public class LoginAuthenticationRequestDTO {
 
   private String username;
   private String password;
-  
+
 }

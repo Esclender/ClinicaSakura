@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import pe.com.clinicasakura.ClinicaSakura.model.security.LoginAuthenticationRequestDTO;
-import pe.com.clinicasakura.ClinicaSakura.model.security.LoginAuthenticationResponse;
+import pe.com.clinicasakura.ClinicaSakura.dtos.LoginAuthenticationRequestDTO;
+import pe.com.clinicasakura.ClinicaSakura.dtos.LoginAuthenticationResponse;
 import pe.com.clinicasakura.ClinicaSakura.utils.JwtUtil;
 
 @Controller

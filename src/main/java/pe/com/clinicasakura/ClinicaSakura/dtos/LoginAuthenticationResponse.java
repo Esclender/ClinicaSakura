@@ -1,4 +1,4 @@
-package pe.com.clinicasakura.ClinicaSakura.model.security;
+package pe.com.clinicasakura.ClinicaSakura.dtos;
 
 import lombok.Data;
 
