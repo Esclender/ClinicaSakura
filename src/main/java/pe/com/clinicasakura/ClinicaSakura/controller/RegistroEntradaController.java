@@ -14,7 +14,6 @@ import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 import java.util.Date;
 import pe.com.clinicasakura.ClinicaSakura.dtos.RegistroEntradaDto;
 import pe.com.clinicasakura.ClinicaSakura.model.DetalleEntradaEntity;
-import pe.com.clinicasakura.ClinicaSakura.model.EmpleadoEntity;
 import pe.com.clinicasakura.ClinicaSakura.model.RegistroEntradaEntity;
 
 @Controller

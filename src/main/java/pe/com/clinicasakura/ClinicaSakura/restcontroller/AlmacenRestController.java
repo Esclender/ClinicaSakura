@@ -9,6 +9,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.ProductoService;
@@ -18,7 +19,7 @@ import pe.com.clinicasakura.ClinicaSakura.service.ProductoService;
 public class AlmacenRestController {
     @Autowired
     private ProductoService service;
-    
+
     @GetMapping
     public List<ProductoEntity> findAll() {
         return service.findAll();
@@ -34,22 +35,23 @@ public class AlmacenRestController {
         return service.findById(id);
     }
 
-   @PostMapping
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public ProductoEntity add(@RequestBody ProductoEntity t) {
         return service.add(t);
     }
 
-  @PutMapping("/{id}")
+    @PutMapping("/{id}")
     public ProductoEntity update(@PathVariable long id, @RequestBody ProductoEntity t) {
         return service.update(t);
     }
 
-   @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ProductoEntity delete(@PathVariable long id, @RequestBody ProductoEntity t) {
         return service.delete(t);
     }
 
-   @PutMapping("/enable/{id}")
+    @PutMapping("/enable/{id}")
     public ProductoEntity enable(@PathVariable long id, @RequestBody ProductoEntity t) {
         return service.enable(t);
     }

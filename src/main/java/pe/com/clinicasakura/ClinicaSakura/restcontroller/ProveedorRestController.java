@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pe.com.clinicasakura.ClinicaSakura.model.ProveedorEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.ProveedorService;
@@ -15,7 +16,7 @@ import pe.com.clinicasakura.ClinicaSakura.service.ProveedorService;
 public class ProveedorRestController {
     @Autowired
     private ProveedorService service;
-    
+
     @GetMapping
     public List<ProveedorEntity> findAll() {
         return service.findAll();
@@ -32,6 +33,7 @@ public class ProveedorRestController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public ProveedorEntity add(@RequestBody ProveedorEntity t) {
         return service.add(t);
     }

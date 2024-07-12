@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pe.com.clinicasakura.ClinicaSakura.model.EmpleadoEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
@@ -15,7 +16,7 @@ import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 public class EmpleadoRestController {
     @Autowired
     private EmpleadoService service;
-    
+
     @GetMapping
     public List<EmpleadoEntity> findAll() {
         return service.findAll();
@@ -31,22 +32,23 @@ public class EmpleadoRestController {
         return service.findById(id);
     }
 
-   @PostMapping
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public EmpleadoEntity add(@RequestBody EmpleadoEntity t) {
         return service.add(t);
     }
 
-  @PutMapping("/{id}")
+    @PutMapping("/{id}")
     public EmpleadoEntity update(@PathVariable long id, @RequestBody EmpleadoEntity t) {
         return service.update(t);
     }
 
-   @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")
     public EmpleadoEntity delete(@PathVariable long id, @RequestBody EmpleadoEntity t) {
         return service.delete(t);
     }
 
-   @PutMapping("/enable/{id}")
+    @PutMapping("/enable/{id}")
     public EmpleadoEntity enable(@PathVariable long id, @RequestBody EmpleadoEntity t) {
         return service.enable(t);
     }
