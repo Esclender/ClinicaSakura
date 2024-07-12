@@ -2,7 +2,6 @@
 package pe.com.clinicasakura.ClinicaSakura.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,8 +23,8 @@ public class CategoriaProductoServiceImpl implements CategoriaProductoService {
     }
 
     @Override
-    public Optional<CategoriaProductoEntity> findById(Long id) {
-        return repositorio.findById(id);
+    public CategoriaProductoEntity findById(Long id) {
+        return repositorio.findById(id).orElseThrow();
     }
 
     @Override
@@ -42,14 +41,14 @@ public class CategoriaProductoServiceImpl implements CategoriaProductoService {
 
     @Override
     public CategoriaProductoEntity delete(CategoriaProductoEntity t) {
-        CategoriaProductoEntity obj = repositorio.getById(t.getCodigo());
+        CategoriaProductoEntity obj = repositorio.findById(t.getCodigo()).get();
         obj.setEstado(false);
         return repositorio.save(obj);
     }
 
     @Override
     public CategoriaProductoEntity enable(CategoriaProductoEntity t) {
-        CategoriaProductoEntity obj = repositorio.getById(t.getCodigo());
+        CategoriaProductoEntity obj = repositorio.findById(t.getCodigo()).get();
         obj.setEstado(true);
         return repositorio.save(obj);
     }

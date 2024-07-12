@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import pe.com.clinicasakura.ClinicaSakura.model.CargoEntity;
 import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.CategoriaProductoService;
 import pe.com.clinicasakura.ClinicaSakura.service.ProductoService;
@@ -81,7 +80,7 @@ public class AlmacenController {
 
     @GetMapping("/productos/actualizar/{id}")
     public String MostrarActualizarProducto(@PathVariable Long id, Model modelo) {
-        modelo.addAttribute("producto", servicio.findById(id).get());
+        modelo.addAttribute("producto", servicio.findById(id));
         modelo.addAttribute("categoriaProducto", categoriaProducto.findAll());
         return "Almacen/actualizarProducto";
     }
@@ -96,7 +95,7 @@ public class AlmacenController {
 
     @GetMapping("/productos/eliminar/{id}")
     public String EliminarProducto(@PathVariable Long id) {
-        ProductoEntity productoEntity = servicio.findById(id).get();
+        ProductoEntity productoEntity = servicio.findById(id);
 
         servicio.delete(productoEntity);
         return "redirect:/productos";
@@ -104,7 +103,7 @@ public class AlmacenController {
 
     @GetMapping("/productos/habilitar/{id}")
     public String HabilitarProducto(@PathVariable Long id) {
-        ProductoEntity objcargo = servicio.findById(id).get();
+        ProductoEntity objcargo = servicio.findById(id);
         servicio.enable(objcargo);
         return "redirect:/productos";
     }

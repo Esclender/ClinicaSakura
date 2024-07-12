@@ -1,7 +1,6 @@
 package pe.com.clinicasakura.ClinicaSakura.restcontroller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -38,7 +37,7 @@ public class RegistroEntradaRestController {
     }
 
     @GetMapping("/{id}")
-    public Optional<RegistroEntradaEntity> findById(@PathVariable Long id) {
+    public RegistroEntradaEntity findById(@PathVariable Long id) {
         return service.findById(id);
     }
 

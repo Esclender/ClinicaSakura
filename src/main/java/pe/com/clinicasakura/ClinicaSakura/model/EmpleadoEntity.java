@@ -18,7 +18,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -106,4 +105,5 @@ public class EmpleadoEntity extends BaseEntity
     @ManyToOne
     @JoinColumn(name = "codigo_cargo", nullable = false)
     private CargoEntity cargo;
+
 }

@@ -72,7 +72,7 @@ public class RegistroEntradaController {
 
     @GetMapping("/entrada/eliminar/{id}")
     public String EliminarEntrada(@PathVariable Long id) {
-        RegistroEntradaEntity rt = registroEntradaService.findById(id).get();
+        RegistroEntradaEntity rt = registroEntradaService.findById(id);
         // EmpleadoEntity empleadoEntity = repositorio.findById(id).get();
 
         registroEntradaService.delete(rt);
@@ -81,7 +81,7 @@ public class RegistroEntradaController {
 
     @GetMapping("/entrada/habilitar/{id}")
     public String HabilitarEntrada(@PathVariable Long id) {
-        RegistroEntradaEntity rt = registroEntradaService.findById(id).get();
+        RegistroEntradaEntity rt = registroEntradaService.findById(id);
         // EmpleadoEntity empleadoEntity = repositorio.findById(id).get();
 
         registroEntradaService.enable(rt);

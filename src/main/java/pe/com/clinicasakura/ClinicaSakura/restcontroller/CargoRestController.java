@@ -6,7 +6,7 @@ package pe.com.clinicasakura.ClinicaSakura.restcontroller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.web.bind.annotation.*;
 import pe.com.clinicasakura.ClinicaSakura.model.CargoEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.CargoService;
@@ -26,12 +26,6 @@ public class CargoRestController {
     @GetMapping("/{id}")
     public CargoEntity findById(@PathVariable Long id) {
         return service.findById(id);
-    }
-
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public CargoEntity add(@RequestBody CargoEntity t) {
-        return service.save(t);
     }
 
 }

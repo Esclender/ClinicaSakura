@@ -2,7 +2,6 @@
 package pe.com.clinicasakura.ClinicaSakura.service.base;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,18 +10,42 @@ public interface BaseService<T> {
 
     List<T> findAll();
 
-    Page<T> obtenerPaginas(Pageable pageable);
+    default Page<T> obtenerPaginas(Pageable pageable) {
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
 
-    Page<T> findAllCustom(Pageable pageable);
+    default Page<T> findAllCustom(Pageable pageable) {
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
 
-    Optional<T> findById(Long id);
+    T findById(Long id);
 
-    T add(T t);
+    default T add(T t) {
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
 
-    T update(T t);
+    default T update(T t) {
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
 
-    T delete(T t);
+    default T update(T t, Long id) {
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
 
-    T enable(T t);
+    default T delete(T t) {
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
+
+    default T delete(Long id) {
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
+
+    default T enable(T t) {
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
+
+    default T enable(Long id) {
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
 
 }

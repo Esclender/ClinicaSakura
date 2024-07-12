@@ -26,8 +26,8 @@ public class RegistroEntradaServiceImpl implements RegistroEntradaService {
     }
 
     @Override
-    public Optional<RegistroEntradaEntity> findById(Long id) {
-        return registroEntradaRepository.findById(id);
+    public RegistroEntradaEntity findById(Long id) {
+        return registroEntradaRepository.findById(id).get();
     }
 
     @Override

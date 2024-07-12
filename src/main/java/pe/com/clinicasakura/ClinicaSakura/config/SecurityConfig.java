@@ -16,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import pe.com.clinicasakura.ClinicaSakura.exceptions.CustomAccessDeniedHandler;
 import pe.com.clinicasakura.ClinicaSakura.service.security.impl.CustomUserDetailsService;
 import pe.com.clinicasakura.ClinicaSakura.utils.JwtUtil;
 
@@ -27,6 +28,9 @@ public class SecurityConfig {
 
 	@Autowired
 	private JwtUtil jwtUtil;
+
+	@Autowired
+	private CustomAccessDeniedHandler customAccessDeniedHandler;
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -54,6 +58,7 @@ public class SecurityConfig {
 						.permitAll()
 						.requestMatchers("/")
 						.permitAll().anyRequest().authenticated())
+				.exceptionHandling(ex -> ex.accessDeniedHandler(customAccessDeniedHandler))
 				.sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authenticationProvider(authenticationProvider()).addFilterBefore(
 						jwtRequestFilter(), UsernamePasswordAuthenticationFilter.class);

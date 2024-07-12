@@ -1,6 +1,5 @@
 package pe.com.clinicasakura.ClinicaSakura.dtos;
 
-import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,19 +13,15 @@ import pe.com.clinicasakura.ClinicaSakura.model.ProveedorEntity;
 @NoArgsConstructor
 @Data
 public class RegistroEntradaDto {
-    
+
     private ProveedorEntity proveedor;
-    
-    
+
     private EmpleadoEntity empleado;
-    
-    
+
     private int cantidadProducto;
-    
-    
+
     private double precioProducto;
-    
-    
+
     private ProductoEntity producto;
 
 }

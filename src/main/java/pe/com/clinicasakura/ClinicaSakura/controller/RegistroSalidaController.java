@@ -10,12 +10,8 @@ import pe.com.clinicasakura.ClinicaSakura.service.ProductoService;
 import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 
 import java.util.Date;
-import pe.com.clinicasakura.ClinicaSakura.dtos.RegistroEntradaDto;
 import pe.com.clinicasakura.ClinicaSakura.dtos.RegistroSalidaDto;
-import pe.com.clinicasakura.ClinicaSakura.model.DetalleEntradaEntity;
 import pe.com.clinicasakura.ClinicaSakura.model.DetalleSalidaEntity;
-import pe.com.clinicasakura.ClinicaSakura.model.ProveedorEntity;
-import pe.com.clinicasakura.ClinicaSakura.model.RegistroEntradaEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.DestinoService;
 import pe.com.clinicasakura.ClinicaSakura.service.DetalleSalidaService;
 import pe.com.clinicasakura.ClinicaSakura.service.RegistroSalidaService;
@@ -79,7 +75,7 @@ public class RegistroSalidaController {
 
     @GetMapping("/salida/eliminar/{id}")
     public String EliminarSalida(@PathVariable Long id) {
-        RegistroSalidaEntity rt = registroSalidaService.findById(id).get();
+        RegistroSalidaEntity rt = registroSalidaService.findById(id);
         // EmpleadoEntity empleadoEntity = repositorio.findById(id).get();
 
         registroSalidaService.delete(rt);
@@ -88,7 +84,7 @@ public class RegistroSalidaController {
 
     @GetMapping("/salida/habilitar/{id}")
     public String HabilitarSalida(@PathVariable Long id) {
-        RegistroSalidaEntity rt = registroSalidaService.findById(id).get();
+        RegistroSalidaEntity rt = registroSalidaService.findById(id);
         // EmpleadoEntity empleadoEntity = repositorio.findById(id).get();
 
         registroSalidaService.enable(rt);

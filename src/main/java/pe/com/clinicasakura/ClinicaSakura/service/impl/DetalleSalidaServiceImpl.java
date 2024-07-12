@@ -6,7 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import pe.com.clinicasakura.ClinicaSakura.model.DetalleSalidaEntity;
-import pe.com.clinicasakura.ClinicaSakura.model.DetalleSalidaEntity;
 import pe.com.clinicasakura.ClinicaSakura.repository.DetalleSalidaRepository;
 import pe.com.clinicasakura.ClinicaSakura.service.DetalleSalidaService;
 
@@ -35,8 +34,8 @@ public class DetalleSalidaServiceImpl implements DetalleSalidaService {
     }
 
     @Override
-    public Optional<DetalleSalidaEntity> findById(Long id) {
-        return detalleSalidaRepository.findById(id);
+    public DetalleSalidaEntity findById(Long id) {
+        return detalleSalidaRepository.findById(id).get();
     }
 
     @Override

@@ -1,7 +1,6 @@
 package pe.com.clinicasakura.ClinicaSakura.service.impl;
 
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,6 @@ public class RegistroSalidaServiceImpl implements RegistroSalidaService {
 
     private final RegistroSalidaRepository registroSalidaRepository;
 
-    @Autowired
     public RegistroSalidaServiceImpl(RegistroSalidaRepository registroSalidaRepository) {
         this.registroSalidaRepository = registroSalidaRepository;
     }
@@ -33,8 +31,8 @@ public class RegistroSalidaServiceImpl implements RegistroSalidaService {
     }
 
     @Override
-    public Optional<RegistroSalidaEntity> findById(Long id) {
-        return registroSalidaRepository.findById(id);
+    public RegistroSalidaEntity findById(Long id) {
+        return registroSalidaRepository.findById(id).get();
     }
 
     @Override

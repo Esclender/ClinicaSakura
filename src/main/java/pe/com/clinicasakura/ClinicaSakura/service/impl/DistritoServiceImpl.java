@@ -10,7 +10,6 @@ import pe.com.clinicasakura.ClinicaSakura.repository.DistritoRepository;
 import pe.com.clinicasakura.ClinicaSakura.service.DistritoService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class DistritoServiceImpl implements DistritoService {
@@ -24,8 +23,8 @@ public class DistritoServiceImpl implements DistritoService {
     }
 
     @Override
-    public Optional<DistritoEntity> findById(Long id) {
-        return distritoRepository.findById(id);
+    public DistritoEntity findById(Long id) {
+        return distritoRepository.findById(id).get();
     }
 
     @Override
@@ -35,14 +34,14 @@ public class DistritoServiceImpl implements DistritoService {
 
     @Override
     public DistritoEntity update(DistritoEntity distrito) {
-        DistritoEntity existingEntity = distritoRepository.getById(distrito.getCodigo());
+        DistritoEntity existingEntity = distritoRepository.findById(distrito.getCodigo()).get();
         BeanUtils.copyProperties(distrito, existingEntity, "codigo"); // Copia todas las propiedades excepto 'codigo'
         return distritoRepository.save(existingEntity);
     }
 
     @Override
     public DistritoEntity delete(DistritoEntity distrito) {
-        DistritoEntity existingEntity = distritoRepository.getById(distrito.getCodigo());
+        DistritoEntity existingEntity = distritoRepository.findById(distrito.getCodigo()).get();
         distritoRepository.delete(existingEntity);
         return existingEntity;
     }

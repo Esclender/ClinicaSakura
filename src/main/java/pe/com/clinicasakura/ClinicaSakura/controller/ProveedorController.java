@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pe.com.clinicasakura.ClinicaSakura.model.DistritoEntity;
-import pe.com.clinicasakura.ClinicaSakura.model.EmpleadoEntity;
 import pe.com.clinicasakura.ClinicaSakura.model.ProveedorEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.DistritoService;
 import pe.com.clinicasakura.ClinicaSakura.service.ProveedorService;
@@ -75,8 +74,7 @@ public class ProveedorController {
 
     @GetMapping("/actualizar/{id}")
     public String mostrarFormularioActualizar(@PathVariable Long id, Model model) {
-        ProveedorEntity proveedor = proveedorService.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("ID de proveedor no válido: " + id));
+        ProveedorEntity proveedor = proveedorService.findById(id);
         List<DistritoEntity> distritos = distritoService.findAll();
         model.addAttribute("distritos", distritos);
         model.addAttribute("proveedor", proveedor);
@@ -91,15 +89,14 @@ public class ProveedorController {
 
     @GetMapping("/eliminar/{id}")
     public String eliminarProveedor(@PathVariable Long id) {
-        ProveedorEntity proveedor = proveedorService.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("ID de proveedor no válido: " + id));
+        ProveedorEntity proveedor = proveedorService.findById(id);
         proveedorService.delete(proveedor);
         return "redirect:/proveedor";
     }
 
     @GetMapping("/habilitar/{id}")
     public String HabilitarProveedor(@PathVariable Long id) {
-        ProveedorEntity objcargo = proveedorService.findById(id).get();
+        ProveedorEntity objcargo = proveedorService.findById(id);
         proveedorService.enable(objcargo);
         return "redirect:/proveedor";
     }

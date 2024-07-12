@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import pe.com.clinicasakura.ClinicaSakura.model.EmpleadoEntity;
-import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.CargoService;
 import pe.com.clinicasakura.ClinicaSakura.service.DistritoService;
 import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
@@ -93,7 +92,7 @@ public class EmpleadoController {
 
     @GetMapping("/actualizar/{id}")
     public String MostrarActualizarProducto(@PathVariable Long id, Model modelo) {
-        modelo.addAttribute("empleado", repositorio.findById(id).get());
+        modelo.addAttribute("empleado", repositorio.findById(id));
         modelo.addAttribute("distritos", distritoService.findAll());
         modelo.addAttribute("cargos", cargoService.findAll());
         modelo.addAttribute("tiposDocumentos", tipoDocumentoService.findAll());
@@ -109,7 +108,7 @@ public class EmpleadoController {
 
     @GetMapping("/eliminar/{id}")
     public String EliminarEmpleado(@PathVariable Long id) {
-        EmpleadoEntity empleadoEntity = repositorio.findById(id).get();
+        EmpleadoEntity empleadoEntity = repositorio.findById(id);
 
         repositorio.delete(empleadoEntity);
         return "redirect:/empleados";
@@ -117,7 +116,7 @@ public class EmpleadoController {
 
     @GetMapping("/habilitar/{id}")
     public String HabilitarEmpleado(@PathVariable Long id) {
-        EmpleadoEntity objcargo = repositorio.findById(id).get();
+        EmpleadoEntity objcargo = repositorio.findById(id);
         repositorio.enable(objcargo);
         return "redirect:/empleados";
     }

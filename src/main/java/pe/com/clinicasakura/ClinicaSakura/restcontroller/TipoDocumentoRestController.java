@@ -2,7 +2,6 @@
 package pe.com.clinicasakura.ClinicaSakura.restcontroller;
 
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,7 +28,7 @@ public class TipoDocumentoRestController {
     }
 
     @GetMapping("/{id}")
-    public Optional<TipoDocumentoEntity> findById(@PathVariable Long id) {
+    public TipoDocumentoEntity findById(@PathVariable Long id) {
         return service.findById(id);
     }
 

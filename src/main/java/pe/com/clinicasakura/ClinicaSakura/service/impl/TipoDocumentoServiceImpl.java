@@ -8,7 +8,6 @@ import pe.com.clinicasakura.ClinicaSakura.repository.TipoDocumentoRepository;
 import pe.com.clinicasakura.ClinicaSakura.service.TipoDocumentoService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TipoDocumentoServiceImpl implements TipoDocumentoService {
@@ -25,8 +24,8 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
     }
 
     @Override
-    public Optional<TipoDocumentoEntity> findById(Long id) {
-        return tipoDocumentoRepository.findById(id);
+    public TipoDocumentoEntity findById(Long id) {
+        return tipoDocumentoRepository.findById(id).get();
     }
 
     @Override

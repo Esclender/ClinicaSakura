@@ -5,7 +5,6 @@
 package pe.com.clinicasakura.ClinicaSakura.restcontroller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +34,7 @@ public class DistritoRestController {
     }
 
     @GetMapping("/{id}")
-    public Optional<DistritoEntity> findById(Long id) {
+    public DistritoEntity findById(Long id) {
         return service.findById(id);
     }
 

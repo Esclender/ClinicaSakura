@@ -16,7 +16,6 @@ public class DetalleEntradaServiceImpl implements DetalleEntradaService {
 
     private DetalleEntradaRepository detalleEntradaRepository;
 
-    @Autowired
     public DetalleEntradaServiceImpl(DetalleEntradaRepository detalleEntradaRepository) {
         this.detalleEntradaRepository = detalleEntradaRepository;
     }
@@ -37,8 +36,8 @@ public class DetalleEntradaServiceImpl implements DetalleEntradaService {
     }
 
     @Override
-    public Optional<DetalleEntradaEntity> findById(Long id) {
-        return detalleEntradaRepository.findById(id);
+    public DetalleEntradaEntity findById(Long id) {
+        return detalleEntradaRepository.findById(id).get();
     }
 
     @Override

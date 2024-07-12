@@ -34,8 +34,7 @@ public class DistritoController {
 
     @GetMapping("/actualizar/{id}")
     public String mostrarFormularioActualizar(@PathVariable Long id, Model model) {
-        DistritoEntity distrito = distritoService.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Id de distrito inválido: " + id));
+        DistritoEntity distrito = distritoService.findById(id);
         model.addAttribute("distrito", distrito);
         return "distrito/actualizar_distrito"; // Nombre del archivo HTML o Thymeleaf
     }
@@ -49,8 +48,7 @@ public class DistritoController {
 
     @GetMapping("/eliminar/{id}")
     public String eliminarDistrito(@PathVariable Long id) {
-        DistritoEntity distrito = distritoService.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Id de distrito inválido: " + id));
+        DistritoEntity distrito = distritoService.findById(id);
         distritoService.delete(distrito);
         return "redirect:/distrito/mostrar";
     }

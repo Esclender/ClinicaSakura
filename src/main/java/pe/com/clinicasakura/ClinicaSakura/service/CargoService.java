@@ -1,10 +1,8 @@
 package pe.com.clinicasakura.ClinicaSakura.service;
 
 import pe.com.clinicasakura.ClinicaSakura.model.CargoEntity;
-import java.util.List;
+import pe.com.clinicasakura.ClinicaSakura.service.base.BaseService;
 
-public interface CargoService {
-    List<CargoEntity> findAll();
-    CargoEntity findById(Long id);
-    CargoEntity save(CargoEntity cargo);
+public abstract class CargoService implements BaseService<CargoEntity> {
+
 }

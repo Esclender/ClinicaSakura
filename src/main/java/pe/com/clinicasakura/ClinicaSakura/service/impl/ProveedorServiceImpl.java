@@ -10,7 +10,6 @@ import pe.com.clinicasakura.ClinicaSakura.repository.ProveedorRepository;
 import pe.com.clinicasakura.ClinicaSakura.service.ProveedorService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProveedorServiceImpl implements ProveedorService {
@@ -24,8 +23,8 @@ public class ProveedorServiceImpl implements ProveedorService {
     }
 
     @Override
-    public Optional<ProveedorEntity> findById(Long id) {
-        return proveedorRepository.findById(id);
+    public ProveedorEntity findById(Long id) {
+        return proveedorRepository.findById(id).get();
     }
 
     @Override

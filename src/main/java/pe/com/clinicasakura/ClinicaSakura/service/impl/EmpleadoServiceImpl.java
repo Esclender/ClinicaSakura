@@ -6,19 +6,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pe.com.clinicasakura.ClinicaSakura.model.EmpleadoEntity;
-import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
 import pe.com.clinicasakura.ClinicaSakura.repository.EmpleadoRepository;
 import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EmpleadoServiceImpl implements EmpleadoService {
 
+    @Autowired
     private final EmpleadoRepository empleadoRepository;
 
-    @Autowired
     public EmpleadoServiceImpl(EmpleadoRepository empleadoRepository) {
         this.empleadoRepository = empleadoRepository;
     }
@@ -27,14 +25,15 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     public List<EmpleadoEntity> findAll() {
         return empleadoRepository.findAll();
     }
+
     @Override
     public Page<EmpleadoEntity> findAllCustom(Pageable pageable) {
         return empleadoRepository.findAllCustom(pageable);
     }
 
     @Override
-    public Optional<EmpleadoEntity> findById(Long id) {
-        return empleadoRepository.findById(id);
+    public EmpleadoEntity findById(Long id) {
+        return empleadoRepository.findById(id).get();
     }
 
     @Override
@@ -43,8 +42,8 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     }
 
     @Override
-    public EmpleadoEntity update(EmpleadoEntity empleado) {
-        EmpleadoEntity obj = empleadoRepository.getReferenceById(empleado.getCodigo());
+    public EmpleadoEntity update(EmpleadoEntity empleado, Long id) {
+        EmpleadoEntity obj = empleadoRepository.getReferenceById(id);
         BeanUtils.copyProperties(empleado, obj);
         return empleadoRepository.save(obj);
     }
@@ -57,8 +56,8 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     }
 
     @Override
-    public EmpleadoEntity enable(EmpleadoEntity empleado) {
-        EmpleadoEntity obj = empleadoRepository.getReferenceById(empleado.getCodigo());
+    public EmpleadoEntity enable(Long id) {
+        EmpleadoEntity obj = empleadoRepository.getReferenceById(id);
         obj.setEstado(true);
         return empleadoRepository.save(obj);
     }
@@ -68,5 +67,4 @@ public class EmpleadoServiceImpl implements EmpleadoService {
         return empleadoRepository.findAll(pageable);
     }
 
-    
 }
