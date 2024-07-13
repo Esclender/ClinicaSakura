@@ -1,9 +1,6 @@
 package pe.com.clinicasakura.ClinicaSakura.service.impl;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pe.com.clinicasakura.ClinicaSakura.model.DistritoEntity;
 import pe.com.clinicasakura.ClinicaSakura.repository.DistritoRepository;
@@ -27,40 +24,4 @@ public class DistritoServiceImpl implements DistritoService {
         return distritoRepository.findById(id).get();
     }
 
-    @Override
-    public DistritoEntity add(DistritoEntity distrito) {
-        return distritoRepository.save(distrito);
-    }
-
-    @Override
-    public DistritoEntity update(DistritoEntity distrito) {
-        DistritoEntity existingEntity = distritoRepository.findById(distrito.getCodigo()).get();
-        BeanUtils.copyProperties(distrito, existingEntity, "codigo"); // Copia todas las propiedades excepto 'codigo'
-        return distritoRepository.save(existingEntity);
-    }
-
-    @Override
-    public DistritoEntity delete(DistritoEntity distrito) {
-        DistritoEntity existingEntity = distritoRepository.findById(distrito.getCodigo()).get();
-        distritoRepository.delete(existingEntity);
-        return existingEntity;
-    }
-
-    @Override
-    public DistritoEntity enable(DistritoEntity distrito) {
-        // Implementación específica si se requiere activar un distrito
-        return null;
-    }
-
-    @Override
-    public Page<DistritoEntity> obtenerPaginas(Pageable pageable) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'obtenerPaginas'");
-    }
-
-    @Override
-    public Page<DistritoEntity> findAllCustom(Pageable pageable) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAllCustom'");
-    }
 }
