@@ -1,8 +1,7 @@
-package pe.com.clinicasakura.ClinicaSakura.dtos;
+package pe.com.clinicasakura.ClinicaSakura.dtos.empleados;
 
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import pe.com.clinicasakura.ClinicaSakura.model.CargoEntity;
 import pe.com.clinicasakura.ClinicaSakura.model.DistritoEntity;
@@ -10,8 +9,7 @@ import pe.com.clinicasakura.ClinicaSakura.model.EmpleadoEntity;
 import pe.com.clinicasakura.ClinicaSakura.model.TipoDocumentoEntity;
 
 @Data
-@AllArgsConstructor
-public class RegistroEmpleadoDto {
+public class ActualizarEmpleadoDto {
   private String nombre;
   private String apellidoPaterno;
   private String apellidoMaterno;
@@ -25,12 +23,14 @@ public class RegistroEmpleadoDto {
   private Date fechaNacimiento;
   private long codigoDistrito;
   private long codigoCargo;
+  private long codigo;
   private boolean estado;
 
   public EmpleadoEntity ToEmpleadoEntity(CargoEntity cargoEntity, DistritoEntity distritoEntity,
       TipoDocumentoEntity tipoDocumentoEntity) {
 
     EmpleadoEntity entity = new EmpleadoEntity();
+    entity.setCodigo(codigo);
     entity.setNombre(nombre);
     entity.setApellidopaterno(apellidoPaterno);
     entity.setApellidomaterno(apellidoMaterno);

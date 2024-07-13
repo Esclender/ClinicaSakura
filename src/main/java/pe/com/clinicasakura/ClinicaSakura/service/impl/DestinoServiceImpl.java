@@ -13,7 +13,6 @@ public class DestinoServiceImpl implements DestinoService {
 
     private final DestinoRepository destinoRepository;
 
-    @Autowired
     public DestinoServiceImpl(DestinoRepository destinoRepository) {
         this.destinoRepository = destinoRepository;
     }

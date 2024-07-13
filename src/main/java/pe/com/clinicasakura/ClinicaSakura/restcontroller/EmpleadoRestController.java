@@ -2,7 +2,6 @@
 package pe.com.clinicasakura.ClinicaSakura.restcontroller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,7 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import pe.com.clinicasakura.ClinicaSakura.dtos.RegistroEmpleadoDto;
+import pe.com.clinicasakura.ClinicaSakura.dtos.empleados.ActualizarEmpleadoDto;
+import pe.com.clinicasakura.ClinicaSakura.dtos.empleados.RegistroEmpleadoDto;
 import pe.com.clinicasakura.ClinicaSakura.model.CargoEntity;
 import pe.com.clinicasakura.ClinicaSakura.model.DistritoEntity;
 import pe.com.clinicasakura.ClinicaSakura.model.EmpleadoEntity;
@@ -62,8 +62,13 @@ public class EmpleadoRestController {
     }
 
     @PutMapping("/{id}")
-    public EmpleadoEntity update(@PathVariable long id, @RequestBody EmpleadoEntity t) {
-        return service.update(t, id);
+    public EmpleadoEntity update(@PathVariable long id, @RequestBody ActualizarEmpleadoDto t) {
+
+        CargoEntity cargo = cargoService.findById(t.getCodigoCargo());
+        TipoDocumentoEntity tipoDocumento = tipoDocumentoService.findById(t.getCodigoTipoDocumento());
+        DistritoEntity distrito = distritoService.findById(t.getCodigoDistrito());
+
+        return service.update(t.ToEmpleadoEntity(cargo, distrito, tipoDocumento), id);
     }
 
     @DeleteMapping("/{id}")
