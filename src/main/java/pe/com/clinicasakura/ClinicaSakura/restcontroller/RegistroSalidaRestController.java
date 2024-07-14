@@ -3,20 +3,27 @@ package pe.com.clinicasakura.ClinicaSakura.restcontroller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import pe.com.clinicasakura.ClinicaSakura.dtos.salidas.RegistroSalidasResponseDto;
+import pe.com.clinicasakura.ClinicaSakura.dtos.salidas.RegistroSalidasRestDto;
+import pe.com.clinicasakura.ClinicaSakura.model.DestinoEntity;
+import pe.com.clinicasakura.ClinicaSakura.model.DetalleSalidaEntity;
+import pe.com.clinicasakura.ClinicaSakura.model.EmpleadoEntity;
+import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
 import pe.com.clinicasakura.ClinicaSakura.model.RegistroSalidaEntity;
+import pe.com.clinicasakura.ClinicaSakura.repository.DestinoRepository;
+import pe.com.clinicasakura.ClinicaSakura.repository.EmpleadoRepository;
+import pe.com.clinicasakura.ClinicaSakura.repository.ProductoRepository;
+import pe.com.clinicasakura.ClinicaSakura.service.DetalleSalidaService;
+import pe.com.clinicasakura.ClinicaSakura.service.ProductoService;
 import pe.com.clinicasakura.ClinicaSakura.service.RegistroSalidaService;
 
 @RestController
@@ -26,14 +33,24 @@ public class RegistroSalidaRestController {
     @Autowired
     private RegistroSalidaService service;
 
+    @Autowired
+    private DetalleSalidaService detalleService;
+
+    @Autowired
+    private ProductoService productoService;
+
+    @Autowired
+    private EmpleadoRepository empleadoRepository;
+
+    @Autowired
+    private ProductoRepository productoRepository;
+
+    @Autowired
+    private DestinoRepository destinoRepository;
+
     @GetMapping
     public List<RegistroSalidaEntity> findAll() {
         return service.findAll();
-    }
-
-    @GetMapping("/custom")
-    public Page<RegistroSalidaEntity> findAllCustom(Pageable pageable) {
-        return service.findAllCustom(pageable);
     }
 
     @GetMapping("/{id}")
@@ -43,23 +60,35 @@ public class RegistroSalidaRestController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public RegistroSalidaEntity add(@RequestBody RegistroSalidaEntity t) {
-        return service.add(t);
-    }
+    public RegistroSalidasResponseDto add(@RequestBody RegistroSalidasRestDto registro) {
+        EmpleadoEntity empleado = empleadoRepository.findById(registro.getCodigoEmpleado()).get();
+        ProductoEntity producto = productoRepository.findById(registro.getCodigoProducto()).get();
+        DestinoEntity destino = destinoRepository.findById(registro.getCodigoDestino()).get();
 
-    @PutMapping("/{id}")
-    public RegistroSalidaEntity update(@PathVariable long id, @RequestBody RegistroSalidaEntity t) {
-        return service.update(t);
-    }
+        RegistroSalidaEntity registroSalida = new RegistroSalidaEntity();
+        registroSalida.setFecha(registro.getFecha());
+        registroSalida.setCodigoEmpleado(empleado);
+        registroSalida.setCodigoDestino(destino);
+        RegistroSalidaEntity objSaved = service.add(registroSalida);
 
-    @DeleteMapping("/{id}")
-    public RegistroSalidaEntity delete(@PathVariable long id, @RequestBody RegistroSalidaEntity t) {
-        return service.delete(t);
-    }
+        DetalleSalidaEntity detalles = new DetalleSalidaEntity();
+        detalles.setCantidadProducto(registro.getCantidadProducto());
+        detalles.setCodigoProducto(producto);
+        detalles.setCodigoRegistroSalida(objSaved);
+        detalleService.add(detalles);
 
-    @PutMapping("/enable/{id}")
-    public RegistroSalidaEntity enable(@PathVariable long id, @RequestBody RegistroSalidaEntity t) {
-        return service.enable(t);
+        RegistroSalidasResponseDto response = new RegistroSalidasResponseDto();
+        response.setFecha(registro.getFecha());
+        response.setCodigo(objSaved.getCodigo());
+        response.setEmpleado(empleado);
+        response.setDestino(destino);
+        response.setProducto(producto);
+        response.setCantidadProducto(registro.getCantidadProducto());
+
+        producto.decreaseCantidad(registro.getCantidadProducto());
+        productoService.update(producto);
+
+        return response;
     }
 
 }

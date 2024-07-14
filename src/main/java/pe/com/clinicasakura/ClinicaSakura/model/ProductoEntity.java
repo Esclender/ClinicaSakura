@@ -64,4 +64,8 @@ public class ProductoEntity extends BaseEntity implements Serializable {
     public void increaseCantidad(int cantidad) {
         this.cantidadStock = this.cantidadStock + cantidad;
     }
+
+    public void decreaseCantidad(int cantidad) {
+        this.cantidadStock = this.cantidadStock - cantidad;
+    }
 }

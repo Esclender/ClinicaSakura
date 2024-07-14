@@ -10,7 +10,6 @@ import pe.com.clinicasakura.ClinicaSakura.repository.DetalleSalidaRepository;
 import pe.com.clinicasakura.ClinicaSakura.service.DetalleSalidaService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class DetalleSalidaServiceImpl implements DetalleSalidaService {
@@ -36,24 +35,6 @@ public class DetalleSalidaServiceImpl implements DetalleSalidaService {
     @Override
     public DetalleSalidaEntity findById(Long id) {
         return detalleSalidaRepository.findById(id).get();
-    }
-
-    @Override
-    public DetalleSalidaEntity update(DetalleSalidaEntity t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public DetalleSalidaEntity delete(DetalleSalidaEntity t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public DetalleSalidaEntity enable(DetalleSalidaEntity t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
