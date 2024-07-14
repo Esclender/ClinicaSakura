@@ -10,12 +10,9 @@ import pe.com.clinicasakura.ClinicaSakura.service.ProductoService;
 import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 
 import java.util.Date;
-import pe.com.clinicasakura.ClinicaSakura.dtos.RegistroEntradaDto;
 import pe.com.clinicasakura.ClinicaSakura.dtos.RegistroSalidaDto;
-import pe.com.clinicasakura.ClinicaSakura.model.DetalleEntradaEntity;
 import pe.com.clinicasakura.ClinicaSakura.model.DetalleSalidaEntity;
-import pe.com.clinicasakura.ClinicaSakura.model.ProveedorEntity;
-import pe.com.clinicasakura.ClinicaSakura.model.RegistroEntradaEntity;
+import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
 import pe.com.clinicasakura.ClinicaSakura.service.DestinoService;
 import pe.com.clinicasakura.ClinicaSakura.service.DetalleSalidaService;
 import pe.com.clinicasakura.ClinicaSakura.service.RegistroSalidaService;
@@ -58,7 +55,7 @@ public class RegistroSalidaController {
 
     @PostMapping("/salida/registrar")
     public String registrarSalida(@ModelAttribute("registro") RegistroSalidaDto registro) {
-
+        ProductoEntity producto = registro.getProducto();
         RegistroSalidaEntity registroSalida = new RegistroSalidaEntity();
 
         registroSalida.setCodigoEmpleado(registro.getEmpleado());
@@ -66,13 +63,14 @@ public class RegistroSalidaController {
         registroSalida.setFecha(new Date());
         RegistroSalidaEntity objSaved = registroSalidaService.add(registroSalida);
 
-        System.out.println(objSaved);
-
         DetalleSalidaEntity detalles = new DetalleSalidaEntity();
         detalles.setCantidadProducto(registro.getCantidadProducto());
-        detalles.setCodigoProducto(registro.getProducto());
+        detalles.setCodigoProducto(producto);
         detalles.setCodigoRegistroSalida(objSaved);
         detalleSalidaService.add(detalles);
+
+        producto.decreaseCantidad(registro.getCantidadProducto());
+        productoService.update(producto);
 
         return "redirect:/salida";
     }

@@ -14,7 +14,7 @@ import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 import java.util.Date;
 import pe.com.clinicasakura.ClinicaSakura.dtos.RegistroEntradaDto;
 import pe.com.clinicasakura.ClinicaSakura.model.DetalleEntradaEntity;
-import pe.com.clinicasakura.ClinicaSakura.model.EmpleadoEntity;
+import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
 import pe.com.clinicasakura.ClinicaSakura.model.RegistroEntradaEntity;
 
 @Controller
@@ -53,20 +53,23 @@ public class RegistroEntradaController {
 
     @PostMapping("/entrada/registrar")
     public String registrarRegistro(@ModelAttribute("registro") RegistroEntradaDto registro) {
+        ProductoEntity producto = registro.getProducto();
+
         RegistroEntradaEntity registroEntrada = new RegistroEntradaEntity();
         registroEntrada.setCodigoEmpleado(registro.getEmpleado());
         registroEntrada.setCodigoProveedor(registro.getProveedor());
         registroEntrada.setFecha(new Date());
         RegistroEntradaEntity objSaved = registroEntradaService.add(registroEntrada);
 
-        System.out.println(objSaved);
-
         DetalleEntradaEntity detalles = new DetalleEntradaEntity();
         detalles.setCantidadProducto(registro.getCantidadProducto());
-        detalles.setCodigoProducto(registro.getProducto());
+        detalles.setCodigoProducto(producto);
         detalles.setPrecioProducto(registro.getPrecioProducto());
         detalles.setCodigoRegistroEntrada(objSaved);
         detalleEntradaService.add(detalles);
+
+        producto.increaseCantidad(registro.getCantidadProducto());
+        productoService.update(producto);
 
         return "redirect:/entrada";
     }

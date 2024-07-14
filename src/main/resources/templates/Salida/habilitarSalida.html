@@ -67,6 +67,9 @@
                   <th scope="col" class="px-6 py-3">
                     Destino
                   </th>
+                  <th scope="col" class="px-6 py-3">
+                    Estado
+                  </th>
                   <th scope="col" class="px-4 py-3">
                     Acciones
                   </th>
@@ -95,6 +98,9 @@
 
                   <th scope="row" th:text="${detalle.codigoRegistroSalida.codigoDestino.nombre}"
                     class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap "></th>
+
+                  <td th:text="${detalle.codigoRegistroSalida.estado ? 'Habilitado':'Deshabilitado'}">
+                  </td>
 
                   <td class="px-2 py-4 ">
 

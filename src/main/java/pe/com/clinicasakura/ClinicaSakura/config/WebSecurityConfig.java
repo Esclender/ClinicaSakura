@@ -57,6 +57,7 @@ public class WebSecurityConfig {
 						jwtRequestFilter(), UsernamePasswordAuthenticationFilter.class)
 				.formLogin((form) -> form
 						.loginPage("/login")
+						.defaultSuccessUrl("/inicio", true)
 						.permitAll())
 				.logout((logout) -> logout.permitAll());
 
