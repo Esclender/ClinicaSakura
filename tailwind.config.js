@@ -11,6 +11,7 @@ module.exports = {
         'tb-letter-row': '#3F779B',
         'red-container': '#CF7979',
         'green-container': '#79CFA6',
+        'titles': '#524343'
       },
       backgroundImage: theme => ({
         'custom-gradient': 'linear-gradient(to bottom right, #DBD2FC, #DBD2FC 10%, #FDE2E0 28%, #E6E4EA 59%, #E6E1EB 100%, #E0E9F4)',
