@@ -12,4 +12,5 @@ import pe.com.clinicasakura.ClinicaSakura.model.RegistroEntradaEntity;
 public interface RegistroEntradaRepository extends JpaRepository<RegistroEntradaEntity, Long> {
   @Query("select r from RegistroEntradaEntity r where r.estado=true")
   Page<RegistroEntradaEntity> findAllCustom(Pageable pageable);
+
 }

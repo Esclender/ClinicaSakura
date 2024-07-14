@@ -43,10 +43,10 @@ public class DetalleEntradaEntity
 
     @ManyToOne
     @JoinColumn(name = "codigo_registro_entrada", nullable = false)
-    private RegistroEntradaEntity codigoRegistroEntrada;
+    private RegistroEntradaEntity registroEntrada;
 
     @ManyToOne
     @JoinColumn(name = "codigo_producto", nullable = false)
-    private ProductoEntity codigoProducto;
+    private ProductoEntity producto;
 
 }

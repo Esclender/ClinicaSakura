@@ -9,7 +9,6 @@ import pe.com.clinicasakura.ClinicaSakura.repository.RegistroSalidaRepository;
 import pe.com.clinicasakura.ClinicaSakura.service.RegistroSalidaService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RegistroSalidaServiceImpl implements RegistroSalidaService {

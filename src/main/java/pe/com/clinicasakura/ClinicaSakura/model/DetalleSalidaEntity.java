@@ -39,9 +39,9 @@ public class DetalleSalidaEntity
 
     @ManyToOne
     @JoinColumn(name = "codigo_registro_salida", nullable = false)
-    private RegistroSalidaEntity codigoRegistroSalida;
+    private RegistroSalidaEntity registroSalida;
 
     @ManyToOne
     @JoinColumn(name = "codigo_producto", nullable = false)
-    private ProductoEntity codigoProducto;
+    private ProductoEntity producto;
 }

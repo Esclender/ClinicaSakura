@@ -29,4 +29,5 @@ public class RegistroEntradaResponseDto {
   private double precioProducto;
 
   private ProductoEntity producto;
+
 }

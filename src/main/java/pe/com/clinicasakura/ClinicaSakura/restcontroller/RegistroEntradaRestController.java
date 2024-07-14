@@ -49,8 +49,8 @@ public class RegistroEntradaRestController {
     private ProductoRepository productoRepository;
 
     @GetMapping
-    public List<RegistroEntradaEntity> findAll() {
-        return service.findAll();
+    public List<DetalleEntradaEntity> findAll() {
+        return detalleEntradaService.findAll();
     }
 
     @GetMapping("/{id}")
@@ -73,9 +73,9 @@ public class RegistroEntradaRestController {
 
         DetalleEntradaEntity detalles = new DetalleEntradaEntity();
         detalles.setCantidadProducto(registro.getCantidadProducto());
-        detalles.setCodigoProducto(producto);
+        detalles.setProducto(producto);
         detalles.setPrecioProducto(registro.getPrecioProducto());
-        detalles.setCodigoRegistroEntrada(objSaved);
+        detalles.setRegistroEntrada(objSaved);
         detalleEntradaService.add(detalles);
 
         RegistroEntradaResponseDto response = new RegistroEntradaResponseDto();

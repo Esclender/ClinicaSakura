@@ -66,8 +66,8 @@ public class RegistroSalidaController {
 
         DetalleSalidaEntity detalles = new DetalleSalidaEntity();
         detalles.setCantidadProducto(registro.getCantidadProducto());
-        detalles.setCodigoProducto(registro.getProducto());
-        detalles.setCodigoRegistroSalida(objSaved);
+        detalles.setProducto(registro.getProducto());
+        detalles.setRegistroSalida(objSaved);
         detalleSalidaService.add(detalles);
 
         return "redirect:/salida";

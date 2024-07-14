@@ -6,13 +6,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import pe.com.clinicasakura.ClinicaSakura.model.ProductoEntity;
 import pe.com.clinicasakura.ClinicaSakura.model.RegistroEntradaEntity;
 import pe.com.clinicasakura.ClinicaSakura.repository.RegistroEntradaRepository;
 import pe.com.clinicasakura.ClinicaSakura.service.RegistroEntradaService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RegistroEntradaServiceImpl implements RegistroEntradaService {

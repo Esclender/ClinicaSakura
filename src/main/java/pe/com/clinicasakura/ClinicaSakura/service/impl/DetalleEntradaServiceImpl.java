@@ -39,24 +39,6 @@ public class DetalleEntradaServiceImpl implements DetalleEntradaService {
     }
 
     @Override
-    public DetalleEntradaEntity update(DetalleEntradaEntity t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public DetalleEntradaEntity delete(DetalleEntradaEntity t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public DetalleEntradaEntity enable(DetalleEntradaEntity t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public Page<DetalleEntradaEntity> obtenerPaginas(Pageable pageable) {
         return detalleEntradaRepository.findAll(pageable);
     }

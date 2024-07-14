@@ -12,6 +12,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.io.Serializable;
 import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -47,4 +48,5 @@ public class RegistroEntradaEntity extends BaseEntity
     @ManyToOne
     @JoinColumn(name = "codigo_empleado", nullable = false)
     private EmpleadoEntity codigoEmpleado;
+
 }

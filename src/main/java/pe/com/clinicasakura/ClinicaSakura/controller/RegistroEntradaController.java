@@ -59,9 +59,9 @@ public class RegistroEntradaController {
 
         DetalleEntradaEntity detalles = new DetalleEntradaEntity();
         detalles.setCantidadProducto(registro.getCantidadProducto());
-        detalles.setCodigoProducto(registro.getProducto());
+        detalles.setProducto(registro.getProducto());
         detalles.setPrecioProducto(registro.getPrecioProducto());
-        detalles.setCodigoRegistroEntrada(objSaved);
+        detalles.setRegistroEntrada(objSaved);
         detalleEntradaService.add(detalles);
 
         return "redirect:/entrada";

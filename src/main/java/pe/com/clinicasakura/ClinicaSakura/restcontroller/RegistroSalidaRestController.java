@@ -49,8 +49,8 @@ public class RegistroSalidaRestController {
     private DestinoRepository destinoRepository;
 
     @GetMapping
-    public List<RegistroSalidaEntity> findAll() {
-        return service.findAll();
+    public List<DetalleSalidaEntity> findAll() {
+        return detalleService.findAll();
     }
 
     @GetMapping("/{id}")
@@ -73,8 +73,8 @@ public class RegistroSalidaRestController {
 
         DetalleSalidaEntity detalles = new DetalleSalidaEntity();
         detalles.setCantidadProducto(registro.getCantidadProducto());
-        detalles.setCodigoProducto(producto);
-        detalles.setCodigoRegistroSalida(objSaved);
+        detalles.setProducto(producto);
+        detalles.setRegistroSalida(objSaved);
         detalleService.add(detalles);
 
         RegistroSalidasResponseDto response = new RegistroSalidasResponseDto();

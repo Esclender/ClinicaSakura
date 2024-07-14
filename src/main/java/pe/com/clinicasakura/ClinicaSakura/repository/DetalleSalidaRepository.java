@@ -9,6 +9,6 @@ import pe.com.clinicasakura.ClinicaSakura.model.DetalleSalidaEntity;
 
 public interface DetalleSalidaRepository extends JpaRepository<DetalleSalidaEntity, Long> {
 
-  @Query("SELECT de FROM DetalleSalidaEntity de JOIN de.codigoRegistroSalida re WHERE re.estado = true")
+  @Query("SELECT de FROM DetalleSalidaEntity de JOIN de.registroSalida re WHERE re.estado = true")
   Page<DetalleSalidaEntity> findAllCustom(Pageable pageable);
 }
