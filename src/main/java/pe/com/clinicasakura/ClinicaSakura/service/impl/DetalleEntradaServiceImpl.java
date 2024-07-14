@@ -1,13 +1,11 @@
 package pe.com.clinicasakura.ClinicaSakura.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.com.clinicasakura.ClinicaSakura.model.DetalleEntradaEntity;
 import pe.com.clinicasakura.ClinicaSakura.repository.DetalleEntradaRepository;
 import pe.com.clinicasakura.ClinicaSakura.service.DetalleEntradaService;
 
 import java.util.List;
-import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,27 +23,27 @@ import pe.com.clinicasakura.ClinicaSakura.model.base.BaseEntity;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 @Entity(name = "RegistroEntradaEntity")
 @Table(name = "registroentrada")
 public class RegistroEntradaEntity extends BaseEntity
-    implements Serializable{
-    
+        implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "codigo_registro_entrada")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long codigo;
-    
+
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
-    
+
     @ManyToOne
     @JoinColumn(name = "codigo_proveedor", nullable = false)
     private ProveedorEntity codigoProveedor;
-    
+
     @ManyToOne
     @JoinColumn(name = "codigo_empleado", nullable = false)
     private EmpleadoEntity codigoEmpleado;

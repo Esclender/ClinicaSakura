@@ -34,7 +34,7 @@ public class CategoriaProductoServiceImpl implements CategoriaProductoService {
 
     @Override
     public CategoriaProductoEntity update(CategoriaProductoEntity t) {
-        CategoriaProductoEntity obj = repositorio.getById(t.getCodigo());
+        CategoriaProductoEntity obj = repositorio.findById(t.getCodigo()).get();
         BeanUtils.copyProperties(t, obj);
         return repositorio.save(obj);
     }

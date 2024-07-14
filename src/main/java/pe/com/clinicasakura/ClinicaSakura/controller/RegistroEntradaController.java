@@ -11,7 +11,6 @@ import pe.com.clinicasakura.ClinicaSakura.service.ProveedorService;
 import pe.com.clinicasakura.ClinicaSakura.service.RegistroEntradaService;
 import pe.com.clinicasakura.ClinicaSakura.service.EmpleadoService;
 
-import java.util.Date;
 import pe.com.clinicasakura.ClinicaSakura.dtos.RegistroEntradaDto;
 import pe.com.clinicasakura.ClinicaSakura.model.DetalleEntradaEntity;
 import pe.com.clinicasakura.ClinicaSakura.model.RegistroEntradaEntity;
@@ -40,7 +39,7 @@ public class RegistroEntradaController {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
         // Formatear la fecha
-        String formattedDate = dateFormat.format(new Date());
+        String formattedDate = dateFormat.format(new java.util.Date());
         model.addAttribute("registro", new RegistroEntradaDto());
         model.addAttribute("proveedores", proveedorService.findAll());
         model.addAttribute("fecha", formattedDate);
@@ -55,10 +54,8 @@ public class RegistroEntradaController {
         RegistroEntradaEntity registroEntrada = new RegistroEntradaEntity();
         registroEntrada.setCodigoEmpleado(registro.getEmpleado());
         registroEntrada.setCodigoProveedor(registro.getProveedor());
-        registroEntrada.setFecha(new Date());
+        registroEntrada.setFecha(registro.getFecha());
         RegistroEntradaEntity objSaved = registroEntradaService.add(registroEntrada);
-
-        System.out.println(objSaved);
 
         DetalleEntradaEntity detalles = new DetalleEntradaEntity();
         detalles.setCantidadProducto(registro.getCantidadProducto());

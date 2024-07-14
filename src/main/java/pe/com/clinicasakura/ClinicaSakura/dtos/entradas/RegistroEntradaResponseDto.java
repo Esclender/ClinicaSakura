@@ -1,4 +1,4 @@
-package pe.com.clinicasakura.ClinicaSakura.dtos;
+package pe.com.clinicasakura.ClinicaSakura.dtos.entradas;
 
 import java.sql.Date;
 
@@ -14,18 +14,19 @@ import pe.com.clinicasakura.ClinicaSakura.model.ProveedorEntity;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class RegistroEntradaDto {
+public class RegistroEntradaResponseDto {
 
-    private Date fecha;
+  private Long codigo;
 
-    private ProveedorEntity proveedor;
+  private Date fecha;
 
-    private EmpleadoEntity empleado;
+  private ProveedorEntity proveedor;
 
-    private int cantidadProducto;
+  private EmpleadoEntity empleado;
 
-    private double precioProducto;
+  private int cantidadProducto;
 
-    private ProductoEntity producto;
+  private double precioProducto;
 
+  private ProductoEntity producto;
 }
