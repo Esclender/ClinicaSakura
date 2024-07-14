@@ -65,6 +65,9 @@
                   <th scope="col" class="px-4 py-3">
                     Precio
                   </th>
+                  <th scope="col" class="px-4 py-3">
+                    Cantidad
+                  </th>
                   <th scope="col" class="py-3">
                     Empleado
                   </th>
@@ -90,6 +93,9 @@
                     class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap "></th>
 
                   <th scope="row" th:text="${detalle.precioProducto}"
+                    class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap "></th>
+
+                  <th scope="row" th:text="${detalle.cantidadProducto}"
                     class="pl-6 py-4 font-medium text-gray-900 whitespace-nowrap "></th>
 
                   <th scope="row" th:text="${detalle.codigoRegistroEntrada.codigoEmpleado.nombre}"

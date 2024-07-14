@@ -40,7 +40,7 @@
         <div class="bg-white mt-4 h-full rounded-[20px]">
           <div class="h-[450px] flex flex-row justify-between self-center">
             <!-- Contenido -->
-            <div class="max-w-screen-xl  lg:px-4 w-full">
+            <div class="max-w-screen-xl mx-auto lg:px-4 w-full">
               <div class="relative  sm:rounded-lg">
                 <div
                   class="flex flex-col items-center justify-between py-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
@@ -48,14 +48,16 @@
                   <div class="w-full flex flex-row justify-between self-center">
                     <h2 class="text-2xl font-medium font-kanit">Agregar informacion de la entrada
                     </h2>
-                    <span th:text="'Fecha Registro ' + ${fecha}" class="p-2 bg-red-400 text-white font-bold rounded-md text-sm"></span>
+                    <span th:text="'Fecha Registro ' + ${fecha}"
+                      class="p-2 bg-red-400 text-white font-bold rounded-md text-sm"></span>
 
                   </div>
 
                 </div>
               </div>
 
-              <form th:action="@{/entrada/registrar}" method="post" th:object="${registro}" class="h-full max-w-full grid grid-cols-8 grid-rows-4  pb-[80px] relative">
+              <form th:action="@{/entrada/registrar}" method="post" th:object="${registro}"
+                class="h-full max-w-full grid grid-cols-8 grid-rows-4  pb-[80px] relative">
                 <!-- First Row -->
 
                 <div class="relative z-0 h-10 w-full row-start-1 col-span-4 p-2 group  custom-select">
@@ -64,7 +66,8 @@
                   <select th:field="*{producto}" id="underline_select"
                     class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                     <option value="0">Producto</option>
-                    <option th:each="producto:${productos}" th:value="${producto.codigo}" th:text="${producto.nombre}"></option>
+                    <option th:each="producto:${productos}" th:value="${producto.codigo}" th:text="${producto.nombre}">
+                    </option>
                   </select>
                 </div>
 
@@ -73,7 +76,8 @@
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" " required />
                   <label for="floating_cantidad"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Precio Producto</label>
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Precio
+                    Producto</label>
                 </div>
 
                 <div class="relative z-0 h-10 w-full row-start-1 col-span-4 p-2 group  custom-select">
@@ -82,7 +86,8 @@
                   <select th:field="*{empleado}" id="underline_select"
                     class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                     <option value="0">Empleado</option>
-                    <option th:each="empleado:${empleados}" th:value="${empleado.codigo}" th:text="${empleado.nombre}"></option>
+                    <option th:each="empleado:${empleados}" th:value="${empleado.codigo}" th:text="${empleado.nombre}">
+                    </option>
                   </select>
                 </div>
 
@@ -91,7 +96,8 @@
                   <select th:field="*{proveedor}" id="underline_select"
                     class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                     <option value="0">Proveedor</option>
-                    <option th:each="proveedor:${proveedores}" th:value="${proveedor.codigo}" th:text="${proveedor.nombre}"></option>
+                    <option th:each="proveedor:${proveedores}" th:value="${proveedor.codigo}"
+                      th:text="${proveedor.nombre}"></option>
                   </select>
                 </div>
 
