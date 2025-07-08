@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sakura Dental</title>
+  <title>FerreteriaMas</title>
   <link rel="stylesheet" th:href="@{/css/styles.css}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,24 +40,24 @@
   </script>
 </head>
 
-<body class="bg-custom-gradient h-dvh flex">
+<body class="bg-gray-100 h-screen flex font-kanit">
 
   <!-- SIDEBAR -->
   <section th:insert="~{components/sidebarTemplate.html :: sidebar(selectedPage=3)}"></section>
 
-  <div class="grid grid-cols-6 grid-rows-8 gap-8 w-full">
-    <div class="col-start-2 flex items-start justify-center">
-      <img th:src="@{/sakura_logo.png}" alt="Logo" class="w-56 md:w-40 mt-4 md:mt-2">
-    </div>
+  <!-- Main Content -->
+  <div class="flex-1 ml-64 overflow-auto">
+    <div class="p-8">
 
-    <!-- Contenido principal -->
-    <div class="col-start-2 col-end-7 row-start-2 row-end-8">
-      <div class="px-8  h-full">
-
-        <div class="flex flex-row justify-between self-center">
-          <h2 class="text-3xl font-medium font-kanit">Registro de empleados</h2>
-
+      <!-- Header -->
+      <div class="flex flex-row justify-between items-center mb-8">
+        <div class="flex items-center space-x-4">
+          <h1 class="text-3xl font-semibold text-gray-900">Registro de empleados</h1>
         </div>
+        <div class="text-gray-600">
+          <span class="text-sm">Agregar nuevo empleado</span>
+        </div>
+      </div>
 
         <div class="bg-white mt-4 h-full rounded-[20px]">
           <div class="h-[450px] flex flex-row justify-between self-center">
@@ -221,10 +221,7 @@
 
         </div>
 
-      </div>
-
     </div>
-  </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>

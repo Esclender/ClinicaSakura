@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sakura Dental</title>
+  <title>FerreteriaMas</title>
   <link rel="stylesheet" th:href="@{/css/styles.css}">
   <link rel="shortcut icon" type="image/png" th:href="@{/favicon.png}" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,167 +14,157 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-custom-gradient h-dvh flex font-kanit">
+<body class="bg-gray-100 h-screen flex font-kanit">
 
   <!-- SIDEBAR -->
   <section th:insert="~{components/sidebarTemplate.html :: sidebar(selectedPage=1)}"></section>
 
-  <div class="grid grid-cols-6 grid-rows-8 gap-8 w-full">
-    <div class="col-start-2 flex items-start justify-center">
-      <img th:src="@{/sakura_logo.png}" alt="Logo" class="w-56 md:w-40 mt-4 md:mt-2">
-    </div>
+  <!-- Main Content -->
+  <div class="flex-1 ml-64 overflow-auto">
+    <div class="p-8">
 
-    <!-- Contenido principal -->
-    <div class="col-start-2 col-end-7 row-start-2 row-end-8">
-      <div class="px-8  h-full">
+      <!-- Header -->
+      <div class="flex flex-row justify-between items-center mb-8">
+        <div class="flex items-center space-x-4">
+          <h1 class="text-3xl font-semibold text-gray-900">Dashboard</h1>
+        </div>
+        <div class="text-gray-600">
+          <span class="text-sm">Bienvenido al sistema FerreteriaMas</span>
+        </div>
+      </div>
 
-        <div class="flex flex-row justify-between self-center">
-          <h2 class="text-3xl font-medium font-kanit">Bienvenido!</h2>
-
+      <!-- Dashboard Content -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- Productos Card -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          <div class="px-6 py-4 border-b border-gray-200">
+            <h2 class="text-xl font-semibold text-gray-900 flex items-center">
+              <svg class="w-5 h-5 mr-2 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+              </svg>
+              Productos en Stock
+            </h2>
+          </div>
+          
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Producto
+                  </th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Stock
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr th:each="producto : ${productos}" class="hover:bg-gray-50">
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm font-medium text-gray-900" th:text="${producto.nombre}"></div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span th:class="${producto.stock > 10 ? 'inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800' : 'inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800'}"
+                          th:text="${producto.stock}">
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
-        <div class="py-4 grid grid-cols-2 gap-8">
-          <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow ">
-            <div class="relative overflow-x-auto">
-              <h2 class="text-xl font-medium mb-2 ">Productos</h2>
-
-              <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead class="text-light text-gray-700 uppercase bg-tb-head ">
-                  <tr>
-                    <th scope="col" class="px-6 py-3">
-                      Producto
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      Stock
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-
-                  <tr th:each="producto : ${productos}" class="bg-white border-b ">
-                    <th scope="row" class="px-6 py-4 text-tb-letter-row font-medium  whitespace-nowrap "
-                      th:text="${producto.nombre}">
-
-                    </th>
-                    <td class="px-6 py-4 inline-flex">
-                      <div th:classappend="${producto.cantidadStock > 10 ? 'bg-green-500' : 'bg-red-container'}"
-                        class="px-3 py-1 text-white shadow-red-shadow-container w-9"
-                        th:text="${producto.cantidadStock}">
-                      </div>
-                    </td>
-                  </tr>
-
-
-                </tbody>
-              </table>
-            </div>
+        <!-- Empleados Card -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          <div class="px-6 py-4 border-b border-gray-200">
+            <h2 class="text-xl font-semibold text-gray-900 flex items-center">
+              <svg class="w-5 h-5 mr-2 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+              </svg>
+              Empleados Activos
+            </h2>
           </div>
-          <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow ">
-            <div class="relative overflow-x-auto">
-              <h2 class="text-xl font-medium mb-2 ">Empleados</h2>
-
-              <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead class="text-light text-gray-700 uppercase bg-tb-head ">
-                  <tr>
-                    <th scope="col" class="px-6 py-3">
-                      Empleado
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      Cargo
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr th:each="empleado : ${empleados}" class="bg-white border-b ">
-                    <th scope="row" class="px-6 py-4 text-tb-letter-row font-medium  whitespace-nowrap "
-                      th:text="${empleado.nombre}">
-
-                    </th>
-                    <td class="px-6 py-4 inline-flex">
-                      <div class="bg-green-container px-3 py-1 text-white w-auto shadow-green-shadow-container"
-                        th:text="${empleado.cargo.nombre}">
-
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Empleado
+                  </th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Cargo
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr th:each="empleado : ${empleados}" class="hover:bg-gray-50">
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm font-medium text-gray-900" th:text="${empleado.nombre}"></div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800"
+                          th:text="${empleado.codcargo.nombre}">
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <!-- <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow ">
-            <div class="relative overflow-x-auto">
-              <h2 class="text-xl font-medium mb-2 ">Entradas Recientes</h2>
-
-              <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead class="text-light text-gray-700 uppercase bg-tb-head ">
-                  <tr>
-                    <th scope="col" class="px-6 py-3">
-                      Producto
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      Fecha Entrada
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      Cantidad
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="bg-white border-b ">
-                    <th scope="row" class="px-6 py-4 text-tb-letter-row font-medium  whitespace-nowrap ">
-                      Anestesia Topica
-                    </th>
-                    <td class="px-6 py-4 text-tb-letter-row font-light whitespace-nowrap ">
-                      2024-06-20
-                    </td>
-                    <td class="px-6 py-4 inline-flex text-green-container">
-                      +10
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow ">
-            <div class="relative overflow-x-auto">
-              <h2 class="text-xl font-medium mb-2 ">Salidas Recientes</h2>
-
-              <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead class="text-light text-gray-700 uppercase bg-tb-head ">
-                  <tr>
-                    <th scope="col" class="px-6 py-3">
-                      Producto
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      Fecha Salida
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      Cantidad
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="bg-white border-b ">
-                    <th scope="row" class="px-6 py-4 text-tb-letter-row font-medium  whitespace-nowrap ">
-                      Anestesia Topica
-                    </th>
-                    <td class="px-6 py-4 text-tb-letter-row font-light whitespace-nowrap ">
-                      2024-07-20
-                    </td>
-                    <td class="px-6 py-4 inline-flex text-red-container">
-                      -10
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div> -->
-
         </div>
 
       </div>
+
+      <!-- Quick Stats (Optional) -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+          <div class="flex items-center">
+            <div class="p-2 bg-blue-100 rounded-lg">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+              </svg>
+            </div>
+            <div class="ml-4">
+              <p class="text-sm font-medium text-gray-600">Total Productos</p>
+              <p class="text-2xl font-semibold text-gray-900" th:text="${#lists.size(productos)}">0</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+          <div class="flex items-center">
+            <div class="p-2 bg-green-100 rounded-lg">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+              </svg>
+            </div>
+            <div class="ml-4">
+              <p class="text-sm font-medium text-gray-600">Total Empleados</p>
+              <p class="text-2xl font-semibold text-gray-900" th:text="${#lists.size(empleados)}">0</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+          <div class="flex items-center">
+            <div class="p-2 bg-teal-100 rounded-lg">
+              <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M8 6l4-4 4 4v4H8V6z"/>
+              </svg>
+            </div>
+            <div class="ml-4">
+              <p class="text-sm font-medium text-gray-600">Sistema</p>
+              <p class="text-2xl font-semibold text-gray-900">Activo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 </body>
 

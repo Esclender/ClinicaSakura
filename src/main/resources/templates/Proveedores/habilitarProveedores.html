@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sakura Dental</title>
+  <title>FerreteriaMas</title>
   <link rel="stylesheet" th:href="@{/css/styles.css}">
   <link rel="shortcut icon" type="image/png" th:href="@{/favicon.png}" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,23 +14,22 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-custom-gradient h-dvh flex">
+<body class="bg-gray-100 h-screen flex font-kanit">
+
   <!-- SIDEBAR -->
   <section th:insert="~{components/sidebarTemplate.html :: sidebar(selectedPage=4)}"></section>
-  <div class="grid grid-cols-6 grid-rows-8 gap-8 w-full">
-    <div class="col-start-2 flex items-start justify-center">
-      <img th:src="@{/sakura_logo.png}" alt="Logo" class="w-56 md:w-40 mt-4 md:mt-2">
-    </div>
 
-    <!-- Contenido principal -->
-    <div class="col-start-2 col-end-7 row-start-2 row-end-8 mx-8">
-      <div class="flex flex-row justify-between self-center">
-        <h2 class="text-3xl font-medium font-kanit">Habilitar Proveedores</h2>
-        <div>
-          <a th:href="@{/proveedor/registrar}">
-            <button type="button"
-              class="text-white text-md bg-button-color shadow-lile-shadow focus:outline-none focus:ring-4 focus:ring-blue-300 font-regular rounded-full text-sm px-3 py-1.5 text-center me-1 mb-2">Registrar
-              Proveedor</button></a>
+  <!-- Main Content -->
+  <div class="flex-1 ml-64 overflow-auto">
+    <div class="p-8">
+
+      <!-- Header -->
+      <div class="flex flex-row justify-between items-center mb-8">
+        <div class="flex items-center space-x-4">
+          <h1 class="text-3xl font-semibold text-gray-900">Habilitar Proveedores</h1>
+        </div>
+        <div class="text-gray-600">
+          <span class="text-sm">Gestionar estado de proveedores</span>
         </div>
       </div>
 
@@ -144,6 +143,7 @@
         </nav>
 
       </div>
+
     </div>
   </div>
 
